@@ -1,0 +1,25 @@
+/* ##### Global ##### */
+
+html {
+    font-family: 'inter';
+    font-style: normal;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    background-color: #2A3647;
+    color: #FFFFFF;
+}
+
+
+/* ##### Summary ##### */
+
+/* ##### Board ##### */
+
+/* ##### Add Task ##### */
+
+/* ##### Contacts ##### */
