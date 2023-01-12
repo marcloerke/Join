@@ -1,8 +1,16 @@
 //script variables
+
 let cardContainer = document.getElementById("card-container");
 let signUpContainer = document.getElementsByClassName("signup-container")[0];
 let users = [];
 let message;
+setUrl('gruppe-428.developerakademie.net/smallest_backend_ever');
+
+// async function init() {
+//   await downloadFromServer();
+//   users = JSON.parse(backend.getItem('users')) || [];
+// }
+
 
 //functions
 function loginCardTemplate() {
