@@ -2,14 +2,8 @@
 
 let cardContainer = document.getElementById("card-container");
 let signUpContainer = document.getElementsByClassName("signup-container")[0];
-let users = [];
 let message;
-setUrl('gruppe-428.developerakademie.net/smallest_backend_ever');
-
-// async function init() {
-//   await downloadFromServer();
-//   users = JSON.parse(backend.getItem('users')) || [];
-// }
+setURL('https://gruppe-428.developerakademie.net/smallest_backend_ever');
 
 
 //functions
@@ -67,7 +61,7 @@ function signUpCardTemplate() {
 }
 
 /**
- *
+ * rendering 
  */
 function renderLogin() {
   cardContainer.innerHTML = loginCardTemplate();
@@ -93,7 +87,14 @@ function renderSignUp() {
   })
 }
 
-function signUp() {
+
+/**
+ * sign up/ log in
+ */
+
+async function signUp() {
+  await downloadFromServer();
+  users = JSON.parse(backend.getItem('users')) || [];
   let name = document.getElementById("signup-name");
   let email = document.getElementById("signup-mail");
   let password = document.getElementById("signup-password");
@@ -102,17 +103,17 @@ function signUp() {
     email: email.value,
     password: password.value,
   };
-  users= [];
   users.push(newUser);
-  localStorage.setItem("users", JSON.stringify(users));
+  await backend.setItem("users", JSON.stringify(users));
   renderLogin();
 }
 
 
-function login() {
+async function login() {
+  await downloadFromServer();
+  users = JSON.parse(backend.getItem('users')) || [];
   let password= document.getElementById('login-password');
   let email= document.getElementById('login-mail');
-  users= JSON.parse(localStorage.getItem('users'));
   if(users != undefined) {
     let user= users.find( u => {
       return u.password == password.value && u.email == email.value

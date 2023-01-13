@@ -13,13 +13,14 @@ const backend = {
         return jsonFromServer[key];
     },
     deleteItem: function(key) {
-        delete jsonFromServer[key];
+        delete jsonFromServer[key]; 
         return saveJSONToServer();
     }
 };
-window.onload = async function() {
-    downloadFromServer();
-}
+
+// window.onload = async function() {
+//     downloadFromServer();
+// }
 
 async function downloadFromServer() {
     let result = await loadJSONFromServer();
@@ -42,32 +43,32 @@ async function loadJSONFromServer() {
 
 }
 
-function loadJSONFromServerOld() {
-    return new Promise(function(resolve, reject) {
-        let xhttp = new XMLHttpRequest();
-        let proxy = determineProxySettings();
-        let serverURL = proxy + BASE_SERVER_URL + '/nocors.php?json=database&noache=' + (new Date().getTime());
+// function loadJSONFromServerOld() {
+//     return new Promise(function(resolve, reject) {
+//         let xhttp = new XMLHttpRequest();
+//         let proxy = determineProxySettings();
+//         let serverURL = proxy + BASE_SERVER_URL + '/nocors.php?json=database&noache=' + (new Date().getTime());
 
 
 
 
-        xhttp.open('GET', serverURL);
+//         xhttp.open('GET', serverURL);
 
-        xhttp.onreadystatechange = function(oEvent) {
-            if (xhttp.readyState === 4) {
-                if (xhttp.status >= 200 && xhttp.status <= 399) {
-                    resolve(xhttp.responseText);
-                } else {
-                    reject(xhttp.statusText);
-                }
-            }
-        };
+//         xhttp.onreadystatechange = function(oEvent) {
+//             if (xhttp.readyState === 4) {
+//                 if (xhttp.status >= 200 && xhttp.status <= 399) {
+//                     resolve(xhttp.responseText);
+//                 } else {
+//                     reject(xhttp.statusText);
+//                 }
+//             }
+//         };
 
-        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xhttp.send();
+//         xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+//         xhttp.send();
 
-    });
-}
+//     });
+// }
 
 
 
