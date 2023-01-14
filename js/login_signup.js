@@ -11,9 +11,9 @@ setURL("https://gruppe-428.developerakademie.net/smallest_backend_ever");
 function  init() {
   setTimeout(function (){
     renderLogin();
-    renderSignUpWrapper();
+    
   }
-  , 1000)
+  , 800)
 }
 
 /**
@@ -37,6 +37,7 @@ function renderLogin() {
   loginForm.addEventListener("submit", function () {
     login();
   });
+  renderSignUpWrapper();
 }
 
 function renderSignUp() {
@@ -69,6 +70,7 @@ async function signUp() {
   };
   users.push(newUser);
   await backend.setItem("users", JSON.stringify(users));
+  alert('Signup successful!');
   renderLogin();
 }
 
