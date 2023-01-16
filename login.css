@@ -65,7 +65,7 @@ header img {
     max-width: 500px;
 }
 
-.login-card {
+.form-card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -77,10 +77,17 @@ header img {
     position: relative;
 }
 
-.login-card h1 {
-    border-bottom: 2.5px solid var(--c-lightblue);
-    padding-bottom: 10px;
+.form-card h1 {
+    /* border-bottom: 2.5px solid var(--c-lightblue);
+    padding-bottom: 10px; */
+    margin: 0;
 }
+
+.line {
+    margin-bottom: 2rem;
+    margin-top: .6rem;
+}
+
 
 
 .user-input {
@@ -98,6 +105,8 @@ header img {
     border-radius: 5px;
     
 }
+
+
 
 .user-input input::placeholder {
     color: var(--dimmed);
@@ -175,6 +184,13 @@ header img {
 
 .column2 p {
     color: var(--c-lightblue);
+    cursor: pointer;
+    transition: all 225ms ease-in-out;
+}
+
+.column2 p:hover {
+    transform: scale(1.1);
+    transition: all 225ms ease-in-out;
 }
 
 /* signup section */
@@ -204,7 +220,7 @@ header img {
     cursor: pointer;
 }
 
- #invalid {
+#invalid, #noUser {
     margin: 0;
     position: absolute;
     bottom: -22px;
@@ -212,11 +228,56 @@ header img {
     color: red;
  }
 
-#invalid:empty {
+ #success {
+    margin: 0;
+    position: absolute;
+    bottom: -22px;
+    font-size: .8rem;
+    font-weight: 600;
+    color: green;
+ }
+
+#invalid:empty, #success:empty, #noUser:empty {
     display: none;
 }
 
+.validation-tooltip {
+    display: flex;
+    position: absolute;
+    bottom: -55px;
+    align-items: center;
+    z-index: 10000;
+    background: white;
+    font-size: .85rem;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    padding: 5px;
+}
 
+.validation-tooltip::after {
+    content:'';
+    display:block;
+    width:0;
+    height:0;
+    position:absolute;
+    border-left: 8px solid transparent;
+    border-bottom: 8px solid black;
+    border-right:8px solid transparent;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.validation-tooltip p {
+    margin: 0;
+}
+
+.validation-tooltip p:first-of-type {
+    padding: 7px 12px 7px 12px ;
+    background: var(--c-lightblue);
+    color: white;
+    margin-right: .85rem;
+}
 
 
 
