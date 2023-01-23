@@ -1,0 +1,31 @@
+/* ##### Global ##### */
+
+html {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    scroll-behavior: smooth;
+    --c-darkblue: rgb(42, 54, 71);
+    --c-lightblue: rgb(41, 171, 226);
+    --bg-body: #f5f5f5;
+    --dimmed: #D1D1D1;
+}
+
+body {
+    margin: 0;
+    background: var(--bg-body);
+}
+
+header {
+    background-color: #2A3647;
+    color: #FFFFFF;
+}
+
+
+
+/* ##### Summary ##### */
+
+/* ##### Board ##### */
+
+/* ##### Add Task ##### */
+
+/* ##### Contacts ##### */
