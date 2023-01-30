@@ -31,20 +31,26 @@ categoryInput.addEventListener("click", function () {
   if (!editingCategory) {
     if (dropdownOpen) {
       dropdownContainer.style.display = "none";
-      categoryInput.style.borderBottom= "1px solid rgb(204, 204, 204)";
-      categoryInput.style.borderRadius= "7px";
+      categoryInput.style.borderBottom = "1px solid rgb(204, 204, 204)";
+      categoryInput.style.borderRadius = "7px";
       dropdownOpen = false;
     } else {
-      categoryInput.style.borderBottom= "none";
-      categoryInput.style.borderRadius= "7px 7px 0 0";
+      categoryInput.style.borderBottom = "none";
+      categoryInput.style.borderRadius = "7px 7px 0 0";
       dropdownContainer.style.display = "block";
       dropdownContainer.innerHTML = "";
       dropdownContainer.innerHTML += `<div class="category" id="newCategory">${categories[0]}</div>`;
       if (categories.length > 1) {
         for (let i = 1; i < categories.length; i++) {
           let color = assignedColors[i];
-          color.classList.remove("selected");
-          dropdownContainer.innerHTML += `<div class="category" onclick="selectCategory(event)"><div class="category-text">${categories[i]}</div> ${color.outerHTML}</div>`;
+          if(color != null && color.classList.contains("selected")) {
+            color.classList.remove("selected");
+            dropdownContainer.innerHTML += `<div class="category" onclick="selectCategory(event)"><div class="category-text">${categories[i]}</div> ${color.outerHTML}</div>`;
+          }
+          else {
+            dropdownContainer.innerHTML += `<div class="category" onclick="selectCategory(event)"><div class="category-text">${categories[i]}</div></div>`;
+          }
+          
         }
       }
 
@@ -61,8 +67,8 @@ function addListenerToNewCategory() {
     categoryOninput.style.display = "flex";
     dropdownContainer.style.display = "none";
     categoryInput.value = "";
-    categoryInput.style.borderBottom= "1px solid rgb(204, 204, 204)";
-    categoryInput.style.borderRadius= "7px";
+    categoryInput.style.borderBottom = "1px solid rgb(204, 204, 204)";
+    categoryInput.style.borderRadius = "7px";
     categoryDot.style.display = "none";
     categoryInput.placeholder = "New category name";
     categoryInput.removeAttribute("readonly");
@@ -87,20 +93,38 @@ clearCategory.addEventListener("click", function () {
 });
 
 addCategory.addEventListener("click", function () {
-  colorContainer.style.display = "none";
-  categoryInput.setAttribute("readonly", "true");
-  dropdownOpen = false;
-  editingCategory = false;
-  categoryOninput.style.display = "none";
-  for (let i = 0; i < colorDots.length; i++) {
-    const dot = colorDots[i];
-    if (dot.classList.contains("selected")) {
-      assignedColors.push(dot);
+  if (categoryInput.value.length > 0) {
+    colorContainer.style.display = "none";
+    categoryInput.setAttribute("readonly", "true");
+    dropdownOpen = false;
+    editingCategory = false;
+    categoryOninput.style.display = "none";
+    [...colorDots].forEach(el => {
+      if(el.classList.contains('selected')){
+        assignedColors.push(el);
+      }
+    });
+    let filteredArray= Array.prototype.filter.call([...colorDots], condition);
+    let noMatch= filteredArray.length === 0;
+    if(noMatch) {
+      categories.push(categoryInput.value);
+      assignedColors.push(null);
+      console.log(assignedColors);
+    }
+    else {
+      categories.push(categoryInput.value);
+      displayColorDot();
     }
   }
-  categories.push(categoryInput.value);
-  displayColorDot();
+  
 });
+
+let condition= function(el) {
+  return el.classList.contains('selected');
+}
+
+
+
 
 //add listeners to every color dot
 for (let i = 0; i < colorDots.length; i++) {
@@ -152,29 +176,23 @@ let contactsDropdownOpen = false;
 
 assignedToInput.addEventListener("click", function () {
   if (contactsDropdownOpen) {
-    contactsDropdownOpen= false;
-    contactsDropdown.style.display= "none";
-    assignedToInput.style.borderBottom= "1px solid rgb(204, 204, 204)";
-    assignedToInput.style.borderRadius= "7px";
+    contactsDropdownOpen = false;
+    contactsDropdown.style.display = "none";
+    assignedToInput.style.borderBottom = "1px solid rgb(204, 204, 204)";
+    assignedToInput.style.borderRadius = "7px";
   } else {
-    assignedToInput.style.borderBottom= "none";
-    assignedToInput.style.borderRadius= "7px 7px 0 0";
+    assignedToInput.style.borderBottom = "none";
+    assignedToInput.style.borderRadius = "7px 7px 0 0";
     contactsDropdown.style.display = "block";
-    contactsDropdown.innerHTML="";
+    contactsDropdown.innerHTML = "";
     for (let i = 0; i < contacts.length; i++) {
       const contact = contacts[i];
       contactsDropdown.innerHTML += /*html*/ `<div class="contact"><div><img src="assets/img/icon_name.png"> ${contact}</div> <input type="checkbox"></div>`;
     }
     contactsDropdown.innerHTML += /*html*/ `<div class="contact"><div><img src="assets/img/icon_mail.png"> Invite new contact</div></div>`;
-    contactsDropdownOpen= true;
+    contactsDropdownOpen = true;
   }
 });
-
-
-
-
-
-
 
 //add event listeners to prio items
 let prioContainer = document.getElementById("prio");
