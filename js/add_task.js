@@ -1,4 +1,10 @@
 /* script variables */
+setURL("https://gruppe-428.developerakademie.net/smallest_backend_ever");
+
+let form = document.getElementsByTagName("form")[0];
+let title = document.getElementById("title");
+let description = document.getElementById("description");
+let date = document.getElementById("date");
 
 //subtask elements
 let subtaskInputField = document.getElementById("addSubtask");
@@ -43,14 +49,12 @@ categoryInput.addEventListener("click", function () {
       if (categories.length > 1) {
         for (let i = 1; i < categories.length; i++) {
           let color = assignedColors[i];
-          if(color != null && color.classList.contains("selected")) {
+          if (color != null && color.classList.contains("selected")) {
             color.classList.remove("selected");
             dropdownContainer.innerHTML += `<div class="category" onclick="selectCategory(event)"><div class="category-text">${categories[i]}</div> ${color.outerHTML}</div>`;
-          }
-          else {
+          } else {
             dropdownContainer.innerHTML += `<div class="category" onclick="selectCategory(event)"><div class="category-text">${categories[i]}</div></div>`;
           }
-          
         }
       }
 
@@ -99,32 +103,26 @@ addCategory.addEventListener("click", function () {
     dropdownOpen = false;
     editingCategory = false;
     categoryOninput.style.display = "none";
-    [...colorDots].forEach(el => {
-      if(el.classList.contains('selected')){
+    [...colorDots].forEach((el) => {
+      if (el.classList.contains("selected")) {
         assignedColors.push(el);
       }
     });
-    let filteredArray= Array.prototype.filter.call([...colorDots], condition);
-    let noMatch= filteredArray.length === 0;
-    if(noMatch) {
+    let filteredArray = Array.prototype.filter.call([...colorDots], condition);
+    let noMatch = filteredArray.length === 0;
+    if (noMatch) {
       categories.push(categoryInput.value);
       assignedColors.push(null);
-      console.log(assignedColors);
-    }
-    else {
+    } else {
       categories.push(categoryInput.value);
       displayColorDot();
     }
   }
-  
 });
 
-let condition= function(el) {
-  return el.classList.contains('selected');
-}
-
-
-
+let condition = function (el) {
+  return el.classList.contains("selected");
+};
 
 //add listeners to every color dot
 for (let i = 0; i < colorDots.length; i++) {
@@ -265,8 +263,9 @@ function removeParent(e) {
 }
 
 //add listener to create task button
-create.addEventListener("click", function () {
-  window.location.href = "index.html";
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  formValidation();
 });
 
 // modify calendar so you can only select current date or date in the future

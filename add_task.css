@@ -11,16 +11,30 @@ body {
 
 /*badge colors */
 
-.orange {background: #FF8A00;}
-.red {background: #FF0000;}
-.blue  {background: #0038FF;}
-.lightblue {background: #8AA4FF;}
-.pink  {background: #E200BE;}
-.lightpink {background: #FC71FF;}
-.green {background: #2AD300;}
-.turquo {background: #1FD7C1;}
-
-
+.orange {
+  background: #ff8a00;
+}
+.red {
+  background: #ff0000;
+}
+.blue {
+  background: #0038ff;
+}
+.lightblue {
+  background: #8aa4ff;
+}
+.pink {
+  background: #e200be;
+}
+.lightpink {
+  background: #fc71ff;
+}
+.green {
+  background: #2ad300;
+}
+.turquo {
+  background: #1fd7c1;
+}
 
 .sidebar {
   grid-column: span 2;
@@ -75,33 +89,33 @@ body {
   right: -1px;
 }
 
-
-
 .column-right {
   padding-left: 50px;
 }
 
 /* styles for input fields */
 input,
-textarea
- {
+textarea {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding-left: 10px;
   font-size: 1.2rem;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: none;
 }
 
-#selectCategory, #assignedTo {
+#selectCategory,
+#assignedTo {
   margin-bottom: 0;
   cursor: pointer;
 }
 
-#addCategoryIcon, #addContactIcon {
+#addCategoryIcon,
+#addContactIcon {
   position: absolute;
   right: 0;
   top: 50%;
@@ -111,7 +125,8 @@ input:focus, textarea:focus {
   width: 10px;
 }
 
-#dropdownContainer, #contactsDropdownContainer {
+#dropdownContainer,
+#contactsDropdownContainer {
   background: white;
   border: 1px solid #ccc;
   border-radius: 0 0 7px 7px;
@@ -131,38 +146,36 @@ input:focus, textarea:focus {
 
 .color-dot {
   width: 10px;
-    height: 10px;
-    border: 2px solid #FFFFFF;
-    border-radius: 50%;
-    cursor: pointer;
+  height: 10px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .color-dot:hover {
   transform: scale(1.2);
-  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 20%);;
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 20%);
 }
 
 #categoryDot {
   width: 10px;
-    height: 10px;
-    border: 2px solid #FFFFFF;
-    border-radius: 50%;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    display: none;
+  height: 10px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
 }
-
 
 .selected {
   transform: scale(1.2);
-  border: 2px solid var(--c-darkblue)
+  border: 2px solid var(--c-darkblue);
 }
 
-
-
-.category, .contact {
+.category,
+.contact {
   cursor: pointer;
   font-size: 1.2rem;
   display: flex;
@@ -191,9 +204,10 @@ input:focus, textarea:focus {
   cursor: pointer;
 }
 
-.category:hover, .contact:hover {
+.category:hover,
+.contact:hover {
   background: lightgrey;
-  transition: all 200ms ease-in-out; 
+  transition: all 200ms ease-in-out;
 }
 
 textarea {
@@ -220,8 +234,7 @@ label:nth-of-type(4) {
   margin-top: 1.5rem;
 }
 
-input
- {
+input {
   height: 2.8rem;
 }
 
@@ -252,13 +265,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
-
- 
-
 /* prio container */
 .prio {
   display: flex;
-  margin-bottom: 1.5rem;
   justify-content: space-between;
   gap: 7px;
 }
@@ -286,16 +295,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-left: 7px;
 }
 
-
-
 /* subtask style for hidden icons */
 
-.subtask-input-container, .category-input-container, .contact-input-container {
+.subtask-input-container,
+.category-input-container,
+.contact-input-container {
   position: relative;
   width: 100%;
 }
 
-.subtask-input-container input, .category-input-container input, .contact-input-container input {
+.subtask-input-container input,
+.category-input-container input,
+.contact-input-container input {
   width: 100%;
   box-sizing: border-box;
 }
@@ -314,7 +325,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   top: 50%;
   transform: translateY(-50%);
   right: 7px;
-  display: none; 
+  display: none;
   cursor: pointer;
 }
 
@@ -325,15 +336,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   top: 50%;
   transform: translateY(-50%);
   right: 7px;
-  display: none; 
+  display: none;
   cursor: pointer;
   background: white;
   z-index: 100;
 }
 
-
-
-#subtaskOninput img:last-of-type, #categoryOninput img:last-of-type{
+#subtaskOninput img:last-of-type,
+#categoryOninput img:last-of-type {
   width: 20px;
   margin-left: 0.6rem;
   border-left: 1px solid var(--dimmed);
@@ -376,7 +386,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-top: 3rem;
 }
 
-.action-button-container div {
+.action-button-container button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -384,40 +394,52 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-radius: 7px;
   cursor: pointer;
   font-size: 1.2rem;
+  border: none;
 }
 
-.action-button-container div:first-of-type:hover {
+.action-button-container button:first-of-type:hover {
   background: var(--c-lightblue);
   color: white;
   transition: all 200ms ease-in-out;
 }
 
-.action-button-container div:nth-of-type(2):hover {
+.action-button-container button:nth-of-type(2):hover {
   background: var(--c-lightblue);
   transition: all 200ms ease-in-out;
 }
 
-.action-button-container div > img {
+.action-button-container button > img {
   margin-left: 10px;
 }
 
-.action-button-container div:first-of-type {
+.action-button-container button:first-of-type {
   padding-left: 20px;
   border: 1px solid var(--c-darkblue);
   margin-right: 1rem;
 }
 
-.action-button-container div:first-of-type > img {
+.action-button-container button:first-of-type > img {
   transform: scale(0.7);
 }
 
-.action-button-container div:last-of-type {
+.action-button-container button:last-of-type {
   background: var(--c-darkblue);
   color: white;
 }
 
 .option-img {
   position: absolute;
-  right: .5rem;
-  transform: scale(.8);
+  right: 0.5rem;
+  transform: scale(0.8);
+}
+
+.required:empty {
+  display: none;
+}
+
+.required {
+  margin: 7px 0 0 0;
+  font-size: 12px;
+  padding-left: 7px;
+  color: red;
 }
