@@ -1,3 +1,5 @@
+let requiredShown= false;
+
 async function createTask() {
   await downloadFromServer();
   tasks = JSON.parse(backend.getItem("keyTasks")) || [];
@@ -33,31 +35,61 @@ async function createTask() {
 
 function formValidation() {
     if(checkInputs()) {
+        createTask();
         window.location.href= "index.html";
     }
     else {
-        alert('Wrong!');
+        showRequired();
     }
 }
 
 function checkInputs() {
     let allCorrect= true; 
     let prio = document.querySelector(".active");
-    let required= document.getElementsByClassName('required');
     let data= [
-        title, description, categoryInput
+        title, description, categoryInput, date
     ]
     for (let i = 0; i < data.length; i++) {
         const input = data[i];
-        if(!input.value || input.value == 'Select task category') {
-            // required[i].innerText = "This field is required";
+        if(!input.value || input.value == 'Select task category'|| input.value== "") {
+           
             allCorrect= false;
         }
     }
     if(prio == undefined) {
-        // required[required.length-1].innerText= "Priority Selection is mandatory";
+        
         allCorrect= false;
     }
 
     return allCorrect;
 }
+
+function showRequired() {
+    requiredShown= true;
+    let prio = document.querySelector(".active");
+    let required= document.getElementsByClassName('required');
+    let data= [
+        title, description, categoryInput, date
+    ]
+    for (let i = 0; i < data.length; i++) {
+        const input = data[i];
+        if(!input.value || input.value == 'Select task category' || input.value== "") {
+            required[i].innerText = "This field is required";
+           
+        }
+    }
+    if(prio == undefined) {
+        required[required.length-1].innerText= "Priority Selection is mandatory";
+        
+    }
+}
+
+window.addEventListener('click', function() {
+    if(requiredShown) {
+        let required= this.document.querySelectorAll(".required");
+        [...required].forEach(e => {
+            e.innerText= "";
+        })
+        requiredShown= false;
+    }
+})
