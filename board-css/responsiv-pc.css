@@ -1,0 +1,14 @@
+@media ( max-width: 1250px) {
+    .tasks-board {
+        flex-wrap: wrap;
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+    .headline {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacts</title>
+    <link rel="stylesheet" href="fonts.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="contacts.css" />
+    <script src="js/contacts.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <section>
+        <div class="contact-scroll-container" id="scroll-move">
+          <input type="text" name="" id="searchContacts" />
+          <div class="contact-list">
+            <ul id="contactInList">
+              <!-- Hier werden die Kontakte aus dem Array hinzugefügt -->
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="contact-info-chart">
+          <div class="contact-great">
+            <div class="header-main"><h1>Contacts</h1></div>
+            <div><img src="assets/img/icon_line.png"></div>
+            <div class="header-secondary"><p>Better with a team</p></div>
+          </div>
+          <div id="contactLoader">
+            <!-- Hier wird der Standart Kontakt im div geladen -->
+          </div>
+          <div id="updatedContacts">
+            <!-- Hier wird die neuen Kontakte im div geladen -->
+          </div>
+        </div>
+        <div id="editContactOverlay">
+          <!-- Hier werden die Kontakte editiert -->
+        </div>
+        <div class="button-position" onclick="addContact()">
+            <button class="button-style" id="addContact">
+              New contact <img src="assets/img/icon_add_contact.png" />
+            </button>
+            <div class="add-icon">
+              <img src="assets/img/icon_add_contact.png" alt="" />
+            </div>
+          </div>
+      </section>
+    </div>
+  </body>
+</html>

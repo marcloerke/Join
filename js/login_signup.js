@@ -277,7 +277,7 @@ function signUpCardTemplate() {
           <img src="assets/img/icon_line.png" class="line">
           <div class='user-input'>
             <input id='signup-name' type='text' placeholder='Name' required oninvalid="event.preventDefault(); generateTooltip(event)"/>
-            <img src='assets/img/icon_profile.png' />
+            <img src='assets/img/icon_name.png' />
           </div>
           <div class='user-input'>
             <input id='signup-mail' type='email' placeholder='Email' required oninvalid="event.preventDefault(); generateTooltip(event)"/>

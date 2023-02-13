@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    display: flex;
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+    overflow: hidden !important;
+}
+
+.main-container {
+    background-color: #f6f7f8;
+    width: 85vw;
+    height: 105vh;
+    margin-left: 272px !important;
+    margin-top: 90px;
+    box-sizing: border-box;
+    overflow: scroll;
+}
+
+.headline {
+    height: 150px;
+    display: flex;
+    padding-right: 50px;
+    padding-left: 50px;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+.title-of-board {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.headline-right-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.search-menu {
+    display: flex;
+    align-items: center;
+    border: 1px solid lightgray;
+    padding: 6px 8px;
+    padding-bottom: 7px;
+    padding-right: 10px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+form {
+    display: flex;
+}
+
+.search-task {
+    outline: unset;
+    border: unset;
+    padding-left: 8px;
+    background-color: white;
+    height: 1.1rem;
+}
+
+::placeholder {
+    color: lightgray;
+    opacity: 0.9;
+    font-size: 15px !important;
+}
+
+.placehoder-color-red::-webkit-input-placeholder {
+    color: red;
+}
+
+.search-icon {
+    width: 15px;
+    height: 16px;
+    margin-top: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.search-icon-container {
+    border-left: 1px solid lightgrey;
+}
+
+.search-menu-back-button {
+    cursor: pointer;
+}
+
+.tasks-board {
+    padding-right: 50px;
+    padding-left: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 215px;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+
+.task-area {
+    box-sizing: border-box;
+    padding-bottom: 200px;
+}
+
+.add-btn-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.plus {
+    width: 25px;
+    height: 25px;
+}
