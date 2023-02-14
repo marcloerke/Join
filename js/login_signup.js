@@ -170,7 +170,7 @@ function guestLogin() {
   password.value= 'guest';
   email.value= 'guest@mail.de';
   setTimeout(function () {
-    window.location.href = "index.html";
+    window.location.href = "summary.html";
   }, 250)
 }
 
