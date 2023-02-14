@@ -16,7 +16,17 @@ a {
 .main {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  /* width: 100%; */
+  grid-row: 2/ 11;
+  grid-column: 3/ 11;
+}
+
+section:first-of-type {
+  width: 25%;
+}
+
+ul {
+  padding: 0 !important;
 }
 
 #scroll-move::-webkit-scrollbar-track {
@@ -39,8 +49,7 @@ a {
 .contact-scroll-container {
   display: flex;
   flex-direction: column;
-  width: 453px;
-  height: 935px;
+  height: 100%;
   background: #ffffff;
   box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
   overflow-y: scroll;
@@ -90,12 +99,11 @@ a {
 .contact-box {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  width: 357px;
-  height: 79px;
+  justify-content: center;
   border-top: 2px solid var(--dimmed);
   margin: 15px 0;
   cursor: pointer;
+  padding-top: 7px;
 }
 
 #initialsContainer{
@@ -108,7 +116,6 @@ a {
     justify-content: center;
     align-items: center;
     background: var(--c-lightblue);
-    margin-left: 1rem;
     margin-right: 1rem;
 }
 

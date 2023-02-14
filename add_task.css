@@ -1,9 +1,3 @@
-body {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(10, 1fr);
-  height: 100vh;
-}
 
 .mt-15 {
   margin-top: 1.5rem;
@@ -36,21 +30,9 @@ body {
   background: #1fd7c1;
 }
 
-.sidebar {
-  grid-column: span 2;
-  grid-row: span 10;
-  background: var(--c-darkblue);
-}
-
-.header {
-  grid-column: span 8;
-  grid-row: span 3;
-  background: var(--c-lightblue);
-}
-
 /* add task card */
 .task-card {
-  grid-row-start: 4;
+  grid-row-start: 3;
   grid-column: 4/ 10;
   max-width: 900px;
 }
@@ -362,6 +344,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: center;
   padding-left: 7px;
   margin-bottom: 0.8rem;
+  margin-top: 0.8rem;
 }
 
 .subtask p {

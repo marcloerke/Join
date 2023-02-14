@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="contacts.css" />
-    <script src="js/contacts.js"></script>
   </head>
-  <body>
+  <body onload="init()">
+    <div class="sidebar"  w3-include-html="assets/templates/sidebar.html"></div>
+    <div class="header" w3-include-html="assets/templates/header.html"></div>
     <div class="main">
       <section>
         <div class="contact-scroll-container" id="scroll-move">
@@ -49,5 +50,7 @@
           </div>
       </section>
     </div>
+    <script src="script.js"></script>
+    <script src="js/contacts.js"></script>
   </body>
 </html>

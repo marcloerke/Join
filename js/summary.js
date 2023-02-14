@@ -6,7 +6,7 @@ async function initSummary() {
     await dataFromServer();
     getCurrentDate();
 }
-
+ 
 
 async function dataFromServer() {
     setURL('https://gruppe-428.developerakademie.net/smallest_backend_ever');

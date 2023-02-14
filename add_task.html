@@ -5,15 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Task</title>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="add_task.css" />
     <link rel="stylesheet" href="style.css" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-  <body>
-    <div class="sidebar"></div>
-    <div class="header"></div>
+  <body onload="init()">
+    <div class="sidebar"  w3-include-html="assets/templates/sidebar.html"></div>
+    <div class="header" w3-include-html="assets/templates/header.html"></div>
     <div class="task-card">
       <h1>Add Task</h1>
       <form class="column-container">
@@ -82,11 +79,6 @@
           </div>
           <p class="required"></p>
 
-
-
-
-
-
             <label for="addSubtask" class="mt-15">Subtasks</label>
             <div class="subtask-input-container">
               <input type="text" id="addSubtask">
@@ -97,9 +89,6 @@
               </div>
             </div>
             <div id="subtaskContainer"></div> 
-
-
-
 
             <div class="action-button-container"> 
               <button id="clear">
@@ -117,7 +106,7 @@
         </div>
       </div>
     </div>
-    
+    <script src="script.js"></script>
     <script src="js/mini_backend.js"></script>
     <script src="js/add_task.js"></script>
     <script src="js/create_task.js"></script>
