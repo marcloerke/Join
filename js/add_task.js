@@ -49,7 +49,7 @@ categoryInput.addEventListener("click", function () {
       if (categories.length > 1) {
         for (let i = 1; i < categories.length; i++) {
           let color = assignedColors[i];
-          if (color != null && color.classList.contains("selected")) {
+          if (color != null) {
             color.classList.remove("selected");
             dropdownContainer.innerHTML += `<div class="category" onclick="selectCategory(event)"><div class="category-text">${categories[i]}</div> ${color.outerHTML}</div>`;
           } else {
