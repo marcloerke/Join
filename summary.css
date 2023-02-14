@@ -63,6 +63,7 @@ body {
     color: white;
     cursor: pointer;
     transform: scale(1.1);
+    transform-origin: center;
 }
 
 .card-row-2:hover {
