@@ -32,9 +32,11 @@
 
 /* add task card */
 .task-card {
-  grid-row-start: 2;
-  grid-column: 4/ 10;
+  grid-row: 2/ 11;
+  grid-column: 3/ 11;
   max-width: 900px;
+  overflow-y: scroll;
+  padding: 0 1rem 1rem 2rem;
 }
 
 .task-card h1 {
