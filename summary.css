@@ -187,3 +187,30 @@ body {
 .fw-700 {
     font-weight: 700;
 }
+
+@media screen and (max-width: 1175px) {
+    .summary-content-right {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .content {
+        margin-left: 1rem;
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .content {
+        grid-column: 1/ 11;
+    }
+
+    .summary-headline {
+        justify-content: center;
+    }
+
+    .summary-content {
+        justify-content: center;
+    }
+}

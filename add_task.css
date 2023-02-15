@@ -1,4 +1,3 @@
-
 .mt-15 {
   margin-top: 1.5rem;
 }
@@ -33,8 +32,8 @@
 /* add task card */
 .task-card {
   grid-column: 3/ 11;
-    grid-row: 2/11;
-    margin-top: 2rem;
+  grid-row: 2/11;
+  margin-top: 2rem;
   max-width: 900px;
   margin-left: 80px;
   margin-right: 1rem;
@@ -457,15 +456,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 @media screen and (max-width: 750px) {
-  .sidebar {
-    display: none !important;
-  }
-  .header {
-    grid-column: span 10 !important;
-  }
-
+  
   .task-card {
     grid-column: 1 / 11;
     margin-top: 0;
+    margin-left: 1rem;
+  }
+
+  .task-card h1 {
+    text-align: center;
+  }
+
+  #subtaskContainer {
+    height: unset;
+  }
+
+  .action-button-container {
+    margin-bottom: 7rem;
+    justify-content: center;
   }
 }
