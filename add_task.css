@@ -32,11 +32,12 @@
 
 /* add task card */
 .task-card {
-  grid-row: 2/ 11;
   grid-column: 3/ 11;
+    grid-row: 2/11;
+    margin-top: 2rem;
   max-width: 900px;
-  overflow-y: scroll;
-  padding: 0 1rem 1rem 2rem;
+  margin-left: 80px;
+  margin-right: 1rem;
 }
 
 .task-card h1 {
@@ -368,7 +369,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .action-button-container {
   display: flex;
   justify-content: flex-end;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .action-button-container button {
@@ -427,4 +428,44 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 12px;
   padding-left: 7px;
   color: red;
+}
+
+@media screen and (max-width: 1000px) {
+  .column-container {
+    flex-direction: column;
+  }
+
+  .column-right {
+    padding-left: 0;
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .column-left {
+    border: none;
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .action-button-container {
+    margin-bottom: 1rem;
+  }
+
+  .task-card {
+    overflow-y: scroll;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .sidebar {
+    display: none !important;
+  }
+  .header {
+    grid-column: span 10 !important;
+  }
+
+  .task-card {
+    grid-column: 1 / 11;
+    margin-top: 0;
+  }
 }
