@@ -52,6 +52,22 @@ body {
     border-radius: 8px;
 }
 
+.search-menu-mobile {
+    display: none;
+    align-items: center;
+    border: 1px solid lightgray;
+    padding: 6px 8px;
+    padding-bottom: 7px;
+    padding-right: 10px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.search-button {
+    border: unset;
+     background-color: white;
+}
+
 form {
     display: flex;
 }
@@ -75,7 +91,7 @@ form {
 }
 
 .search-icon {
-    width: 15px;
+    /* width: 15px !important; */
     height: 16px;
     margin-top: 5px;
     margin-left: 10px;

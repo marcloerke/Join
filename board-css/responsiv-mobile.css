@@ -1,0 +1,93 @@
+@media (max-width: 950px) {
+    .headline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .task-area {
+        padding-bottom: 20px;
+
+    }
+
+    .title-of-board {
+        padding-top: 25px;
+    }
+
+    .search-menu {
+        display: none;
+    }
+
+    .search-menu-mobile {
+        display: flex;
+    }
+
+    .add-task-btn-board {
+        display: none;
+    }
+
+    .tasks-board {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .tasks-board {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+
+@media (max-width: 750px) {
+
+    .tasks-board {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+    .main-container {
+        grid-column: 1/11;
+        padding-bottom: 80px;
+    }
+}
+
+@media (max-width: 620px) {
+
+    .tasks-board {
+        padding-left: 20px;
+        padding-right: 20px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .tasks-board {
+        min-width: 90%;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .task {
+        width: 250px;
+        margin-top: 30px;
+        background-color: white;
+        border-radius: 18px;
+        padding: 13px;
+        font-size: 11px;
+        cursor: pointer;
+        box-sizing: border-box;
+    }
+
+    .title {
+        width: 250px;
+    }
+
+
+}
