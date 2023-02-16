@@ -346,3 +346,39 @@ form input::placeholder {
 .profile img {
     margin-right: 3rem;
 }
+
+@media screen and (max-width: 1150px) {
+  .main {
+    flex-direction: column;
+  }
+
+  section:first-of-type {
+    width: 100%;
+    
+  }
+
+  .contact-scroll-container {
+    min-height: 100px;
+    max-height: 200px;
+  }
+
+  .contact-info-chart {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .main {
+    grid-column: 1/11;
+  }
+
+  .button-position {
+    bottom: 150px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .contact-info-chart {
+    transform: scale(0.9);
+  }
+}
