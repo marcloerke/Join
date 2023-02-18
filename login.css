@@ -285,6 +285,10 @@ header img {
         width: 100%;
     }
 
+    .signup-wrapper {
+        right: 2rem;
+    }
+
     .signup-wrapper p {
         font-size: 1.1rem;
     }
