@@ -1,25 +1,15 @@
-function navbarToggler() {
-    const url= window.location.href;
-    const currentPage = url.replace(/^(?:\/\/|[^/]+)*\//, '');
-    const currentPageClean=  currentPage.replace("_", " ").replace(".html", "");
-    const menuLinks= document.querySelectorAll('.nav-item');
-    [...menuLinks].forEach(item => {
-        if (currentPageClean.includes(item.innerText.toLowerCase())) {
-            item.classList.add('active');
-        }
-    })
-}
-
 
 
 setURL('https://gruppe-428.developerakademie.net/smallest_backend_ever');
 async function init() {
     await downloadFromServer();
     //backend.deleteItem('keyTasks');
+    //backend.deleteItem('keyContactList');
     tasks = JSON.parse(backend.getItem('keyTasks')) || []; 
+   // contactList = JSON.parse(backend.getItem('keyContactList')) || []; 
     await includeHTML();
+    //console.log('contactList nach dem Laden: ',contactList);
     updateHTML();
-    navbarToggler();
 }
 
 init();
