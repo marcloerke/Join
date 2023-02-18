@@ -1,6 +1,5 @@
 let contactList = [];
 let storedContactsArray = [];
-var GLOBAL_USER_ID = 0;
 
 let dataFromServer = async () =>  {
   setURL('https://gruppe-428.developerakademie.net/smallest_backend_ever');
@@ -16,9 +15,9 @@ let createContactData = async () => {
   let userName = document.querySelector("#name").value;
   let userMail = document.querySelector("#mail").value;
   let userPhone = document.querySelector("#phone").value;
-  let iserId = getNewUserId();
+  let userId = storedContactsArray.length;
   let newContact = {
-    "id": iserId,
+    "id": userId,
     "userName": userName,
     "userMail": userMail,
     "userPhone": userPhone,
@@ -31,7 +30,7 @@ let createContactData = async () => {
   let blurContainer= document.querySelector('#overlay-blur-container')
   blurContainer.classList.add('d-none');
   renderContacts();
-  console.log(storedContactsArray);
+  // console.log(storedContactsArray);
   // contactList.push(newContact);
   // console.log(contactList);
   // let allContactDataString = JSON.stringify(contactList);
@@ -47,7 +46,7 @@ const renderContacts = () => {
     let initials = createInitials(contact);
     addContactToList.innerHTML += /*html*/ `
       <li>
-        <div class="contact-box" onclick="toggleBetweenContacts(${contact["id"]})">
+        <div class="contact-box" onclick="toggleBetweenContacts(${contact.id})">
           <a href="#"><div id="initialsContainer">${initials}</div></a> 
           <div class="name-mail-container">
             <div>${contact["userName"]}</div>
@@ -60,9 +59,9 @@ const renderContacts = () => {
 }
 
 
-const getNewUserId = () => {
-  return GLOBAL_USER_ID++;
-}
+// const getNewUserId = () => {
+//   return GLOBAL_USER_ID++;
+// }
 
 
 const addContact = () => {
@@ -85,14 +84,7 @@ const filledForms = () => {
 }
 
 
-const createInitials_old = (initialsInNames) => {
-  let initials = [];
-  for (let n = 0; n < initialsInNames.length; n++) {
-    let matches = initialsInNames[n].userName.match(/\b\w/g) || [];
-    initials.push(((matches[0] || '') + (matches[matches.length - 1] || '')).toUpperCase());
-  }
-  onsubmitContact(initials);
-}
+
 
 const createInitials = (contact) => {
   let matches = contact.userName.match(/\b\w/g) || [];
@@ -116,7 +108,6 @@ const cancelContactData = () => {
 }
 
 const showContactData = (contact) => {
-  console.log(contact);
   let updateContactForm = document.querySelector("#updatedContacts");
   updateContactForm.innerHTML = ``;
 
@@ -132,8 +123,8 @@ const showContactData = (contact) => {
         </div>
         <div class="contact-edit" onclick="editContact(${contact.id})">
             <div><h2>Contact Information</h2></div>
-            <div><img src="assets/img/icon_edit_dark.png" alt=""></div>
-            <div>Edit</div>
+            <div><img src="assets/img/icon_edit_dark.png" alt=""> Edit</div>
+            
         </div>
         <div class="contact-mail">
             <h3>Email</h3>
@@ -150,66 +141,32 @@ const showContactData = (contact) => {
 
 const editContact = (userId) => {
   let contactEdit = getUserById(userId);
-  console.log(contactEdit);
-  let editContact = document.getElementById("editContactOverlay");
-  editContact.innerHTML = ``;
+  // console.log(contactEdit);
+  // let editContact = document.getElementById("editContactOverlay");
 
   if (contactEdit != null) {
-    editContact.innerHTML += /*html*/ `
-    <div class="add-contact-overlay">
-      <div class="left-overlay">
-        <div>
-          <img src="assets/img/join_logo_light.png">
-          <h1>Add Contact</h1>
-          <p>Tasks are better with a team</p>
-          <img src="assets/img/icon_line.png">
-        </div>
-      </div>
-      <div class="add-contact-inputs">
-        <div class="profile"><img src="assets/img/icon_person.png" alt="#"></div>
-        <div class="input-fields">
-        <form>
-              <div class="fcf-form-group">
-                <label for="Name" class="fcf-label"></label>
-                <div class="fcf-input-group">
-                  <input type="text" id="name" name="Name" class="fcf-form-control" placeholder="Your name" required onkeyup="filledForms()">
-                  <img src="assets/img/icon_name.png">
-                </div>
-              </div>
-              <div class="fcf-form-group">
-                <label for="Email" class="fcf-label"></label>
-                <div class="fcf-input-group">
-                    <input type="email" id="mail" name="Email" class="fcf-form-control" placeholder="Your email address" required onkeyup="filledForms()">
-                    <img src="assets/img/icon_mail.png">
-                </div>
-              </div>
-              <div class="fcf-form-group">
-                <label for="Phone" class="fcf-label"></label>
-                <div class="fcf-input-group">
-                  <input type="tel" id="phone" name="Phone" pattern="^\+49 \d{4} \d{5}$" placeholder="+49 1234 56789" required onkeyup="filledForms()">
-                  <img src="assets/img/icon_phone.png">
-                </div>
-              </div>
-            </form>
-          <div class="button-container">
-            <button class="button-style-save" onclick="saveContactData(${contactEdit.id})">Save <img src="assets/img/icon_create.png"></button>
-          </div> 
-        </div>
-      </div>
-    </div>
-  `;
+    document.getElementById("editContactOverlay").classList.remove('d-none');
   }
 }
 
+const closeEditOverlay= ()=> {
+  document.getElementById("editContactOverlay").classList.add('d-none');
+  let inputs= document.getElementsByTagName('input');
+  [...inputs].forEach(input => {
+    input.value= "";
+  })
+}
+
+
+
 const toggleBetweenContacts = (userId) => {
   var currentUser = getUserById(userId);
-  console.log(currentUser);
   showContactData(currentUser);
-  onsubmitContact(currentUser);
+  // onsubmitContact(currentUser);
 }
 
 const getUserById = (userId) => {
-  var currentUser = contactList.filter(v => v != null && v.id == userId);
+  var currentUser = storedContactsArray.filter(v => v != null && v.id == userId);
   return currentUser.length > 0 ? currentUser[0] : null;
 }
 
@@ -251,20 +208,28 @@ const filterInputs = () => {
   }
 }
 
-const getServerResponse = async () => {
-  await downloadFromServer();
-  storedContactsArray = JSON.parse(backend.getItem("users")) || [];
-  let id = storedContactsArray["id"];
-  let name = storedContactsArray["userName"];
-  let email = storedContactsArray["userMail"];
-  let phone = storedContactsArray["userPhone"];
-  let newUser = {
-    id: id.value,
-    name: name.value,
-    email: email.value,
-    phone: phone.value,
-  };
-  storedContactsArray.push(newUser);
-  await backend.setItem("users", JSON.stringify(users));
-}
+// const getServerResponse = async () => {
+//   await downloadFromServer();
+//   storedContactsArray = JSON.parse(backend.getItem("users")) || [];
+//   let id = storedContactsArray["id"];
+//   let name = storedContactsArray["userName"];
+//   let email = storedContactsArray["userMail"];
+//   let phone = storedContactsArray["userPhone"];
+//   let newUser = {
+//     id: id.value,
+//     name: name.value,
+//     email: email.value,
+//     phone: phone.value,
+//   };
+//   storedContactsArray.push(newUser);
+//   await backend.setItem("users", JSON.stringify(users));
+// }
 
+// const createInitials_old = (initialsInNames) => {
+//   let initials = [];
+//   for (let n = 0; n < initialsInNames.length; n++) {
+//     let matches = initialsInNames[n].userName.match(/\b\w/g) || [];
+//     initials.push(((matches[0] || '') + (matches[matches.length - 1] || '')).toUpperCase());
+//   }
+//   onsubmitContact(initials);
+// }
