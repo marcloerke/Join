@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="./board-css/tasks.css">
   <link rel="stylesheet" href="./board-css/add-task-popup.css">
   <link rel="stylesheet" href="./board-css/task-popup.css">
-  <link rel="stylesheet" href="./board-css/responsiv-pc.css">
+ <link rel="stylesheet" href="./board-css/responsive.css">
   <link rel="stylesheet" href="desktop_templates.css">
 
 </head>
@@ -26,19 +26,28 @@
   
     <div class="main-container">
 
-      <div class="headline">
+      <div class="headline" >
         <div class="title-of-board">Board</div>
+
+         <!-- <div id="searchMenuMobile" class="search-menu-mobile">
+          <input placeholder="Find task" required id="searchTaskMobile" class="search-task" type="text">
+
+          <div class="search-icon-container">
+            <button class="search-button" onclick="searchTask()"><img class="search-icon"
+                src="assets/img/search.png"></button>
+          </div>
+        </div>  -->
 
         <div class="headline-right-side">
           <div id="searchMenuBackButton" onclick="backButton()"
-            class="search-menu-back-button add-task-btn-board d-none">Back</div>
+            class="search-menu-back-button d-none">Go Back</div>
 
-          <div id="searchMenu" class="search-menu">
+          <div id="searchMenu" class="search-menu"> 
             <input placeholder="Find task" required id="searchTask" class="search-task" type="text">
 
             <div class="search-icon-container">
-              <button style="border: unset; background-color: white;" onclick="searchTask()"><img class="search-icon"
-                  src="assets/img/icon_search.png"></button>
+              <button class="search-button" onclick="searchTask()"><img class="search-icon"
+                  src="assets/img/search.png"></button>
             </div>
           </div>
           <div onclick="addTask()" class="add-task-btn-board">Add task <img src="/assets/img/plus-icon-white.svg">

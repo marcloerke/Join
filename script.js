@@ -1,5 +1,7 @@
 async function init() {
     await includeHTML();
+    navbarToggler();
+    tooltip= document.getElementById('tooltip');
 }
 
 async function includeHTML() {
@@ -16,3 +18,30 @@ async function includeHTML() {
     }
 }
 
+function navbarToggler() {
+    const url= window.location.href;
+    const currentPage = url.replace(/^(?:\/\/|[^/]+)*\//, '');
+    const currentPageClean=  currentPage.replace("_", " ").replace(".html", "");
+    const menuLinks= document.querySelectorAll('.nav-item');
+    [...menuLinks].forEach(item => {
+        if (currentPageClean.includes(item.innerText.toLowerCase())) {
+            item.classList.add('active');
+        }
+    })
+}
+
+let logoutOpen= false;
+let tooltip; 
+
+function openCloseLogout() {
+    
+    if (logoutOpen) {
+        tooltip.style.display= "none";
+        logoutOpen= false;    
+    }
+
+    else {
+        tooltip.style.display= "block";
+        logoutOpen= true;   
+    }
+}

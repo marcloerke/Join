@@ -318,6 +318,8 @@ function inputIsNotExist(task) {
     document.getElementById('task' + task['id']).classList.add('d-none');
     document.getElementById('searchTask').value = '';
     document.getElementById('searchMenuBackButton').classList.remove('d-none');
+    // let title = document.querySelectorAll('.title');
+    // title.forEach(t => {t.classList.add('d-none')});
 }
 
 
@@ -331,6 +333,8 @@ function backButton() {
     document.getElementById('searchTask').placeholder = "Find task";
     document.getElementById('searchTask').classList.remove('placehoder-color-red');
     document.getElementById('searchMenuBackButton').classList.add('d-none');
+    // let title = document.querySelectorAll('.title');
+    // title.forEach(t => {t.classList.remove('d-none')});
 }
 
 

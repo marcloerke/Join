@@ -1,0 +1,168 @@
+@media ( max-width: 1250px) {
+    .tasks-board {
+        flex-wrap: wrap;
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+    .headline {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+
+}
+
+ @media ( max-width: 1200px) {
+   
+.add-task-btn-board {
+    display: none;
+}
+
+
+
+.add-btn-icon {
+    display: none;
+}
+
+.title {
+    justify-content: center;
+}
+
+} 
+
+@media ( max-width: 1100px) {
+    .tasks-board {
+        flex-wrap: wrap;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .headline {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+
+}
+
+@media (max-width: 950px) {
+    .headline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .task-area {
+        padding-bottom: 20px;
+
+    }
+
+    .title-of-board {
+        padding-top: 25px;
+    }
+
+    /* .search-menu {
+        display: none;
+    } */
+
+    .search-menu-mobile {
+        display: flex;
+    }
+
+    .add-task-btn-board {
+        display: none;
+    }
+
+    
+
+    .tasks-board {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+    .headline-right-side {
+
+     margin-top: 25px;
+     align-items: center;
+    }
+
+    .tasks-board {
+       padding-top: 25px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .tasks-board {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+
+@media (max-width: 750px) {
+
+    .tasks-board {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+    .main-container {
+        grid-column: 1/11;
+        padding-bottom: 80px;
+    }
+
+    .search-menu-back-button {
+        position: fixed;
+        bottom: 0px;
+        height: 60px;
+        width: 100%;
+        z-index: 100000;
+        justify-content: center;
+        align-items: center;
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 620px) {
+
+    .tasks-board {
+        padding-left: 20px;
+        padding-right: 20px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .tasks-board {
+        min-width: 90%;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .task {
+        width: 280px;
+        margin-top: 30px;
+        background-color: white;
+        border-radius: 18px;
+        padding: 13px;
+        font-size: 11px;
+        cursor: pointer;
+        box-sizing: border-box;
+    }
+
+    .title {
+        width: 250px;
+    }
+
+    .search-task {
+        width: 200px;
+    }
+
+
+}

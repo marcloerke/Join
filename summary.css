@@ -7,10 +7,11 @@ body {
 }
 
 .content {
-    grid-column: 4/ 11;
+    grid-column: 3/ 11;
     grid-row: 2/11;
     overflow-y: scroll;
     margin-top: 2rem;
+    margin-left: 80px;
 }
 
 .summary-headline {
@@ -38,7 +39,7 @@ body {
 }
 
 .summary-content-right {
-    padding-left: 63px;
+    padding-left: 73px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,7 +64,10 @@ body {
     color: white;
     cursor: pointer;
     transform: scale(1.1);
-    transform-origin: center;
+}
+
+.card-row-1:first-of-type:hover {
+    transform-origin: left;
 }
 
 .card-row-2:hover {
@@ -71,6 +75,7 @@ body {
     color: white;
     cursor: pointer;
     transform: scale(1.1);
+    transform-origin: left;
 }
 
 .card-row-3:hover {
@@ -78,6 +83,10 @@ body {
     color: white;
     cursor: pointer;
     transform: scale(1.1);
+}
+
+.card-row-3:first-of-type:hover {
+    transform-origin: left;
 }
 
 .card-row-1 {
@@ -184,4 +193,83 @@ body {
 
 .fw-700 {
     font-weight: 700;
+}
+
+@media screen and (max-width: 1175px) {
+    .summary-content-right {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .content {
+        margin-left: 1rem;
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .content {
+        grid-column: 1/ 11;
+    }
+
+    .summary-headline {
+        justify-content: center;
+    }
+
+    .summary-content {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .summary-content {
+        transform: scale(0.9);
+        margin-top: -1rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .summary-content {
+        transform: scale(0.8);
+        margin-top: -3rem;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .summary-content {
+        transform: scale(0.75);
+        margin-top: -5rem;
+    }
+
+    .summary-headline .f-27 {
+        display: none;
+    }
+
+    .summary-headline .summary-headline-line {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .summary-content {
+        transform: scale(0.65);
+        margin-top: -7.5rem;
+    } 
+
+    .f-21, .f-16, #date {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .summary-content {
+        transform: scale(0.6);
+        margin-top: -8.5rem;
+    } 
+
+    .f-21, .f-16, #date {
+        font-size: 1.5rem;
+    }
 }
