@@ -6,33 +6,13 @@ let dataFromServer = async () =>  {
   setURL('https://gruppe-428.developerakademie.net/smallest_backend_ever');
   await downloadFromServer();
   storedContactsArray = JSON.parse(backend.getItem("contacts")) || [];
-  console.log(storedContactsArray)
   renderContacts();
 }
 
 dataFromServer();
 
 
-const addContact = () => {
-  let addContact = document.getElementById("contactLoader");
-  addContact.innerHTML = ``;
-  let blurContainer= document.querySelector('#overlay-blur-container')
-  blurContainer.classList.remove('d-none');
-}
-
-const filledForms = () => {
-  if (document.getElementById("name").value === "") {
-    document.getElementById("requireFill").disabled = true;
-  } else if (document.getElementById("mail").value === "") {
-    document.getElementById("requireFill").disabled = true;
-  } else if (document.getElementById("phone").value === "") {
-    document.getElementById("requireFill").disabled = true;
-  } else {
-    document.getElementById('requireFill').disabled = false;
-  }
-}
-
-const createContactData = () => {
+let createContactData = async () => {
   let userName = document.querySelector("#name").value;
   let userMail = document.querySelector("#mail").value;
   let userPhone = document.querySelector("#phone").value;
@@ -45,20 +25,17 @@ const createContactData = () => {
     "createdAt": new Date().getTime(),
   }
 
-  contactList.push(newContact);
-  console.log(contactList);
-  // let allContactDataString = JSON.stringify(contactList);
   storedContactsArray.push(newContact);
-  console.log(storedContactsArray);
-  backend.setItem("contacts", JSON.stringify(contactList));
+  // contactList.push(newContact);
+  // console.log(contactList);
+  // let allContactDataString = JSON.stringify(contactList);
+  // storedContactsArray.push(newContact);
+  await backend.setItem("contacts", JSON.stringify(storedContactsArray));
   document.getElementById("contactLoader").innerHTML = ``;
   let blurContainer= document.querySelector('#overlay-blur-container')
   blurContainer.classList.add('d-none');
   renderContacts();
   /*  submitNotification(); */
-}
-const getNewUserId = () => {
-  return GLOBAL_USER_ID++;
 }
 
 const renderContacts = () => {
@@ -80,6 +57,32 @@ const renderContacts = () => {
     ` ;
   }
 }
+
+
+const getNewUserId = () => {
+  return GLOBAL_USER_ID++;
+}
+
+
+const addContact = () => {
+  let addContact = document.getElementById("contactLoader");
+  addContact.innerHTML = ``;
+  let blurContainer= document.querySelector('#overlay-blur-container')
+  blurContainer.classList.remove('d-none');
+}
+
+const filledForms = () => {
+  if (document.getElementById("name").value === "") {
+    document.getElementById("requireFill").disabled = true;
+  } else if (document.getElementById("mail").value === "") {
+    document.getElementById("requireFill").disabled = true;
+  } else if (document.getElementById("phone").value === "") {
+    document.getElementById("requireFill").disabled = true;
+  } else {
+    document.getElementById('requireFill').disabled = false;
+  }
+}
+
 
 const createInitials_old = (initialsInNames) => {
   let initials = [];
