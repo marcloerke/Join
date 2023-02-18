@@ -77,6 +77,7 @@ function renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, d
     document.getElementById('contentTaskPopup' + id).innerHTML = /*html*/ `
     <div class="categoryTask set-category" style="background-color:${backgroundColorCategory}" >${taskCategory}</div>
     <img class="exit" onclick="closeTaskPopup(${id})" src="/assets/img/exit.png">
+    <div onclick="deleteTask(${id})" class="trash">Trash</div>
     <div id="taskTitlePopupContainer${id}" class="task-title set-title"  >${taskTitle}</div>
     <div id="descriptionPopup${id}" class="description set-description">${taskDescription}</div>
     <div class="dateContainer">

@@ -337,4 +337,11 @@ function backButton() {
     // title.forEach(t => {t.classList.remove('d-none')});
 }
 
+ function deleteTask(id) {
+    tasks.splice(id, 1);
+    addServer();
+    closeTaskPopup(id);
+    init();
+}
+
 
