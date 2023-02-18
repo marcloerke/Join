@@ -340,8 +340,9 @@ function backButton() {
  function deleteTask(id) {
     tasks.splice(id, 1);
     addServer();
+    document.getElementById('task'+id).classList.add('d-none');
     closeTaskPopup(id);
-    init();
+   
 }
 
 
