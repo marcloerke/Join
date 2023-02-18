@@ -97,6 +97,7 @@ function moveTo(column, ev, columnID) {
 
 function addServer() {
     backend.setItem('keyTasks', JSON.stringify(tasks));
+   // backend.setItem('keyContactList', JSON.stringify(contactList));
 }
 
 

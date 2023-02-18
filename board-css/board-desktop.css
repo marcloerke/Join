@@ -103,6 +103,16 @@ form {
 }
 
 .search-menu-back-button {
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: black;
+    background-color: #2A3647;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 225ms ease-in-out;
     cursor: pointer;
 }
 
