@@ -26,15 +26,16 @@ let createContactData = async () => {
   }
 
   storedContactsArray.push(newContact);
-  // contactList.push(newContact);
-  // console.log(contactList);
-  // let allContactDataString = JSON.stringify(contactList);
-  // storedContactsArray.push(newContact);
   await backend.setItem("contacts", JSON.stringify(storedContactsArray));
   document.getElementById("contactLoader").innerHTML = ``;
   let blurContainer= document.querySelector('#overlay-blur-container')
   blurContainer.classList.add('d-none');
   renderContacts();
+  console.log(storedContactsArray);
+  // contactList.push(newContact);
+  // console.log(contactList);
+  // let allContactDataString = JSON.stringify(contactList);
+  // storedContactsArray.push(newContact);
   /*  submitNotification(); */
 }
 
@@ -102,10 +103,10 @@ const clearContactArguments = (contactList) => {
   contactList.shift();
 }
 
-const loadAllContacts = () => {
-  let allContactDataString = localStorage.getItem("contactList");
-  contactList = JSON.parse(allContactDataString);
-}
+// const loadAllContacts = () => {
+//   let allContactDataString = localStorage.getItem("contactList");
+//   contactList = JSON.parse(allContactDataString);
+// }
 
 const cancelContactData = () => {
   let addContact = document.getElementById("contactLoader");
