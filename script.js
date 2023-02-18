@@ -1,5 +1,6 @@
 async function init() {
     await includeHTML();
+    navbarToggler();
 }
 
 async function includeHTML() {
@@ -14,5 +15,17 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
+}
+
+function navbarToggler() {
+    const url= window.location.href;
+    const currentPage = url.replace(/^(?:\/\/|[^/]+)*\//, '');
+    const currentPageClean=  currentPage.replace("_", " ").replace(".html", "");
+    const menuLinks= document.querySelectorAll('.nav-item');
+    [...menuLinks].forEach(item => {
+        if (currentPageClean.includes(item.innerText.toLowerCase())) {
+            item.classList.add('active');
+        }
+    })
 }
 
