@@ -77,7 +77,8 @@ async function createTask() {
 function formValidation() {
     if(checkInputs()) {
         createTask();
-        
+        alert('Task created successfully!');
+        window.location.href="board.html";
     }
     else {
         showRequired();
