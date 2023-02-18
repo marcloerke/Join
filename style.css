@@ -45,16 +45,27 @@ body {
   margin-left: 2rem;
 }
 
-.header div:last-of-type {
+.header .header-image-container {
   display: flex;
   align-items: center;
   margin-right: 2rem;
+  position: relative;
 }
 
-.header div:last-of-type img:last-of-type {
-  width: 50px;
-  height: 50px;
-  margin-left: 1rem;
+.header .logout-tooltip {
+  background-color: var(--c-darkblue);
+  color: white;
+  padding: 15px;
+  border-radius: 7px 0 7px 7px;
+  position: absolute;
+  top: 120%;
+  right: 20%;
+  display: none;
+}
+
+.logout-tooltip:hover {
+  background-color: var(--c-lightblue);
+  transition: 225ms all ease-in-out;
 }
 
 .nav-container {
@@ -98,6 +109,24 @@ body {
   background: rgb(25, 32, 42);
 }
 
+.icon-help:hover {
+  cursor: not-allowed;
+}
+
+.icon-user {
+  cursor: pointer;
+  border: 1px solid transparent;
+  outline: 3px solid var(--c-darkblue);
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  margin-left: 2rem;
+}
+
+.icon-user:hover {
+  outline-color: var(--c-lightblue);
+  transition: all 225ms ease-in-out;
+}
 
 @media screen and (max-width: 750px) {
   .sidebar {

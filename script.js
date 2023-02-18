@@ -1,6 +1,7 @@
 async function init() {
     await includeHTML();
     navbarToggler();
+    tooltip= document.getElementById('tooltip');
 }
 
 async function includeHTML() {
@@ -29,3 +30,18 @@ function navbarToggler() {
     })
 }
 
+let logoutOpen= false;
+let tooltip; 
+
+function openCloseLogout() {
+    
+    if (logoutOpen) {
+        tooltip.style.display= "none";
+        logoutOpen= false;    
+    }
+
+    else {
+        tooltip.style.display= "block";
+        logoutOpen= true;   
+    }
+}
