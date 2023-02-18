@@ -66,6 +66,7 @@ body {
 .logout-tooltip:hover {
   background-color: var(--c-lightblue);
   transition: 225ms all ease-in-out;
+  cursor: pointer;
 }
 
 .nav-container {
@@ -86,6 +87,10 @@ body {
 .nav-container div:hover {
   transition: 225ms all ease-in-out;
   background: rgb(25, 32, 42);
+}
+
+.legal-notice:hover {
+  cursor: help;
 }
 
 .nav-container img {
