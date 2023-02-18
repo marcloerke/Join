@@ -15,7 +15,7 @@
     <div class="main">
       <section>
         <div class="contact-scroll-container" id="scroll-move">
-          <input type="text" name="" id="searchContacts" />
+          <input type="text" name="" id="searchContacts" onkeyup="filterInputs()" placeholder="Search for names..">
           <div class="contact-list">
             <ul id="contactInList">
               <!-- Hier werden die Kontakte aus dem Array hinzugefügt -->
@@ -51,6 +51,7 @@
       </section>
     </div>
     <script src="script.js"></script>
+    <script src="js/mini_backend.js"></script>
     <script src="js/contacts.js"></script>
   </body>
 </html>

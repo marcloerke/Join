@@ -1,3 +1,10 @@
+const dataFromServer = async () =>  {
+  setURL('https://gruppe-428.developerakademie.net/smallest_backend_ever');
+  await downloadFromServer();
+  storedContactsArray = JSON.parse(backend.getItem("keyTasks")) || [];
+  console.log(storedContactsArray)
+}
+
 const contactList = [];
 const storedContactsArray = [];
 var GLOBAL_USER_ID = 0;
@@ -99,16 +106,17 @@ const onsubmitContact = () => {
     let contact = contactList[i];
     let initials = createInitials(contact);
     addContactToList.innerHTML += /*html*/ `
-      <div class="contact-box" onclick="toggleBetweenContacts(${contact["id"]})">
-        <div id="initialsContainer">${initials}</div>
-        <div class="name-mail-container">
-          <div>${contact["userName"]}</div>
-          <div>${contact["userMail"]}</div>
+      <li>
+        <div class="contact-box" onclick="toggleBetweenContacts(${contact["id"]})">
+          <a href="#"><div id="initialsContainer">${initials}</div></a> 
+          <div class="name-mail-container">
+            <div>${contact["userName"]}</div>
+            <div>${contact["userMail"]}</div>
+          </div>
         </div>
-      </div>
+      </li>
     ` ;
   }
-  //clearContactArguments(contactList);
 }
 
 const createInitials_old = (initialsInNames) => {
@@ -216,7 +224,7 @@ const editContact = (userId) => {
               </div>
             </form>
           <div class="button-container">
-            <button class="button-style-save" onclick="saveContactData()">Save <img src="assets/img/icon_create.png"></button>
+            <button class="button-style-save" onclick="saveContactData(${contactEdit.id})">Save <img src="assets/img/icon_create.png"></button>
           </div> 
         </div>
       </div>
@@ -229,10 +237,66 @@ const toggleBetweenContacts = (userId) => {
   var currentUser = getUserById(userId);
   console.log(currentUser);
   showContactData(currentUser);
-
+  onsubmitContact(currentUser);
 }
 
 const getUserById = (userId) => {
   var currentUser = contactList.filter(v => v != null && v.id == userId);
   return currentUser.length > 0 ? currentUser[0] : null;
 }
+
+const saveContactData = (editContact) => {
+  const contactId = editContact;
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("mail").value;
+  const phone = document.getElementById("phone").value;
+
+  const contact = contactList.find(c => c.id === contactId);
+  if (contact) {
+
+    contact.userName = name;
+    contact.userMail = email;
+    contact.userPhone = phone;
+  }
+  defaultOnload();
+}
+
+const defaultOnload = () => {
+  document.getElementById("editContactOverlay").innerHTML = ``;
+}
+
+const filterInputs = () => {
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById("searchContacts");
+  filter = input.value.toLowerCase();
+  ul = document.getElementById("contactInList");
+  li = ul.getElementsByTagName("li");
+
+  for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByTagName("a")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toLowerCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+      } else {
+          li[i].style.display = "none";
+      }
+  }
+}
+
+const getServerResponse = async () => {
+  await downloadFromServer();
+  storedContactsArray = JSON.parse(backend.getItem("users")) || [];
+  let id = storedContactsArray["id"];
+  let name = storedContactsArray["userName"];
+  let email = storedContactsArray["userMail"];
+  let phone = storedContactsArray["userPhone"];
+  let newUser = {
+    id: id.value,
+    name: name.value,
+    email: email.value,
+    phone: phone.value,
+  };
+  storedContactsArray.push(newUser);
+  await backend.setItem("users", JSON.stringify(users));
+}
+
