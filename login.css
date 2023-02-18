@@ -284,6 +284,29 @@ header img {
     #card-container{
         width: 100%;
     }
+
+    .signup-wrapper p {
+        font-size: 1.1rem;
+    }
+
+    .signup-wrapper button {
+        margin-left: 1rem;
+        font-size: 1rem;
+    }
+
+    header img {
+        width: 10%;
+    }
+
+    .login-options-container {
+        width: 100%;
+    }
+
+    .column1 div p, .column2 p {
+        font-weight: 200;
+        font-size: 1rem;
+
+}
 }
 
 
