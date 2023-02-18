@@ -1,13 +1,17 @@
-const dataFromServer = async () =>  {
+let contactList = [];
+let storedContactsArray = [];
+var GLOBAL_USER_ID = 0;
+
+let dataFromServer = async () =>  {
   setURL('https://gruppe-428.developerakademie.net/smallest_backend_ever');
   await downloadFromServer();
-  storedContactsArray = JSON.parse(backend.getItem("keyTasks")) || [];
+  storedContactsArray = JSON.parse(backend.getItem("contacts")) || [];
   console.log(storedContactsArray)
+  renderContacts();
 }
 
-const contactList = [];
-const storedContactsArray = [];
-var GLOBAL_USER_ID = 0;
+dataFromServer();
+
 
 const addContact = () => {
   let addContact = document.getElementById("contactLoader");
@@ -43,25 +47,25 @@ const createContactData = () => {
 
   contactList.push(newContact);
   console.log(contactList);
-  let allContactDataString = JSON.stringify(contactList);
+  // let allContactDataString = JSON.stringify(contactList);
   storedContactsArray.push(newContact);
   console.log(storedContactsArray);
-  localStorage.setItem("contactList", allContactDataString);
+  backend.setItem("contacts", JSON.stringify(contactList));
   document.getElementById("contactLoader").innerHTML = ``;
   let blurContainer= document.querySelector('#overlay-blur-container')
   blurContainer.classList.add('d-none');
-  onsubmitContact();
+  renderContacts();
   /*  submitNotification(); */
 }
 const getNewUserId = () => {
   return GLOBAL_USER_ID++;
 }
 
-const onsubmitContact = () => {
+const renderContacts = () => {
   let addContactToList = document.querySelector("#contactInList");
   addContactToList.innerHTML = "";
-  for (let i = 0; i < contactList.length; i++) {
-    let contact = contactList[i];
+  for (let i = 0; i < storedContactsArray.length; i++) {
+    let contact = storedContactsArray[i];
     let initials = createInitials(contact);
     addContactToList.innerHTML += /*html*/ `
       <li>
