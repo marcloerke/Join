@@ -155,6 +155,7 @@ body {
 
   .nav-container {
     display: flex;
+    flex-direction: row !important;
     width: 100%;
     justify-content: space-evenly;
     padding: 15px 0 15px 0;
@@ -164,6 +165,8 @@ body {
     flex-direction: column;
     align-items: center !important;
     margin-bottom: 0 !important;
+    padding: 10px;
+    border-radius: 7px;
   }
 
   .nav-container div > img {

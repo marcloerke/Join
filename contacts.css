@@ -410,8 +410,29 @@ form input::placeholder {
     grid-column: 1/11;
   }
 
+  #overlay-blur-container {
+    align-items: flex-start;
+  }
+
+  .left-overlay {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  .add-contact-overlay {
+    border: none;
+  }
+
   .button-position {
     bottom: 150px;
+  }
+
+  .profile {
+    display: none;
+  }
+
+  .button-container {
+    margin-top: 1rem;
   }
 }
 
@@ -419,4 +440,10 @@ form input::placeholder {
   .contact-info-chart {
     transform: scale(0.9);
   }
+}
+
+@media screen and (max-width: 420px) {
+  .left-overlay div > h1 {
+    font-size: 3rem;
+}
 }
