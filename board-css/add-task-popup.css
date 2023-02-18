@@ -533,3 +533,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   padding-left: 7px;
   color: red;
 }
+
+.trash {
+position: absolute;
+top: 80px;
+right: 30px;
+color: red;
+cursor: pointer;
+}
