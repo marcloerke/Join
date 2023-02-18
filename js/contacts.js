@@ -27,8 +27,7 @@ let createContactData = async () => {
   storedContactsArray.push(newContact);
   await backend.setItem("contacts", JSON.stringify(storedContactsArray));
   document.getElementById("contactLoader").innerHTML = ``;
-  let blurContainer= document.querySelector('#overlay-blur-container')
-  blurContainer.classList.add('d-none');
+  cancelContactData();
   renderContacts();
   // console.log(storedContactsArray);
   // contactList.push(newContact);
@@ -67,8 +66,111 @@ const renderContacts = () => {
 const addContact = () => {
   let addContact = document.getElementById("contactLoader");
   addContact.innerHTML = ``;
-  let blurContainer= document.querySelector('#overlay-blur-container')
-  blurContainer.classList.remove('d-none');
+  document.body.append(addContactTemplate());
+}
+
+
+function addContactTemplate() {
+  let contactOverlay= document.createElement('div');
+  contactOverlay.setAttribute('id', 'overlay-blur-container');
+  contactOverlay.innerHTML= /*html*/ `
+
+  <div class="add-contact-overlay">
+    <div class="left-overlay">
+      <div>
+        <img src="assets/img/join_logo_light.png">
+        <h1>Add Contact</h1>
+        <p>Tasks are better with a team</p>
+        <img src="assets/img/icon_line.png">
+      </div>
+    </div>
+    <div class="add-contact-inputs">
+      <div class="profile"><img src="assets/img/icon_person.png" alt="#"></div>
+      <div class="input-fields">
+        <form>
+          <div class="fcf-form-group">
+            <label for="Name" class="fcf-label"></label>
+            <div class="fcf-input-group">
+              <input type="text" id="name" name="Name" class="fcf-form-control" placeholder="Your name" required onkeyup="filledForms()">
+              <img src="assets/img/icon_name.png">
+            </div>
+          </div>
+          <div class="fcf-form-group">
+            <label for="Email" class="fcf-label"></label>
+            <div class="fcf-input-group">
+                <input type="email" id="mail" name="Email" class="fcf-form-control" placeholder="Your email address" required onkeyup="filledForms()">
+                <img src="assets/img/icon_mail.png">
+            </div>
+          </div>
+          <div class="fcf-form-group">
+            <label for="Phone" class="fcf-label"></label>
+            <div class="fcf-input-group">
+              <input type="tel" id="phone" name="Phone" pattern="^\+49 \d{4} \d{5}$" placeholder="+49 1234 56789" required onkeyup="filledForms()">
+              <img src="assets/img/icon_phone.png">
+            </div>
+          </div>
+        </form>
+        <div class="button-container">
+          <button class="button-style-cancel" onclick="cancelContactData()">Cancel <img src="assets/img/icon_close.png"></button>
+          <button class="button-style-submit" id="requireFill" onclick="createContactData()" disabled>Create contact <img src="assets/img/icon_create.png"></button>                       
+        </div>
+      </div>
+    </div>
+</div>
+
+  `
+  return contactOverlay
+}
+
+function editContactTemplate(contactEdit) {
+  let editOverlay= document.createElement('div');
+  editOverlay.setAttribute('id', 'editContactOverlay');
+  editOverlay.innerHTML= /*html*/ `
+     <div class="add-contact-overlay">
+        <div class="left-overlay">
+          <div>
+            <img src="assets/img/join_logo_light.png">
+            <h1>Edit Contact</h1>
+            <p>Change contact information</p>
+            <img src="assets/img/icon_line.png">
+          </div>
+        </div>
+        <div class="add-contact-inputs">
+          <div class="profile"><img src="assets/img/icon_person.png" alt="#"></div>
+          <div class="input-fields">
+          <form>
+                <div class="fcf-form-group">
+                  <label for="Name" class="fcf-label"></label>
+                  <div class="fcf-input-group">
+                    <input type="text" id="name" name="Name" class="fcf-form-control" placeholder="Your name" required onkeyup="filledForms()">
+                    <img src="assets/img/icon_name.png">
+                  </div>
+                </div>
+                <div class="fcf-form-group">
+                  <label for="Email" class="fcf-label"></label>
+                  <div class="fcf-input-group">
+                      <input type="email" id="mail" name="Email" class="fcf-form-control" placeholder="Your email address" required onkeyup="filledForms()">
+                      <img src="assets/img/icon_mail.png">
+                  </div>
+                </div>
+                <div class="fcf-form-group">
+                  <label for="Phone" class="fcf-label"></label>
+                  <div class="fcf-input-group">
+                    <input type="tel" id="phone" name="Phone" pattern="^\+49 \d{4} \d{5}$" placeholder="+49 1234 56789" required onkeyup="filledForms()">
+                    <img src="assets/img/icon_phone.png">
+                  </div>
+                </div>
+              </form>
+            <div class="button-container">
+              <button class="button-style-cancel" onclick="closeEditOverlay()">Cancel <img src="assets/img/icon_close.png"></button>
+              <button class="button-style-submit" id="requireFill" onclick="saveContactData(contactEdit.id)" disabled>Create contact <img src="assets/img/icon_create.png"></button>                       
+            </div> 
+          </div>
+        </div>
+      </div>
+
+  `
+  return editOverlay
 }
 
 const filledForms = () => {
@@ -82,9 +184,6 @@ const filledForms = () => {
     document.getElementById('requireFill').disabled = false;
   }
 }
-
-
-
 
 const createInitials = (contact) => {
   let matches = contact.userName.match(/\b\w/g) || [];
@@ -104,7 +203,7 @@ const cancelContactData = () => {
   let addContact = document.getElementById("contactLoader");
   addContact.innerHTML = ``;
   let blurContainer= document.querySelector('#overlay-blur-container')
-  blurContainer.classList.add('d-none');
+  blurContainer.remove();
 }
 
 const showContactData = (contact) => {
@@ -143,14 +242,13 @@ const editContact = (userId) => {
   let contactEdit = getUserById(userId);
   // console.log(contactEdit);
   // let editContact = document.getElementById("editContactOverlay");
-
   if (contactEdit != null) {
-    document.getElementById("editContactOverlay").classList.remove('d-none');
+    document.body.append(editContactTemplate(contactEdit));
   }
 }
 
 const closeEditOverlay= ()=> {
-  document.getElementById("editContactOverlay").classList.add('d-none');
+  document.getElementById("editContactOverlay").remove();
   let inputs= document.getElementsByTagName('input');
   [...inputs].forEach(input => {
     input.value= "";
