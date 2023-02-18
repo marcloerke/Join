@@ -103,7 +103,10 @@ ul {
   border-top: 2px solid var(--dimmed);
   margin: 15px 0;
   cursor: pointer;
-  padding-top: 7px;
+  padding: 7px 0 7px 0;
+}
+.contact-box:hover {
+  color: white;
 }
 
 #initialsContainer{
