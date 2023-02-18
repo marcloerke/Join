@@ -1,42 +1,83 @@
 let requiredShown= false;
 
-async function createTask() {
-  await downloadFromServer();
-  tasks = JSON.parse(backend.getItem("keyTasks")) || [];
-  let bgTaskCategory = window
-    .getComputedStyle(categoryDot)
-    .getPropertyValue("background");
+// let tasks = [];
+// async function init() {
+//     await downloadFromServer();
+//             //backend.deleteItem('keyTasks');
+//             tasks = JSON.parse(backend.getItem('keyTasks')) || [];
+//             //addServerTasksArray();
+//             // updateHTML();
+//             console.log('whee');
+//         }
 
-  let rbgTaskCategory = bgTaskCategory.match(/\d+/g).map(Number);
+async function createTask() {
+  
+  let rgb = window.getComputedStyle(categoryDot).getPropertyValue("background").match(/\d+/g).map(Number);
+
+//let rbgTaskCategory = bgTaskCategory.match(/\d+/g).map(Number);
   let prio = document.querySelector(".active");
+  let priorityBg;
+  let prioIconSrcTask;
+  let prioIconSrcPopup;
+  let prioUrgent;
+  let prioMedium;
+  let prioLow;
+  let bgTaskCategory= `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;  
+  
+  if(prio.innerText == 'Urgent'){
+        priorityBg= '#ff3d00';
+        prioIconSrcTask= 'arrow-up-red.png';
+        prioIconSrcPopup= 'arrow-up-white.png';
+        prioUrgent= true;
+        prioMedium= false;
+        prioLow= false;
+  }
+  else if(prio.innerText == 'Medium'){
+        
+        priorityBg= '#fea800';
+        prioIconSrcTask= 'equal-sign-orange.svg';
+        prioIconSrcPopup= 'equal-sign-white.svg';
+        prioUrgent= false;
+        prioMedium= true;
+        prioLow= false;
+  }
+  else  {
+        priorityBg= '#79e228';
+        prioIconSrcTask= 'arrow-down-green.png';
+        prioIconSrcPopup= 'arrow-down-white.svg';
+        prioUrgent= false;
+        prioMedium= false;
+        prioLow= true;
+  }
 
   let newTask = {
     taskCategory: categoryInput.value,
-    bgTaskCategory: rbgTaskCategory,
+    bgTaskCategory: bgTaskCategory,
     taskTitle: title.value,
     taskDescription: description.value,
     priority: prio.innerText,
-    //   priorityBg
-    //   prioIconSrcTask
-    //   prioIconSrcPopup
-    //   prioUrgent
-    //   prioMedium
-    //   prioLow
+    priorityBg: priorityBg,
+    prioIconSrcTask: prioIconSrcTask,
+    prioIconSrcPopup: prioIconSrcPopup,
+    prioUrgent: prioUrgent,
+    prioMedium: prioMedium,
+    prioLow: prioLow,
     date: date.value,
-    //   names
-    //   bGcolorsOfAvatar
+    names: ['Peter Pan'],
+    bGcolorsOfAvatar: [newColor()],
     column: "toDo",
-    id: tasks.length - 1,
+    id: tasks.length,
   };
-  console.log(newTask);
-  alert('Task created');
+  
+  tasks.push(newTask);
+  backend.setItem('keyTasks', JSON.stringify(tasks));
 }
 
 
 function formValidation() {
     if(checkInputs()) {
         createTask();
-        window.location.href= "index.html";
+        
     }
     else {
         showRequired();
