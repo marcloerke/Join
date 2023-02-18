@@ -18,6 +18,12 @@ let subtaskContainer = document.getElementById("subtaskContainer");
 let clear = document.getElementById("clear");
 let create = document.getElementById("create");
 
+clear.addEventListener('click', (e)=> {
+  e.preventDefault();
+  window.location.reload();
+})
+
+
 //category elements
 let clearCategory = document.getElementById("clearCategory");
 let addCategory = document.getElementById("addCategory");
