@@ -193,13 +193,29 @@ ul {
   float: right;
 }
 
+.d-none {
+  display: none !important;
+}
+
+#overlay-blur-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .add-contact-overlay {
   display: flex;
-  z-index: 10;
+  /* z-index: 10;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
   border: 1px solid black;
   width: 80%;
   height: 90vh;
