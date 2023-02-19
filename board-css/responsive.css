@@ -117,7 +117,7 @@
     .search-menu-back-button {
         position: fixed;
         bottom: 0px;
-        height: 60px;
+        height: 80px;
         width: 100%;
         z-index: 100000;
         justify-content: center;

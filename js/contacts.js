@@ -1,7 +1,7 @@
 let contactList = [];
 let storedContactsArray = [];
 
-let dataFromServer = async () =>  {
+let dataFromServer = async () => {
   setURL('https://gruppe-428.developerakademie.net/smallest_backend_ever');
   await downloadFromServer();
   storedContactsArray = JSON.parse(backend.getItem("contacts")) || [];
@@ -23,7 +23,7 @@ let createContactData = async () => {
     "userPhone": userPhone,
     "createdAt": new Date().getTime(),
   }
-
+  
   storedContactsArray.push(newContact);
   await backend.setItem("contacts", JSON.stringify(storedContactsArray));
   document.getElementById("contactLoader").innerHTML = ``;
@@ -71,9 +71,9 @@ const addContact = () => {
 
 
 function addContactTemplate() {
-  let contactOverlay= document.createElement('div');
+  let contactOverlay = document.createElement('div');
   contactOverlay.setAttribute('id', 'overlay-blur-container');
-  contactOverlay.innerHTML= /*html*/ `
+  contactOverlay.innerHTML = /*html*/ `
 
   <div class="add-contact-overlay">
     <div class="left-overlay">
@@ -123,9 +123,9 @@ function addContactTemplate() {
 }
 
 function editContactTemplate(contactEdit) {
-  let editOverlay= document.createElement('div');
+  let editOverlay = document.createElement('div');
   editOverlay.setAttribute('id', 'editContactOverlay');
-  editOverlay.innerHTML= /*html*/ `
+  editOverlay.innerHTML = /*html*/ `
      <div class="add-contact-overlay">
         <div class="left-overlay">
           <div>
@@ -202,7 +202,7 @@ const clearContactArguments = (contactList) => {
 const cancelContactData = () => {
   let addContact = document.getElementById("contactLoader");
   addContact.innerHTML = ``;
-  let blurContainer= document.querySelector('#overlay-blur-container')
+  let blurContainer = document.querySelector('#overlay-blur-container')
   blurContainer.remove();
 }
 
@@ -247,11 +247,11 @@ const editContact = (userId) => {
   }
 }
 
-const closeEditOverlay= ()=> {
+const closeEditOverlay = () => {
   document.getElementById("editContactOverlay").remove();
-  let inputs= document.getElementsByTagName('input');
+  let inputs = document.getElementsByTagName('input');
   [...inputs].forEach(input => {
-    input.value= "";
+    input.value = "";
   })
 }
 
@@ -296,13 +296,13 @@ const filterInputs = () => {
   li = ul.getElementsByTagName("li");
 
   for (i = 0; i < li.length; i++) {
-      a = li[i].getElementsByTagName("a")[0];
-      txtValue = a.textContent || a.innerText;
-      if (txtValue.toLowerCase().indexOf(filter) > -1) {
-          li[i].style.display = "";
-      } else {
-          li[i].style.display = "none";
-      }
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
   }
 }
 

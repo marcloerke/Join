@@ -6,7 +6,7 @@ async function init() {
     //backend.deleteItem('keyTasks');
     //backend.deleteItem('keyContactList');
     tasks = JSON.parse(backend.getItem('keyTasks')) || []; 
-   // contactList = JSON.parse(backend.getItem('keyContactList')) || []; 
+    //contactList = JSON.parse(backend.getItem('keyContacts')) || [];
     await includeHTML();
     //console.log('contactList nach dem Laden: ',contactList);
     updateHTML();

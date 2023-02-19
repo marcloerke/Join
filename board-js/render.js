@@ -43,7 +43,7 @@ function renderTasks(taskArea, filterdArray) {
                               <div id="avatar${id}" class="avatar"></div>
                               <div id="avatarPlus${id}"></div>
                           </div>
-                          <img id="prioIconOnTask${id}" src="/assets/img/${prioIconTaskSrc}">
+                          <img id="prioIconOnTask${id}" src="assets/img/${prioIconTaskSrc}">
                     </div>
                     <div id="layoverTaskPopup${id}" onclick="stopPropagation(event)"   class="layover-task-popup d-none"></div>
                 </div> `;
@@ -67,8 +67,8 @@ function renderLayoverTaskPopup(id) {
     <div id="contentTaskPopup${id}" onclick="stopPropagation(event)" class="content-task-popup d-none "></div>
     <div id="editContainerWrapper${id}" onclick="stopPropagation(event)"class="edit-container-wrapper d-none">
         <div id="editContainer${id}" class="edit-container " onclick="stopPropagation(event)"></div>
-        <img id="okButtonBlack${id}" onmouseenter="okButtonToBlue(${id})" class="ok-button"src="/assets/img/ok-button-black.svg">
-        <img id="okButtonBlue${id}" onclick="editFinish(${id})" onmouseleave="okButtonToBlack(${id})"class="ok-button d-none" src="/assets/img/ok-button-blue.svg">
+        <img id="okButtonBlack${id}" onmouseenter="okButtonToBlue(${id})" class="ok-button"src="assets/img/ok-button-black.svg">
+        <img id="okButtonBlue${id}" onclick="editFinish(${id})" onmouseleave="okButtonToBlack(${id})"class="ok-button d-none" src="assets/img/ok-button-blue.svg">
     </div>`;
 }
 
@@ -77,10 +77,10 @@ function renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, d
     document.getElementById('contentTaskPopup' + id).innerHTML = /*html*/ `
     <div class="category-trash">
          <div class="categoryTask set-category" style="background-color:${backgroundColorCategory}" >${taskCategory}</div>
-    <div onclick="deleteTask(${id})" class="trash"><img src="/assets/img/trash.png" alt=""></div>
+    <div onclick="deleteTask(${id})" class="trash"><img src="assets/img/trash.png" alt=""></div>
     </div>
    
-    <img class="exit" onclick="closeTaskPopup(${id})" src="/assets/img/exit.png">
+    <img class="exit" onclick="closeTaskPopup(${id})" src="assets/img/exit.png">
     
     <div id="taskTitlePopupContainer${id}" class="task-title set-title"  >${taskTitle}</div>
     <div id="descriptionPopup${id}" class="description set-description">${taskDescription}</div>
@@ -90,14 +90,14 @@ function renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, d
     </div>
     <div id="priorityContainer${id}" class="priority-container set-fonts"></div>
     <div id="assignedTo${id}" class="assigned-to set-fonts">Assigned To:</div>
-    <img id="editButtonDark${id}"  onmouseenter="editButtonBlue(${id})" class="edit-button-dark" src="/assets/img/edit-button-dark.svg">
-    <img id="editButtonBlue${id}" onclick="editTask(${id})" onmouseleave="editButtonDark(${id})"class="edit-button-blue d-none" src="/assets/img/edit-button-blue.svg">   `;
+    <img id="editButtonDark${id}"  onmouseenter="editButtonBlue(${id})" class="edit-button-dark" src="assets/img/edit-button-dark.svg">
+    <img id="editButtonBlue${id}" onclick="editTask(${id})" onmouseleave="editButtonDark(${id})"class="edit-button-blue d-none" src="assets/img/edit-button-blue.svg">   `;
 }
 
 
 function renderEditContainer(id) {
     document.getElementById('editContainer' + id).innerHTML = /*html*/ `
-    <img class="exit" onclick="closeTaskPopup(${id}) ; closeEditContainer(${id})" src="/assets/img/exit.png">
+    <img class="exit" onclick="closeTaskPopup(${id}) ; closeEditContainer(${id})" src="assets/img/exit.png">
     <div>Title</div>
     <form id="formContainer${id}" style="display: flex; flex-direction: column;" onsubmit="editFinish(${id}) ; return false;" ></form>
     <div>Prio</div>
@@ -111,7 +111,7 @@ function renderPriorityContainer(id, priorityBg, priorityTaskPopup, prioIconPopu
     document.getElementById('priorityContainer' + id).innerHTML = /*html*/ `
     <div>Priority:</div>
     <div id="prioUrgentTaskPopup${id}" class="prio-urgent-task-popup prio-setup  " style="background-color:${priorityBg}">${priorityTaskPopup} <img
-           src="/assets/img/${prioIconPopupSrc}"></div>`;
+           src="assets/img/${prioIconPopupSrc}"></div>`;
 }
 
 
@@ -121,9 +121,9 @@ function renderPrioButtons(id) {
     onmouseenter="noButtonShadowOrange(${id}); noButtonShadowGreen(${id}) "
     onmouseleave="buttonShadowOrange(${id}) ; buttonShadowGreen(${id})" id="urgent${id}"
     class="urgent prio-buttons ">Urgent
-    <img id="prioArrowRed${id}" class="prio-arrow-red" src="/assets/img/arrow-up-red.png">
+    <img id="prioArrowRed${id}" class="prio-arrow-red" src="assets/img/arrow-up-red.png">
     <img id="prioArrowWhite${id}" class="prio-arrow-white d-none"
-        src="/assets/img/arrow-up-white.png">
+        src="assets/img/arrow-up-white.png">
     </div>
        
     <div onclick="prioButtonMediumOrange(${id})"
@@ -131,9 +131,9 @@ function renderPrioButtons(id) {
     onmouseleave="buttonShadowRed(${id}); buttonShadowGreen(${id})" id="medium${id}"
     class="medium prio-buttons">Medium
     <img id="prioEqualSignOrange${id}" class="prio-equal-sign-orange"
-        src="/assets/img/equal-sign-orange.png">
+        src="assets/img/equal-sign-orange.png">
     <img id="prioEqualSignWhite${id}" class="prio-equal-sign-white d-none"
-        src="/assets/img/equal-sign-white.svg">
+        src="assets/img/equal-sign-white.svg">
     </div>
 
     <div onclick="prioButtonLowGreen(${id})"
@@ -141,9 +141,9 @@ function renderPrioButtons(id) {
     onmouseleave="buttonShadowOrange(${id}); buttonShadowRed(${id})" id="low${id}"
     class="low prio-buttons">Low
     <img id="prioArrowGreen${id}" class="prio-arrow-green"
-        src="/assets/img/arrow-down-green.png">
+        src="assets/img/arrow-down-green.png">
     <img id="prioArrowWhiteDown${id}" class="prio-arrow-white-down d-none"
-        src="/assets/img/arrow-up-white.png">
+        src="assets/img/arrow-up-white.png">
     </div>`;
 }
 
@@ -164,13 +164,13 @@ function renderSelectPanel(id) {
     <div class="option optionPlus">
         <div class="selectContact contactName">Select contacts to assign</div>
         <button id="button${id}" onclick="dropDown(${id})" class="button">
-        <img id="img${id}" class="img" src="/assets/img/arrow-down-black.png" alt="">
+        <img id="img${id}" class="img" src="assets/img/arrow-down-black.png" alt="">
         </button>
     </div>
     <div id="listOfPersons${id}" class="list-of-persons"></div>
     <div id="inviteNewContact${id}" class="option border-radius">
         <div class="contactName">Invite new contact</div>
-        <img id="noName${id}" class="noname" src="/assets/img/new-contact.png">
+        <img id="noName${id}" class="noname" src="assets/img/new-contact.png">
     </div>`;
 }
 
@@ -179,11 +179,11 @@ function renderSelectContact(id, names) {
     for (let index = 0; index < names.length; index++) {
         const name = names[index];
         document.getElementById('listOfPersons' + id).innerHTML += /*html*/ `
-        <div  class="option">
-             <div  class="contactName">${name}</div>
-             <input class="checkbox" type="checkbox" id="checkbox${index}">
-             </div>
-        </div>`;
+         <div  class="option">
+              <div  class="contactName">${name}</div>
+              <input class="checkbox" type="checkbox" id="checkbox${index}">
+              </div>
+         </div>`;
     }
 }
 
