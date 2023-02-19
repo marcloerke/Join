@@ -10,6 +10,8 @@ async function init() {
     await includeHTML();
     //console.log('contactList nach dem Laden: ',contactList);
     updateHTML();
+    console.log('tasks nach dem Laden: ',tasks);
+    //console.log('contactList nach dem Laden: ',contactList);
 }
 
 init();

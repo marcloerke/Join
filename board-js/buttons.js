@@ -69,12 +69,15 @@ function closeTaskPopup(id) {
     document.getElementById('layoverTaskPopup' + id).classList.add('d-none');
     document.getElementById('contentTaskPopup' + id).classList.add('d-none');
     document.body.style = "overflow: visible";
-    document.getElementById('titleInput' + id).placeholder = tasks[id]['taskTitle'];
-    document.getElementById('textAreaDescription' + id).placeholder = tasks[id]['taskDescription'];
-    document.getElementById('titleInput' + id).classList.remove('placehoder-color-red');
-    document.getElementById('textAreaDescription' + id).classList.remove('placehoder-color-red');
-    document.getElementById('dateInput' + id).value = tasks[id]['date'];
-    document.getElementById('dateInput' + id).style = "color: lightgray";
+    if (tasks[id]) {
+        document.getElementById('titleInput' + id).placeholder = tasks[id]['taskTitle'];
+        document.getElementById('textAreaDescription' + id).placeholder = tasks[id]['taskDescription'];
+        document.getElementById('titleInput' + id).classList.remove('placehoder-color-red');
+        document.getElementById('textAreaDescription' + id).classList.remove('placehoder-color-red');
+        document.getElementById('dateInput' + id).value = tasks[id]['date'];
+        document.getElementById('dateInput' + id).style = "color: lightgray";
+    }
+
 }
 
 
@@ -337,12 +340,13 @@ function backButton() {
     // title.forEach(t => {t.classList.remove('d-none')});
 }
 
- function deleteTask(id) {
+function deleteTask(id) {
+    let deletedlask = tasks[id];
     tasks.splice(id, 1);
     addServer();
-    document.getElementById('task'+id).classList.add('d-none');
+    document.getElementById('task' + id).classList.add('d-none');
     closeTaskPopup(id);
-   
+    console.log('task ist gelöscht: ',deletedlask);
 }
 
 

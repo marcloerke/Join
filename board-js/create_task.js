@@ -73,6 +73,7 @@ async function createTask() {
   backend.setItem('keyTasks', JSON.stringify(tasks));
   closeAddTask();
   updateHTML();
+  console.log('tasks nach der Erstellung: ',tasks);
 }
 
 
