@@ -292,6 +292,13 @@ ul {
   border-radius: 0 15px 15px 0;
 }
 
+#searchContacts {
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid var(--dimmed);
+  border-top: 2px solid var(--dimmed);
+}
+
 form div {
   width: 100%;
   position: relative;
