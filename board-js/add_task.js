@@ -5,7 +5,7 @@ let form = document.getElementsByClassName("form")[0];
 let title = document.getElementById("title");
 let description = document.getElementById("description");
 let date = document.getElementById("date");
-
+ 
 //subtask elements
 let subtaskInputField = document.getElementById("addSubtask");
 let subtaskOnInput = document.getElementById("subtaskOninput");
@@ -167,7 +167,6 @@ function displayColorDot() {
 
 //assigned contacts
 
-let contacts = ["You", "Colleague"];
 let assignedToInput = document.getElementById("assignedTo");
 let contactsDropdown = document.getElementById("contactsDropdownContainer");
 let contactsDropdownOpen = false;
@@ -185,7 +184,7 @@ assignedToInput.addEventListener("click", function () {
     contactsDropdown.innerHTML = "";
     for (let i = 0; i < contacts.length; i++) {
       const contact = contacts[i];
-      contactsDropdown.innerHTML += /*html*/ `<div class="contact"><div><img src="assets/img/icon_name.png"> ${contact}</div> <input type="checkbox"></div>`;
+      contactsDropdown.innerHTML += /*html*/ `<div class="contact"><div><img src="assets/img/icon_name.png"> ${contact.userName}</div> <input type="checkbox" class="checkbox-primary"></div>`;
     }
     contactsDropdown.innerHTML += /*html*/ `<div class="contact"><div><img src="assets/img/icon_mail.png"> Invite new contact</div></div>`;
     contactsDropdownOpen = true;

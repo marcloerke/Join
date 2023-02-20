@@ -1,20 +1,23 @@
-let requiredShown= false;
+let requiredShown = false;
 
-// let tasks = [];
-// async function init() {
-//     await downloadFromServer();
-//             //backend.deleteItem('keyTasks');
-//             tasks = JSON.parse(backend.getItem('keyTasks')) || [];
-//             //addServerTasksArray();
-//             // updateHTML();
-//             console.log('whee');
-//         }
+
+
+function newColor() {
+  var randomColor = "#000000".replace(/0/g, function () {
+    return (~~(Math.random() * 16)).toString(16);
+  });
+  //filterColor(randomColor);
+  return randomColor;
+}
 
 async function createTask() {
-  
-  let rgb = window.getComputedStyle(categoryDot).getPropertyValue("background").match(/\d+/g).map(Number);
+  let rgb = window
+    .getComputedStyle(categoryDot)
+    .getPropertyValue("background")
+    .match(/\d+/g)
+    .map(Number);
 
-//let rbgTaskCategory = bgTaskCategory.match(/\d+/g).map(Number);
+  //let rbgTaskCategory = bgTaskCategory.match(/\d+/g).map(Number);
   let prio = document.querySelector(".active");
   let priorityBg;
   let prioIconSrcTask;
@@ -22,32 +25,39 @@ async function createTask() {
   let prioUrgent;
   let prioMedium;
   let prioLow;
-  let bgTaskCategory= `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;  
+  let bgTaskCategory = `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+  let selectedContacts= [];
   
-  if(prio.innerText == 'Urgent'){
-        priorityBg= '#ff3d00';
-        prioIconSrcTask= 'arrow-up-red.png';
-        prioIconSrcPopup= 'arrow-up-white.png';
-        prioUrgent= true;
-        prioMedium= false;
-        prioLow= false;
+  let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  for (let i = 0; i < checkboxes.length; i++) {
+    const checkbox = checkboxes[i];
+    if (checkbox.checked) {
+      selectedContacts.push(team[i].userName);
+    }
   }
-  else if(prio.innerText == 'Medium'){
-        
-        priorityBg= '#fea800';
-        prioIconSrcTask= 'equal-sign-orange.svg';
-        prioIconSrcPopup= 'equal-sign-white.svg';
-        prioUrgent= false;
-        prioMedium= true;
-        prioLow= false;
-  }
-  else  {
-        priorityBg= '#79e228';
-        prioIconSrcTask= 'arrow-down-green.png';
-        prioIconSrcPopup= 'arrow-down-white.svg';
-        prioUrgent= false;
-        prioMedium= false;
-        prioLow= true;
+
+
+  if (prio.innerText == "Urgent") {
+    priorityBg = "#ff3d00";
+    prioIconSrcTask = "arrow-up-red.png";
+    prioIconSrcPopup = "arrow-up-white.png";
+    prioUrgent = true;
+    prioMedium = false;
+    prioLow = false;
+  } else if (prio.innerText == "Medium") {
+    priorityBg = "#fea800";
+    prioIconSrcTask = "equal-sign-orange.svg";
+    prioIconSrcPopup = "equal-sign-white.svg";
+    prioUrgent = false;
+    prioMedium = true;
+    prioLow = false;
+  } else {
+    priorityBg = "#79e228";
+    prioIconSrcTask = "arrow-down-green.png";
+    prioIconSrcPopup = "arrow-down-white.svg";
+    prioUrgent = false;
+    prioMedium = false;
+    prioLow = true;
   }
 
   let newTask = {
@@ -63,75 +73,73 @@ async function createTask() {
     prioMedium: prioMedium,
     prioLow: prioLow,
     date: date.value,
-    names: ['Peter Pan'],
+    names: selectedContacts,
     bGcolorsOfAvatar: [newColor()],
     column: "toDo",
     id: tasks.length,
   };
-  
+
   tasks.push(newTask);
-  backend.setItem('keyTasks', JSON.stringify(tasks));
+  await backend.setItem("keyTasks", JSON.stringify(tasks));
 }
 
-
 function formValidation() {
-    if(checkInputs()) {
-        createTask();
-        alert('Task created successfully!');
-        window.location.href="board.html";
-    }
-    else {
-        showRequired();
-    }
+  if (checkInputs()) {
+    createTask();
+    alert('Task created successfully!');
+    window.location.href="board.html";
+  } else {
+    showRequired();
+  }
 }
 
 function checkInputs() {
-    let allCorrect= true; 
-    let prio = document.querySelector(".active");
-    let data= [
-        title, description, categoryInput, date
-    ]
-    for (let i = 0; i < data.length; i++) {
-        const input = data[i];
-        if(!input.value || input.value == 'Select task category'|| input.value== "") {
-           
-            allCorrect= false;
-        }
+  let allCorrect = true;
+  let prio = document.querySelector(".active");
+  let data = [title, description, categoryInput, date];
+  for (let i = 0; i < data.length; i++) {
+    const input = data[i];
+    if (
+      !input.value ||
+      input.value == "Select task category" ||
+      input.value == ""
+    ) {
+      allCorrect = false;
     }
-    if(prio == undefined) {
-        
-        allCorrect= false;
-    }
+  }
+  if (prio == undefined) {
+    allCorrect = false;
+  }
 
-    return allCorrect;
+  return allCorrect;
 }
 
 function showRequired() {
-    requiredShown= true;
-    let prio = document.querySelector(".active");
-    let required= document.getElementsByClassName('required');
-    let data= [
-        title, description, categoryInput, date
-    ]
-    for (let i = 0; i < data.length; i++) {
-        const input = data[i];
-        if(!input.value || input.value == 'Select task category' || input.value== "") {
-            required[i].innerText = "This field is required";
-           
-        }
+  requiredShown = true;
+  let prio = document.querySelector(".active");
+  let required = document.getElementsByClassName("required");
+  let data = [title, description, categoryInput, date];
+  for (let i = 0; i < data.length; i++) {
+    const input = data[i];
+    if (
+      !input.value ||
+      input.value == "Select task category" ||
+      input.value == ""
+    ) {
+      required[i].innerText = "This field is required";
     }
-    if(prio == undefined) {
-        required[required.length-1].innerText= "Priority Selection is mandatory";
-        
-    }
+  }
+  if (prio == undefined) {
+    required[required.length - 1].innerText = "Priority Selection is mandatory";
+  }
 }
 
-window.addEventListener('click', function() {
-    if(requiredShown) {
-        let required= this.document.querySelectorAll(".required");
-        [...required].forEach(e => {
-            e.innerText= "";
-        })
-        requiredShown= false;
-    }
-})
+window.addEventListener("click", function () {
+  if (requiredShown) {
+    let required = this.document.querySelectorAll(".required");
+    [...required].forEach((e) => {
+      e.innerText = "";
+    });
+    requiredShown = false;
+  }
+});

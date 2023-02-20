@@ -109,13 +109,22 @@ textarea:focus {
   width: 10px;
 }
 
-#dropdownContainer,
-#contactsDropdownContainer {
+#dropdownContainer {
   background: white;
   border: 1px solid #ccc;
   border-radius: 0 0 7px 7px;
   border-top: none;
   max-height: 150px;
+  overflow-y: auto;
+  display: none;
+}
+
+#contactsDropdownContainer {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 0 0 7px 7px;
+  border-top: none;
+  max-height: 100px;
   overflow-y: auto;
   display: none;
 }
