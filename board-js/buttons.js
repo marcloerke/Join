@@ -340,13 +340,10 @@ function backButton() {
     // title.forEach(t => {t.classList.remove('d-none')});
 }
 
-function deleteTask(id) {
-    let deletedlask = tasks[id];
+async function deleteTask(id) {
     tasks.splice(id, 1);
-    addServer();
-    document.getElementById('task' + id).classList.add('d-none');
-    closeTaskPopup(id);
-    console.log('task ist gelöscht: ',deletedlask);
+    await addServer();
+    window.location.reload();
 }
 
 

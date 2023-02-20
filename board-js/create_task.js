@@ -11,7 +11,6 @@ let requiredShown= false;
 //         }
 
 async function createTask() {
-  console.log(contacts);
   let rgb = window.getComputedStyle(categoryDot).getPropertyValue("background").match(/\d+/g).map(Number);
 
 //let rbgTaskCategory = bgTaskCategory.match(/\d+/g).map(Number);
@@ -32,6 +31,11 @@ async function createTask() {
     if (checkbox.checked) {
       selectedContacts.push(contacts[i].userName);
     }
+  }
+
+  let avatarColors= [];
+  for (let i = 0; i < selectedContacts.length; i++) {
+    avatarColors.push(newColor());
   }
   
   if(prio.innerText == 'Urgent'){
@@ -74,7 +78,7 @@ async function createTask() {
     prioLow: prioLow,
     date: date.value,
     names: selectedContacts,
-    bGcolorsOfAvatar: [newColor()],
+    bGcolorsOfAvatar: avatarColors,
     column: "toDo",
     id: tasks.length,
   };

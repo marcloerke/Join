@@ -100,7 +100,7 @@ ul {
 .contact-box {
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   border-top: 2px solid var(--dimmed);
   margin: 15px 0;
   cursor: pointer;

@@ -36,6 +36,10 @@ async function createTask() {
     }
   }
 
+  let avatarColors= [];
+  for (let i = 0; i < selectedContacts.length; i++) {
+    avatarColors.push(newColor());
+  }
 
   if (prio.innerText == "Urgent") {
     priorityBg = "#ff3d00";
@@ -74,7 +78,7 @@ async function createTask() {
     prioLow: prioLow,
     date: date.value,
     names: selectedContacts,
-    bGcolorsOfAvatar: [newColor()],
+    bGcolorsOfAvatar: avatarColors,
     column: "toDo",
     id: tasks.length,
   };
