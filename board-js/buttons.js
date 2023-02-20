@@ -343,7 +343,8 @@ function backButton() {
 async function deleteTask(id) {
     tasks.splice(id, 1);
     await addServer();
-    window.location.reload();
+    closeTaskPopup(id);
+    document.getElementById('task'+id).classList.add('d-none');
 }
 
 
