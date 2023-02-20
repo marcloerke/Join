@@ -27,6 +27,7 @@ section:first-of-type {
 
 ul {
   padding: 0 !important;
+  list-style-type: none;
 }
 
 #scroll-move::-webkit-scrollbar-track {
@@ -128,7 +129,7 @@ ul {
 }
 
 .name-mail-container div:first-of-type {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
 }
 
 .name-mail-container div:last-of-type {
