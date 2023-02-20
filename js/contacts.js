@@ -122,7 +122,7 @@ function addContactTemplate() {
   return contactOverlay
 }
 
-function editContactTemplate(contactEdit) {
+function editContactTemplate(userId) {
   let editOverlay = document.createElement('div');
   editOverlay.setAttribute('id', 'editContactOverlay');
   editOverlay.innerHTML = /*html*/ `
@@ -142,28 +142,28 @@ function editContactTemplate(contactEdit) {
                 <div class="fcf-form-group">
                   <label for="Name" class="fcf-label"></label>
                   <div class="fcf-input-group">
-                    <input type="text" id="name" name="Name" class="fcf-form-control" placeholder="Your name" required onkeyup="filledForms()">
+                    <input type="text" id="name" value="${storedContactsArray[userId].userName}" name="Name" class="fcf-form-control" placeholder="Your name" required onkeyup="filledForms()">
                     <img src="assets/img/icon_name.png">
                   </div>
                 </div>
                 <div class="fcf-form-group">
                   <label for="Email" class="fcf-label"></label>
                   <div class="fcf-input-group">
-                      <input type="email" id="mail" name="Email" class="fcf-form-control" placeholder="Your email address" required onkeyup="filledForms()">
+                      <input type="email" id="mail" value="${storedContactsArray[userId].userMail}" name="Email" class="fcf-form-control" placeholder="Your email address" required onkeyup="filledForms()">
                       <img src="assets/img/icon_mail.png">
                   </div>
                 </div>
                 <div class="fcf-form-group">
                   <label for="Phone" class="fcf-label"></label>
                   <div class="fcf-input-group">
-                    <input type="tel" id="phone" name="Phone" pattern="^\+49 \d{4} \d{5}$" placeholder="+49 1234 56789" required onkeyup="filledForms()">
+                    <input type="tel" id="phone" value="${storedContactsArray[userId].userPhone}" name="Phone" pattern="^\+49 \d{4} \d{5}$" placeholder="+49 1234 56789" required onkeyup="filledForms()">
                     <img src="assets/img/icon_phone.png">
                   </div>
                 </div>
               </form>
             <div class="button-container">
               <button class="button-style-cancel" onclick="closeEditOverlay()">Cancel <img src="assets/img/icon_close.png"></button>
-              <button class="button-style-submit" id="requireFill" onclick="saveContactData(contactEdit.id)" disabled>Create contact <img src="assets/img/icon_create.png"></button>                       
+              <button class="button-style-submit" id="requireFill" onclick="saveContactData(${userId})" disabled>Edit contact <img src="assets/img/icon_create.png"></button>                       
             </div> 
           </div>
         </div>
@@ -220,9 +220,9 @@ const showContactData = (contact) => {
             <div><img src="assets/img/icon_add_task_plus.png" alt="#"></div>
             <div class="blue-text"><h2>Add Task</h2></div>
         </div>
-        <div class="contact-edit" onclick="editContact(${contact.id})">
+        <div class="contact-edit" >
             <div><h2>Contact Information</h2></div>
-            <div><img src="assets/img/icon_edit_dark.png" alt=""> Edit</div>
+            <div onclick="editContact(${contact.id})"><img src="assets/img/icon_edit_dark.png" alt=""> Edit</div>
             
         </div>
         <div class="contact-mail">
@@ -239,12 +239,8 @@ const showContactData = (contact) => {
 }
 
 const editContact = (userId) => {
-  let contactEdit = getUserById(userId);
-  // console.log(contactEdit);
-  // let editContact = document.getElementById("editContactOverlay");
-  if (contactEdit != null) {
-    document.body.append(editContactTemplate(contactEdit));
-  }
+    document.body.append(editContactTemplate(userId));
+  
 }
 
 const closeEditOverlay = () => {
@@ -268,20 +264,20 @@ const getUserById = (userId) => {
   return currentUser.length > 0 ? currentUser[0] : null;
 }
 
-const saveContactData = (editContact) => {
-  const contactId = editContact;
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("mail").value;
-  const phone = document.getElementById("phone").value;
+async function saveContactData (userId) {
+  let contactId = userId;
+  let contact= storedContactsArray[contactId];
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("mail").value;
+  let phone = document.getElementById("phone").value;
 
-  const contact = contactList.find(c => c.id === contactId);
-  if (contact) {
+  contact.userName= name;
+  contact.userMail= email;
+  contact.userPhone= phone;
 
-    contact.userName = name;
-    contact.userMail = email;
-    contact.userPhone = phone;
-  }
-  defaultOnload();
+  await backend.setItem("contacts", JSON.stringify(storedContactsArray));
+
+  window.location.reload();
 }
 
 const defaultOnload = () => {
@@ -305,29 +301,3 @@ const filterInputs = () => {
     }
   }
 }
-
-// const getServerResponse = async () => {
-//   await downloadFromServer();
-//   storedContactsArray = JSON.parse(backend.getItem("users")) || [];
-//   let id = storedContactsArray["id"];
-//   let name = storedContactsArray["userName"];
-//   let email = storedContactsArray["userMail"];
-//   let phone = storedContactsArray["userPhone"];
-//   let newUser = {
-//     id: id.value,
-//     name: name.value,
-//     email: email.value,
-//     phone: phone.value,
-//   };
-//   storedContactsArray.push(newUser);
-//   await backend.setItem("users", JSON.stringify(users));
-// }
-
-// const createInitials_old = (initialsInNames) => {
-//   let initials = [];
-//   for (let n = 0; n < initialsInNames.length; n++) {
-//     let matches = initialsInNames[n].userName.match(/\b\w/g) || [];
-//     initials.push(((matches[0] || '') + (matches[matches.length - 1] || '')).toUpperCase());
-//   }
-//   onsubmitContact(initials);
-// }
