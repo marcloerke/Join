@@ -89,7 +89,9 @@ function moveTo(column, ev, columnID) {
     dropedTask['column'] = column;
     tasks.splice(currentDraggedElement, 1);
     tasks.push(dropedTask);
-    tasks.forEach((task,index) => {task['id'] = index;});
+    tasks.forEach((task,index) => {
+        task['id'] = index;
+    });
     addServer();
     updateHTML();
 }
@@ -97,7 +99,6 @@ function moveTo(column, ev, columnID) {
 
 async function addServer() {
     await backend.setItem('keyTasks', JSON.stringify(tasks));
-   // backend.setItem('keyContactList', JSON.stringify(contactList));
 }
 
 
