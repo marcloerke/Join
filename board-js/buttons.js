@@ -11,7 +11,8 @@ function changeColorBlack(id) {
 }
 
 
-function addTask() {
+function addTask(column) {
+    columnName= column;
     document.getElementById('layover').classList.add('layover-plus');
     document.body.style = "overflow: hidden";
     let label = document.querySelectorAll("label");
@@ -31,6 +32,7 @@ function closeAddTask() {
         label[index].classList.remove('mt-15-plus');
     }
     document.getElementById('taskCard').classList.remove('task-card-plus');
+    contactsOpened= false;
 }
 
 

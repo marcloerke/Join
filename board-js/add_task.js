@@ -5,7 +5,10 @@ let form = document.getElementsByClassName("form")[0];
 let title = document.getElementById("title");
 let description = document.getElementById("description");
 let date = document.getElementById("date");
- 
+
+let contactsOpened= false;
+
+
 //subtask elements
 let subtaskInputField = document.getElementById("addSubtask");
 let subtaskOnInput = document.getElementById("subtaskOninput");
@@ -40,7 +43,7 @@ categoryInput.addEventListener("click", function () {
       categoryInput.style.borderBottom = "1px solid rgb(204, 204, 204)";
       categoryInput.style.borderRadius = "7px";
       dropdownOpen = false;
-    } else {
+    } else if (!dropdownOpen) {
       categoryInput.style.borderBottom = "none";
       categoryInput.style.borderRadius = "7px 7px 0 0";
       dropdownContainer.style.display = "block";
@@ -61,6 +64,7 @@ categoryInput.addEventListener("click", function () {
       addListenerToNewCategory();
       dropdownOpen = true;
     }
+    
   }
 });
 
@@ -177,7 +181,7 @@ assignedToInput.addEventListener("click", function () {
     contactsDropdown.style.display = "none";
     assignedToInput.style.borderBottom = "1px solid rgb(204, 204, 204)";
     assignedToInput.style.borderRadius = "7px";
-  } else {
+  } else if (!contactsDropdownOpen && !contactsOpened){
     assignedToInput.style.borderBottom = "none";
     assignedToInput.style.borderRadius = "7px 7px 0 0";
     contactsDropdown.style.display = "block";
@@ -188,6 +192,13 @@ assignedToInput.addEventListener("click", function () {
     }
     contactsDropdown.innerHTML += /*html*/ `<div class="contact"><div><img src="assets/img/icon_mail.png"> Invite new contact</div></div>`;
     contactsDropdownOpen = true;
+    contactsOpened= true;
+  }
+  else {
+    assignedToInput.style.borderBottom = "none";
+    assignedToInput.style.borderRadius = "7px 7px 0 0";
+    contactsDropdown.style.display = "block";
+    contactsDropdownOpen= true;
   }
 });
 

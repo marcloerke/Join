@@ -180,6 +180,7 @@ function displayColorDot() {
 }
 
 //assigned contacts
+let contactsOpened= false;
 
 let assignedToInput = document.getElementById("assignedTo");
 let contactsDropdown = document.getElementById("contactsDropdownContainer");
@@ -191,17 +192,24 @@ assignedToInput.addEventListener("click", function () {
     contactsDropdown.style.display = "none";
     assignedToInput.style.borderBottom = "1px solid rgb(204, 204, 204)";
     assignedToInput.style.borderRadius = "7px";
-  } else {
+  } else if (!contactsDropdownOpen && !contactsOpened){
     assignedToInput.style.borderBottom = "none";
     assignedToInput.style.borderRadius = "7px 7px 0 0";
     contactsDropdown.style.display = "block";
     contactsDropdown.innerHTML = "";
     for (let i = 0; i < team.length; i++) {
-      const contact = team[i].userName;
-      contactsDropdown.innerHTML += /*html*/ `<div class="contact"><div><img src="assets/img/icon_name.png"> ${contact}</div> <input type="checkbox"></div>`;
+      const contact = team[i];
+      contactsDropdown.innerHTML += /*html*/ `<div class="contact"><div><img src="assets/img/icon_name.png"> ${contact.userName}</div> <input type="checkbox" class="checkbox-primary"></div>`;
     }
     contactsDropdown.innerHTML += /*html*/ `<div class="contact"><div><img src="assets/img/icon_mail.png"> Invite new contact</div></div>`;
     contactsDropdownOpen = true;
+    contactsOpened= true;
+  }
+  else {
+    assignedToInput.style.borderBottom = "none";
+    assignedToInput.style.borderRadius = "7px 7px 0 0";
+    contactsDropdown.style.display = "block";
+    contactsDropdownOpen= true;
   }
 });
 

@@ -1,4 +1,5 @@
 let requiredShown= false;
+let columnName= "toDo";
 
 // let tasks = [];
 // async function init() {
@@ -79,7 +80,7 @@ async function createTask() {
     date: date.value,
     names: selectedContacts,
     bGcolorsOfAvatar: avatarColors,
-    column: "toDo",
+    column: columnName,
     id: tasks.length,
   };
   
@@ -87,6 +88,7 @@ async function createTask() {
   backend.setItem('keyTasks', JSON.stringify(tasks));
   closeAddTask();
   updateHTML();
+  columnName= "toDo";
 //   console.log('tasks nach der Erstellung: ',tasks);
 }
 
