@@ -150,9 +150,9 @@ function renderPrioButtons(id) {
 
 function renderInput(id) {
     document.getElementById('formContainer' + id).innerHTML = /*html*/ `
-    <input required id="titleInput${id}" class="title-input" placeholder="Change title"type="text">
+    <input required id="titleInput${id}" class="title-input" type="text">
     <div>Description</div>
-    <textarea required placeholder="Change Description"
+    <textarea required 
           id="textAreaDescription${id}" class="text-area-description" name="" cols="40" rows="5"></textarea>
     <div>Due date</div>
     <input required id="dateInput${id}" placeholder="05/08/2022" class="date-input" value="2018-07-22" type="date">`;

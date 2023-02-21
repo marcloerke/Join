@@ -12,7 +12,7 @@ function changeColorBlack(id) {
 
 
 function addTask(column) {
-    columnName= column;
+    columnName = column;
     document.getElementById('layover').classList.add('layover-plus');
     document.body.style = "overflow: hidden";
     let label = document.querySelectorAll("label");
@@ -32,7 +32,7 @@ function closeAddTask() {
         label[index].classList.remove('mt-15-plus');
     }
     document.getElementById('taskCard').classList.remove('task-card-plus');
-    contactsOpened= false;
+    contactsOpened = false;
 }
 
 
@@ -60,8 +60,8 @@ function openTaskPopup(id) {
     document.getElementById('layoverTaskPopup' + id).classList.remove('d-none');
     document.getElementById('contentTaskPopup' + id).classList.remove('d-none');
     document.body.style = "overflow: hidden";
-    document.getElementById('titleInput' + id).placeholder = `Change Title:  ${tasks[id]['taskTitle']}`;
-    document.getElementById('textAreaDescription' + id).placeholder = `Change Description:  ${tasks[id]['taskDescription']} `;
+    document.getElementById('titleInput' + id).value = `${tasks[id]['taskTitle']}`;
+    document.getElementById('textAreaDescription' + id).innerHTML = `${tasks[id]['taskDescription']} `;
 }
 
 
@@ -70,8 +70,6 @@ function closeTaskPopup(id) {
     document.getElementById('contentTaskPopup' + id).classList.add('d-none');
     document.body.style = "overflow: visible";
     if (tasks[id]) {
-        document.getElementById('titleInput' + id).placeholder = tasks[id]['taskTitle'];
-        document.getElementById('textAreaDescription' + id).placeholder = tasks[id]['taskDescription'];
         document.getElementById('titleInput' + id).classList.remove('placehoder-color-red');
         document.getElementById('textAreaDescription' + id).classList.remove('placehoder-color-red');
         document.getElementById('dateInput' + id).value = tasks[id]['date'];
@@ -272,13 +270,13 @@ function okButtonToBlack(id) {
 }
 
 
-function onInput() {
-    setTimeout(searchTask,0);
-}
+// function onInput() {
+//     setTimeout(searchTask,1000);
+// }
 
 
 function searchTask() {
-    
+
     document.getElementById('searchMenu').style = "border: 1px solid lightgray";
     let inputOfSearch = document.getElementById('searchTask').value;
     inputOfSearch = inputOfSearch.toLowerCase();
@@ -315,7 +313,7 @@ function inputIsIncludes(task) {
     document.getElementById('task' + task['id']).classList.remove('d-none');
     document.getElementById('searchMenu').style = "border: 1px solid lightgray";
     document.getElementById('searchTask').classList.remove('placehoder-color-red');
-   // document.getElementById('searchMenuBackButton').classList.remove('d-none');
+    // document.getElementById('searchMenuBackButton').classList.remove('d-none');
     notExist = false;
 }
 
@@ -331,7 +329,7 @@ function inputIsNotExist(task) {
 
 
 function backButton() {
-    document.getElementById('searchTask').value ='';
+    document.getElementById('searchTask').value = '';
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i];
         document.getElementById('task' + task['id']).classList.remove('d-none');
