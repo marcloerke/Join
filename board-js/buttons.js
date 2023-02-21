@@ -272,7 +272,13 @@ function okButtonToBlack(id) {
 }
 
 
+function onInput() {
+    setTimeout(searchTask,0);
+}
+
+
 function searchTask() {
+    
     document.getElementById('searchMenu').style = "border: 1px solid lightgray";
     let inputOfSearch = document.getElementById('searchTask').value;
     inputOfSearch = inputOfSearch.toLowerCase();
@@ -285,9 +291,9 @@ function searchTask() {
         document.getElementById('searchTask').classList.remove('placehoder-color-red');
         // document.getElementById('searchTask').value = '';
         document.getElementById('task' + task['id']).classList.add('d-none');
-        if (inputOfSearch == "") {
-            inputRequired(task);
-        } else if (taskTitle.toLowerCase().includes(inputOfSearch)) {
+        // if (inputOfSearch == "") {
+        //     inputRequired(task);
+        if (taskTitle.toLowerCase().includes(inputOfSearch)) {
             inputIsIncludes(task);
         } else if (notExist) {
             inputIsNotExist(task);
@@ -309,7 +315,7 @@ function inputIsIncludes(task) {
     document.getElementById('task' + task['id']).classList.remove('d-none');
     document.getElementById('searchMenu').style = "border: 1px solid lightgray";
     document.getElementById('searchTask').classList.remove('placehoder-color-red');
-    document.getElementById('searchMenuBackButton').classList.remove('d-none');
+   // document.getElementById('searchMenuBackButton').classList.remove('d-none');
     notExist = false;
 }
 
@@ -319,12 +325,13 @@ function inputIsNotExist(task) {
     document.getElementById('searchTask').placeholder = "Task does not exist!";
     document.getElementById('searchTask').classList.add('placehoder-color-red');
     document.getElementById('task' + task['id']).classList.add('d-none');
-    document.getElementById('searchTask').value = '';
-    document.getElementById('searchMenuBackButton').classList.remove('d-none');
+    //document.getElementById('searchTask').value = '';
+    //document.getElementById('searchMenuBackButton').classList.remove('d-none');
 }
 
 
 function backButton() {
+    document.getElementById('searchTask').value ='';
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i];
         document.getElementById('task' + task['id']).classList.remove('d-none');
