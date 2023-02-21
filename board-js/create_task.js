@@ -25,19 +25,18 @@ async function createTask() {
   let bgTaskCategory= `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;  
 
   let selectedContacts= [];
-  
+  let avatarColors= [];
+
   let checkboxes = document.querySelectorAll('.checkbox-primary');
   for (let i = 0; i < checkboxes.length; i++) {
     const checkbox = checkboxes[i];
     if (checkbox.checked) {
       selectedContacts.push(contacts[i].userName);
+      avatarColors.push(contacts[i].color);
     }
   }
 
-  let avatarColors= [];
-  for (let i = 0; i < selectedContacts.length; i++) {
-    avatarColors.push(newColor());
-  }
+    
   
   if(prio.innerText == 'Urgent'){
         priorityBg= '#ff3d00';
