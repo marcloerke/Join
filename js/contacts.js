@@ -2,14 +2,13 @@ let contactList = [];
 let storedContactsArray = [];
 
 let dataFromServer = async () => {
-  setURL('https://gruppe-428.developerakademie.net/smallest_backend_ever');
+  setURL("https://gruppe-428.developerakademie.net/smallest_backend_ever");
   await downloadFromServer();
   storedContactsArray = JSON.parse(backend.getItem("contacts")) || [];
   renderContacts();
-}
+};
 
 dataFromServer();
-
 
 let createContactData = async () => {
   let userName = document.querySelector("#name").value;
@@ -17,13 +16,14 @@ let createContactData = async () => {
   let userPhone = document.querySelector("#phone").value;
   let userId = storedContactsArray.length;
   let newContact = {
-    "id": userId,
-    "userName": userName,
-    "userMail": userMail,
-    "userPhone": userPhone,
-    "createdAt": new Date().getTime(),
-  }
-  
+    id: userId,
+    userName: userName,
+    userMail: userMail,
+    userPhone: userPhone,
+    createdAt: new Date().getTime(),
+    color: newColor(),
+  };
+
   storedContactsArray.push(newContact);
   await backend.setItem("contacts", JSON.stringify(storedContactsArray));
   document.getElementById("contactLoader").innerHTML = ``;
@@ -35,6 +35,14 @@ let createContactData = async () => {
   // let allContactDataString = JSON.stringify(contactList);
   // storedContactsArray.push(newContact);
   /*  submitNotification(); */
+};
+
+function newColor() {
+  var randomColor = "#000000".replace(/0/g, function () {
+    return (~~(Math.random() * 16)).toString(16);
+  });
+  //filterColor(randomColor);
+  return randomColor;
 }
 
 const renderContacts = () => {
@@ -46,33 +54,30 @@ const renderContacts = () => {
     addContactToList.innerHTML += /*html*/ `
       <li>
         <div class="contact-box" onclick="toggleBetweenContacts(${contact.id})">
-          <a href="#"><div id="initialsContainer">${initials}</div></a> 
+          <a href="#"><div id="initialsContainer" style="background: ${contact.color}">${initials}</div></a> 
           <div class="name-mail-container">
             <div>${contact["userName"]}</div>
             <div>${contact["userMail"]}</div>
           </div>
         </div>
       </li>
-    ` ;
+    `;
   }
-}
-
+};
 
 // const getNewUserId = () => {
 //   return GLOBAL_USER_ID++;
 // }
 
-
 const addContact = () => {
   let addContact = document.getElementById("contactLoader");
   addContact.innerHTML = ``;
   document.body.append(addContactTemplate());
-}
-
+};
 
 function addContactTemplate() {
-  let contactOverlay = document.createElement('div');
-  contactOverlay.setAttribute('id', 'overlay-blur-container');
+  let contactOverlay = document.createElement("div");
+  contactOverlay.setAttribute("id", "overlay-blur-container");
   contactOverlay.innerHTML = /*html*/ `
 
   <div class="add-contact-overlay">
@@ -118,13 +123,13 @@ function addContactTemplate() {
     </div>
 </div>
 
-  `
-  return contactOverlay
+  `;
+  return contactOverlay;
 }
 
 function editContactTemplate(userId) {
-  let editOverlay = document.createElement('div');
-  editOverlay.setAttribute('id', 'editContactOverlay');
+  let editOverlay = document.createElement("div");
+  editOverlay.setAttribute("id", "editContactOverlay");
   editOverlay.innerHTML = /*html*/ `
      <div class="add-contact-overlay">
         <div class="left-overlay">
@@ -169,8 +174,8 @@ function editContactTemplate(userId) {
         </div>
       </div>
 
-  `
-  return editOverlay
+  `;
+  return editOverlay;
 }
 
 const filledForms = () => {
@@ -181,18 +186,20 @@ const filledForms = () => {
   } else if (document.getElementById("phone").value === "") {
     document.getElementById("requireFill").disabled = true;
   } else {
-    document.getElementById('requireFill').disabled = false;
+    document.getElementById("requireFill").disabled = false;
   }
-}
+};
 
 const createInitials = (contact) => {
   let matches = contact.userName.match(/\b\w/g) || [];
-  return ((matches[0] || '') + (matches[matches.length - 1] || '')).toUpperCase();
-}
+  return (
+    (matches[0] || "") + (matches[matches.length - 1] || "")
+  ).toUpperCase();
+};
 
 const clearContactArguments = (contactList) => {
   contactList.shift();
-}
+};
 
 // const loadAllContacts = () => {
 //   let allContactDataString = localStorage.getItem("contactList");
@@ -202,24 +209,28 @@ const clearContactArguments = (contactList) => {
 const cancelContactData = () => {
   let addContact = document.getElementById("contactLoader");
   addContact.innerHTML = ``;
-  let blurContainer = document.querySelector('#overlay-blur-container')
+  let blurContainer = document.querySelector("#overlay-blur-container");
   blurContainer.remove();
-}
+};
 
 const showContactData = (contact) => {
   let updateContactForm = document.querySelector("#updatedContacts");
   updateContactForm.innerHTML = ``;
-
+  let initials = createInitials(contact);
   if (contact != null) {
     updateContactForm.innerHTML += /*html*/ `
       <div class="contact-info">
         <div class="contact-header">
-            <h1>${contact["userName"]}</h1>
+            <div class="initials-big" style="background: ${contact.color}">${initials}</div>
+            <div class="add-task-container-small">
+              <h1>${contact["userName"]}</h1>
+              <div class="contact-task">
+                  <img src="assets/img/icon_add_task_plus.png" alt="#">
+                  <h2>Add Task</h2>
+              </div>
+            </div>
         </div>
-        <div class="contact-task">
-            <div><img src="assets/img/icon_add_task_plus.png" alt="#"></div>
-            <div class="blue-text"><h2>Add Task</h2></div>
-        </div>
+        
         <div class="contact-edit" >
             <div><h2>Contact Information</h2></div>
             <div onclick="editContact(${contact.id})"><img src="assets/img/icon_edit_dark.png" alt=""> Edit</div>
@@ -236,44 +247,43 @@ const showContactData = (contact) => {
       </div>
     `;
   }
-}
+};
 
 const editContact = (userId) => {
-    document.body.append(editContactTemplate(userId));
-  
-}
+  document.body.append(editContactTemplate(userId));
+};
 
 const closeEditOverlay = () => {
   document.getElementById("editContactOverlay").remove();
-  let inputs = document.getElementsByTagName('input');
-  [...inputs].forEach(input => {
+  let inputs = document.getElementsByTagName("input");
+  [...inputs].forEach((input) => {
     input.value = "";
-  })
-}
-
-
+  });
+};
 
 const toggleBetweenContacts = (userId) => {
   var currentUser = getUserById(userId);
   showContactData(currentUser);
   // onsubmitContact(currentUser);
-}
+};
 
 const getUserById = (userId) => {
-  var currentUser = storedContactsArray.filter(v => v != null && v.id == userId);
+  var currentUser = storedContactsArray.filter(
+    (v) => v != null && v.id == userId
+  );
   return currentUser.length > 0 ? currentUser[0] : null;
-}
+};
 
-async function saveContactData (userId) {
+async function saveContactData(userId) {
   let contactId = userId;
-  let contact= storedContactsArray[contactId];
+  let contact = storedContactsArray[contactId];
   let name = document.getElementById("name").value;
   let email = document.getElementById("mail").value;
   let phone = document.getElementById("phone").value;
 
-  contact.userName= name;
-  contact.userMail= email;
-  contact.userPhone= phone;
+  contact.userName = name;
+  contact.userMail = email;
+  contact.userPhone = phone;
 
   await backend.setItem("contacts", JSON.stringify(storedContactsArray));
 
@@ -282,7 +292,7 @@ async function saveContactData (userId) {
 
 const defaultOnload = () => {
   document.getElementById("editContactOverlay").innerHTML = ``;
-}
+};
 
 const filterInputs = () => {
   var input, filter, ul, li, a, i, txtValue;
@@ -300,4 +310,4 @@ const filterInputs = () => {
       li[i].style.display = "none";
     }
   }
-}
+};

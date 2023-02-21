@@ -44,10 +44,10 @@
             class="search-menu-back-button   d-none">Go Back</div>
 
           <div id="searchMenu" class="search-menu"> 
-            <input placeholder="Find task" required id="searchTask" class="search-task" type="text">
+            <input placeholder="Find task" required id="searchTask" oninput="searchTask()" class="search-task" type="text">
 
             <div class="search-icon-container">
-              <button class="search-button" onclick="searchTask()"><img class="search-icon"
+              <button disabled class="search-button"><img class="search-icon"
                   src="assets/img/search.png"></button>
             </div>
           </div>

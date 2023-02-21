@@ -22,7 +22,11 @@ a {
 }
 
 section:first-of-type {
-  width: 25%;
+  width: 30%;
+}
+
+section:last-of-type {
+  width: 70%;
 }
 
 ul {
@@ -53,7 +57,8 @@ ul {
   height: 100%;
   background: #ffffff;
   box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: auto;
   scroll-behavior: smooth;
 }
 
@@ -71,6 +76,53 @@ ul {
   height: 3px;
 }
 
+.contact-header {
+  display: flex;
+  align-items: center;
+}
+
+.contact-header .initials-big {
+  font-size: 2em;
+  padding: 20px;
+  margin-right: 1rem;
+  border-radius: 100%;
+  color: white;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  box-shadow: 0 2px 10px 0 rgb(0 0 0 / 15%);
+}
+
+.contact-header .add-task-container-small {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 1rem;
+}
+
+.add-task-container-small h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+.contact-task {
+  margin-top: .5rem;
+}
+
+.contact-task h2 {
+  font-size: 1rem;
+  color: var(--c-lightblue);
+}
+
+.contact-edit {
+  margin-top: 20px;
+}
+
+
+
 .header-main {
   font-size: 2rem;
 }
@@ -86,7 +138,6 @@ ul {
   justify-content: flex-start;
   padding: 0 15px;
 }
-
 .contact-info-chart {
   display: flex;
   flex-direction: column;
@@ -100,20 +151,13 @@ ul {
 .contact-box {
   display: flex;
   align-items: center;
-  /* justify-content: center; */
-  border-bottom: 2px solid var(--dimmed);
-  margin: 15px 0;
   cursor: pointer;
-  padding: 10px 0 10px 0;
+  padding: 15px 0 15px 7px;
+  border-bottom: 2px solid var(--dimmed);
 }
 
 .contact-box:first-of-type {
-  border-top: 2px solid var(--dimmed);
   margin-top: 0;
-}
-
-.contact-box:hover {
-  color: white;
 }
 
 #initialsContainer {
@@ -125,7 +169,7 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--c-lightblue);
+  /* background: var(--c-lightblue); */
   margin-right: 1rem;
 }
 
@@ -143,7 +187,8 @@ ul {
 }
 
 .contact-box:hover {
-  background-color: #2a3647;
+  background-color: var(--dimmed);
+  border-radius: 7px;
 }
 
 .contact-task {
@@ -160,7 +205,7 @@ ul {
   right: 0;
   top: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, .75);
+  background: rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -185,9 +230,8 @@ ul {
 }
 
 .contact-edit div > img {
-  margin-right: .6rem;
+  margin-right: 0.6rem;
 }
-
 
 .blue-text {
   color: #29abe2;
@@ -242,6 +286,7 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100000;
 }
 
 .add-contact-overlay {
@@ -302,6 +347,7 @@ ul {
 #searchContacts {
   padding: 10px;
   border: none;
+  display: none;
   border-bottom: 2px solid var(--c-lightblue);
   border-top: 2px solid var(--dimmed);
 }
@@ -412,6 +458,7 @@ form input::placeholder {
     flex-direction: column;
   }
 
+
   .left-overlay {
     width: 100%;
     border-bottom-right-radius: 0;
@@ -423,20 +470,20 @@ form input::placeholder {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
   }
-}
-
-@media screen and (max-width: 1150px) {
-  .main {
-    flex-direction: column;
-  }
 
   section:first-of-type {
     width: 100%;
+    /* height: 100%; */
+    margin-top: 6rem;
   }
 
-  .contact-scroll-container {
-    min-height: 100px;
-    max-height: 200px;
+  section:last-of-type {
+    display: none !important;
+  }
+
+  .button-position {
+    top: 100px;
+    right: 2rem;
   }
 
   .contact-info-chart {
@@ -449,7 +496,8 @@ form input::placeholder {
     grid-column: 1/11;
   }
 
-  #overlay-blur-container, #editContactOverlay {
+  #overlay-blur-container,
+  #editContactOverlay {
     align-items: flex-start;
   }
 
@@ -462,41 +510,12 @@ form input::placeholder {
     border: none;
   }
 
-  .button-position {
-    bottom: 150px;
-  }
-
   .profile {
     display: none;
   }
 
   .button-container {
     margin-top: 1rem;
-  }
-}
-
-@media screen and (max-width: 540px) {
-  .contact-info-chart {
-    transform: scale(0.9);
-  }
-
-  .contact-great {
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .header-main h1 {
-    margin: 0;
-    margin-bottom: 7px;
-  }
-
-  .header-secondary p {
-    margin: 0;
-    margin-top: 7px;
-  }
-
-  .contact-great div:nth-of-type(2) {
-    transform: rotate(90deg);
   }
 }
 

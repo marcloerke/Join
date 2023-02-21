@@ -281,7 +281,7 @@ function searchTask() {
         let taskTitle = task['taskTitle'];
         document.getElementById('searchTask').placeholder = "Find task";
         document.getElementById('searchTask').classList.remove('placehoder-color-red');
-        document.getElementById('searchTask').value = '';
+        // document.getElementById('searchTask').value = '';
         document.getElementById('task' + task['id']).classList.add('d-none');
         if (inputOfSearch == "") {
             inputRequired(task);
