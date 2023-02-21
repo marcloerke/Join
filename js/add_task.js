@@ -37,13 +37,13 @@ let clearCategory = document.getElementById("clearCategory");
 let addCategory = document.getElementById("addCategory");
 let dropdownOpen = false;
 let editingCategory = false;
-let categories = ["New Category"];
-let assignedColors = [null];
+let categories = ["New Category", "Sales", "Marketing"];
+let colorDots = document.getElementsByClassName("color-dot");
+let assignedColors = [null, colorDots[1], colorDots[2]];
 let categoryInput = document.getElementById("selectCategory");
 let dropdownContainer = document.getElementById("dropdownContainer");
 let categoryOninput = document.getElementById("categoryOninput");
 let colorContainer = document.getElementById("colorContainer");
-let colorDots = document.getElementsByClassName("color-dot");
 let categoryDot = document.getElementById("categoryDot");
 
 // add listener to category input field
