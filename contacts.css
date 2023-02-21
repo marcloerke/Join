@@ -101,11 +101,17 @@ ul {
   display: flex;
   align-items: center;
   /* justify-content: center; */
-  border-top: 2px solid var(--dimmed);
+  border-bottom: 2px solid var(--dimmed);
   margin: 15px 0;
   cursor: pointer;
-  padding: 7px 0 7px 0;
+  padding: 10px 0 10px 0;
 }
+
+.contact-box:first-of-type {
+  border-top: 2px solid var(--dimmed);
+  margin-top: 0;
+}
+
 .contact-box:hover {
   color: white;
 }
@@ -296,7 +302,7 @@ ul {
 #searchContacts {
   padding: 10px;
   border: none;
-  border-bottom: 2px solid var(--dimmed);
+  border-bottom: 2px solid var(--c-lightblue);
   border-top: 2px solid var(--dimmed);
 }
 

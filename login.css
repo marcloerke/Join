@@ -304,6 +304,7 @@ header img {
 
     .login-options-container {
         width: 100%;
+        /* flex-direction: column; */
     }
 
     .column1 div p, .column2 p {

@@ -13,7 +13,6 @@ async function dataFromServer() {
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem("keyTasks")) || [];
     countStatus();
-    console.log(tasks)
 }
 
 

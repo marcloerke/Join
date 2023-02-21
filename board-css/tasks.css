@@ -4,7 +4,7 @@
     background-color: white;
     border-radius: 18px;
     padding: 13px;
-    font-size: 11px;
+    font-size: .9rem;
     cursor: pointer;
     box-sizing: border-bo;
 }
@@ -20,6 +20,7 @@
     padding: 3px 15px;
     color: #ffffff;
     border-radius: 8px;
+    font-size: 13px;
 }
 
 .task-title {
@@ -28,7 +29,7 @@
 }
 
 .description {
-    color: lightgray;
+    color: rgb(171, 169, 169);
 }
 
 .progress {
@@ -45,6 +46,7 @@
 
 .progress-bar-done {
     display: flex;
+    font-size: 11px;
 }
 
 .progress-container {
