@@ -32,6 +32,7 @@ section:last-of-type {
 ul {
   padding: 0 !important;
   list-style-type: none;
+  margin: 0;
 }
 
 #scroll-move::-webkit-scrollbar-track {
@@ -121,7 +122,12 @@ ul {
   margin-top: 20px;
 }
 
-
+.sorter {
+  padding-top: 1rem;
+  padding-left: 1.4rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--dimmed);
+color: var(--c-darkblue);}
 
 .header-main {
   font-size: 2rem;
@@ -153,7 +159,7 @@ ul {
   align-items: center;
   cursor: pointer;
   padding: 15px 0 15px 7px;
-  border-bottom: 2px solid var(--dimmed);
+  /* border-bottom: 2px solid var(--dimmed); */
 }
 
 .contact-box:first-of-type {

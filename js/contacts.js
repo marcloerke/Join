@@ -49,9 +49,43 @@ const renderContacts = () => {
   let addContactToList = document.querySelector("#contactInList");
   addContactToList.innerHTML = "";
   let sortedContacts= storedContactsArray.sort((a, b) => a.userName.localeCompare(b.userName))
+  console.log(sortedContacts);
+
   for (let i = 0; i < sortedContacts.length; i++) {
-    let contact = sortedContacts[i];
-    let initials = createInitials(contact);
+    const contact = sortedContacts[i];
+    const previousContact = sortedContacts[i-1];
+    if (previousContact != undefined && contact.userName[0] != previousContact.userName[0]) {
+      let initials = createInitials(contact);
+      addContactToList.innerHTML += /*html*/ `
+        <li>
+          <div class="sorter">${contact.userName[0]}</div>
+          <div class="contact-box" onclick="toggleBetweenContacts(${contact.id})">
+            <a href="#"><div id="initialsContainer" style="background: ${contact.color}">${initials}</div></a> 
+            <div class="name-mail-container">
+              <div>${contact["userName"]}</div>
+              <div>${contact["userMail"]}</div>
+            </div>
+          </div>
+        </li>
+      `;
+    }
+    else if (i === 0) {
+      let initials = createInitials(contact);
+      addContactToList.innerHTML += /*html*/ `
+        <li>
+          <div class="sorter">${contact.userName[0]}</div>
+          <div class="contact-box" onclick="toggleBetweenContacts(${contact.id})">
+            <a href="#"><div id="initialsContainer" style="background: ${contact.color}">${initials}</div></a> 
+            <div class="name-mail-container">
+              <div>${contact["userName"]}</div>
+              <div>${contact["userMail"]}</div>
+            </div>
+          </div>
+        </li>
+      `;
+    }
+    else {
+      let initials = createInitials(contact);
     addContactToList.innerHTML += /*html*/ `
       <li>
         <div class="contact-box" onclick="toggleBetweenContacts(${contact.id})">
@@ -63,6 +97,9 @@ const renderContacts = () => {
         </div>
       </li>
     `;
+    }  
+
+
   }
 };
 
