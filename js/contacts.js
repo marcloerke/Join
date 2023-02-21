@@ -48,8 +48,9 @@ function newColor() {
 const renderContacts = () => {
   let addContactToList = document.querySelector("#contactInList");
   addContactToList.innerHTML = "";
-  for (let i = 0; i < storedContactsArray.length; i++) {
-    let contact = storedContactsArray[i];
+  let sortedContacts= storedContactsArray.sort((a, b) => a.userName.localeCompare(b.userName))
+  for (let i = 0; i < sortedContacts.length; i++) {
+    let contact = sortedContacts[i];
     let initials = createInitials(contact);
     addContactToList.innerHTML += /*html*/ `
       <li>
