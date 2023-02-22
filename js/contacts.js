@@ -49,7 +49,7 @@ const renderContacts = () => {
   let addContactToList = document.querySelector("#contactInList");
   addContactToList.innerHTML = "";
   let sortedContacts= storedContactsArray.sort((a, b) => a.userName.localeCompare(b.userName))
-  console.log(sortedContacts);
+  // console.log(sortedContacts);
 
   for (let i = 0; i < sortedContacts.length; i++) {
     const contact = sortedContacts[i];
@@ -134,28 +134,28 @@ function addContactTemplate() {
           <div class="fcf-form-group">
             <label for="Name" class="fcf-label"></label>
             <div class="fcf-input-group">
-              <input type="text" id="name" name="Name" class="fcf-form-control" placeholder="Your name" required onkeyup="filledForms()">
+              <input type="text" id="name" name="Name" class="fcf-form-control" placeholder="Your name" required>
               <img src="assets/img/icon_name.png">
             </div>
           </div>
           <div class="fcf-form-group">
             <label for="Email" class="fcf-label"></label>
             <div class="fcf-input-group">
-                <input type="email" id="mail" name="Email" class="fcf-form-control" placeholder="Your email address" required onkeyup="filledForms()">
+                <input type="email" id="mail" required name="Email" class="fcf-form-control" placeholder="Your email address">
                 <img src="assets/img/icon_mail.png">
             </div>
           </div>
           <div class="fcf-form-group">
             <label for="Phone" class="fcf-label"></label>
             <div class="fcf-input-group">
-              <input type="tel" id="phone" name="Phone" pattern="^\+49 \d{4} \d{5}$" placeholder="+49 1234 56789" required onkeyup="filledForms()">
+              <input type="tel" id="phone" name="Phone" pattern="^\+49 \d{4} \d{5}$" placeholder="+49 1234 56789" required>
               <img src="assets/img/icon_phone.png">
             </div>
           </div>
         </form>
         <div class="button-container">
           <button class="button-style-cancel" onclick="cancelContactData()">Cancel <img src="assets/img/icon_close.png"></button>
-          <button class="button-style-submit" id="requireFill" onclick="createContactData()" disabled>Create contact <img src="assets/img/icon_create.png"></button>                       
+          <button class="button-style-submit" onclick="function () {if(formValidation()){createContactData()}}" id="requireFill">Create contact <img src="assets/img/icon_create.png"></button>                       
         </div>
       </div>
     </div>
@@ -164,6 +164,61 @@ function addContactTemplate() {
   `;
   return contactOverlay;
 }
+
+function formValidation() {
+  let inputs= document.getElementsByTagName('input');
+  let userPattern = /^[0-9]*[a-zA-Z]{2,}.*$/;
+  let mailPattern= /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  let phonePattern= /^\+49 \d{4} \d{5}$/;
+  let allcorrect= true;
+
+  for (let i = 0; i < inputs.length; i++) {
+    const input = inputs[i];
+
+    if (input.value.length == 0) {
+      
+    }
+    //   if (input.value.length == 0) {
+    //     let message= "This field is required";
+    //     allcorrect= false;
+    //     generateTooltip(input, message)
+    //   }
+
+    //   if (!mailPattern.test(inputField.value)) {
+    //     let message= "Please enter a valid email adress";
+    //     allcorrect= false;
+    //     generateTooltip(input, message);
+    //   }
+    // }
+
+    // if (input.type === "email") {
+      
+    // }
+
+    // if (input.type === "tel") {
+      
+    // }
+    
+  }
+
+  return allcorrect
+}
+
+function generateTooltip(input, message) {
+
+  let tooltip = document.createElement("div");
+  tooltip.classList.add("validation-tooltip");
+  tooltip.innerHTML = /*html*/ `
+        <p>!</p>
+        <p>${message}</p>
+        `;
+  input.parentNode.append(tooltip);
+}
+
+
+
+
+
 
 function editContactTemplate(userId) {
   let editOverlay = document.createElement("div");
@@ -185,21 +240,21 @@ function editContactTemplate(userId) {
                 <div class="fcf-form-group">
                   <label for="Name" class="fcf-label"></label>
                   <div class="fcf-input-group">
-                    <input type="text" id="name" value="${storedContactsArray[userId].userName}" name="Name" class="fcf-form-control" placeholder="Your name" required onkeyup="filledForms()">
+                    <input type="text" id="name" value="${storedContactsArray[userId].userName}" name="Name" class="fcf-form-control" placeholder="Your name" required >
                     <img src="assets/img/icon_name.png">
                   </div>
                 </div>
                 <div class="fcf-form-group">
                   <label for="Email" class="fcf-label"></label>
                   <div class="fcf-input-group">
-                      <input type="email" id="mail" value="${storedContactsArray[userId].userMail}" name="Email" class="fcf-form-control" placeholder="Your email address" required onkeyup="filledForms()">
+                      <input type="email" id="mail" value="${storedContactsArray[userId].userMail}" name="Email" class="fcf-form-control" placeholder="Your email address" required>
                       <img src="assets/img/icon_mail.png">
                   </div>
                 </div>
                 <div class="fcf-form-group">
                   <label for="Phone" class="fcf-label"></label>
                   <div class="fcf-input-group">
-                    <input type="tel" id="phone" value="${storedContactsArray[userId].userPhone}" name="Phone" pattern="^\+49 \d{4} \d{5}$" placeholder="+49 1234 56789" required onkeyup="filledForms()">
+                    <input type="tel" id="phone" value="${storedContactsArray[userId].userPhone}" name="Phone" placeholder="+49 1234 56789" required>
                     <img src="assets/img/icon_phone.png">
                   </div>
                 </div>
@@ -216,17 +271,17 @@ function editContactTemplate(userId) {
   return editOverlay;
 }
 
-const filledForms = () => {
-  if (document.getElementById("name").value === "") {
-    document.getElementById("requireFill").disabled = true;
-  } else if (document.getElementById("mail").value === "") {
-    document.getElementById("requireFill").disabled = true;
-  } else if (document.getElementById("phone").value === "") {
-    document.getElementById("requireFill").disabled = true;
-  } else {
-    document.getElementById("requireFill").disabled = false;
-  }
-};
+// const filledForms = () => {
+//   if (document.getElementById("name").value === "") {
+//     document.getElementById("requireFill").disabled = true;
+//   } else if (document.getElementById("mail").value === "") {
+//     document.getElementById("requireFill").disabled = true;
+//   } else if (document.getElementById("phone").value === "") {
+//     document.getElementById("requireFill").disabled = true;
+//   } else {
+//     document.getElementById("requireFill").disabled = false;
+//   }
+// };
 
 const createInitials = (contact) => {
   let matches = contact.userName.match(/\b\w/g) || [];
