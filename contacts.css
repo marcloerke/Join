@@ -681,7 +681,6 @@ form input::placeholder {
   .left-overlay div>h1 {
     font-size: 3rem;
   }
-<<<<<<< HEAD
 
   .contact-edit {
     margin-top: 0.5rem;
@@ -697,8 +696,7 @@ form input::placeholder {
     width: 25px;
   }
 }
-=======
-}
+
 
 
 /* add task layover !!Achtung viel! */
@@ -1235,7 +1233,6 @@ input[type="checkbox"]:checked::before {
   color: red;
 }
 
->>>>>>> 2da08ac0e00bacfb8ff62b25d0b364af6212a9de
 .chosenContact {
   padding: 10px;
   margin-top: 10px;
