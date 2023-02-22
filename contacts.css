@@ -531,6 +531,10 @@ form input::placeholder {
   .button-container {
     margin-top: 1rem;
   }
+  .contact-scroll-container {
+    height: auto;
+    padding-bottom: 120px !important;
+  }
 }
 
 @media screen and (max-width: 420px) {
