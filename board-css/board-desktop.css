@@ -13,6 +13,7 @@ body {
     height: 105vh;  */
     /* margin-left: 272px !important;
     margin-top: 90px; */
+    z-index: 2;
     grid-row: 2/11;
     grid-column: 3/11; 
     box-sizing: border-box;

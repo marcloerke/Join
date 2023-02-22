@@ -170,7 +170,7 @@ function formValidation() {
   let inputs = document.getElementsByTagName("input");
   let userPattern = /^[0-9]*[a-zA-Z]{2,}.*$/;
   let mailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-  let phonePattern = /^\+[0-9]{7,}$/;
+  let phonePattern = /^\+\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}$/;
   let allCorrect = true;
 
   for (let i = 0; i < inputs.length; i++) {
