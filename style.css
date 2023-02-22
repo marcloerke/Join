@@ -58,6 +58,16 @@ body {
   width: 40px;
 }
 
+.header-logo-container {
+  display: none;
+}
+
+.header-headline-container {
+  margin-top: 2rem;
+  margin-left: 80px;
+}
+
+
 .header .logout-tooltip {
   background-color: var(--c-darkblue);
   color: white;
@@ -180,6 +190,10 @@ body {
 
   .header-headline-container {
     display: none;
+  }
+
+  .header-logo-container {
+    display: flex;
   }
 }
 /* ##### Summary ##### */
