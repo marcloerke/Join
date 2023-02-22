@@ -157,7 +157,7 @@ async function login() {
       localStorage.setItem('password', password.value);
       localStorage.setItem('email', email.value);
     }
-    window.location.href = "index.html";
+    window.location.href = "summary.html";
   } else {
     renderLoginDeny();
   }
