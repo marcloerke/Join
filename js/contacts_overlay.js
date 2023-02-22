@@ -4,7 +4,7 @@ function addTaskTemplate() {
     return /*html*/ `
   
   <div id="layover" onclick="closeAddTask()" class="layover ">
-      <div onclick="stopPropagation(event)" class="popup-container">
+      <div class="popup-container">
   
         <div id="taskCard" class="task-card">
           <h1>Add Task</h1>
@@ -97,5 +97,9 @@ function addTaskTemplate() {
   }
   
   function renderTaskOverlay() {
-    
+    let overlay= document.createElement('div');
+    overlay.setAttribute('id', 'annoying')
+    overlay.innerHTML= addTaskTemplate();
+    document.body.append(overlay);
   }
+
