@@ -89,13 +89,27 @@ async function createTask() {
 
 function formValidation() {
   if (checkInputs()) {
+    showSuccessAnimation();
     createTask();
-    alert('Task created successfully!');
-    window.location.href="board.html";
+    setTimeout(()=> {
+      window.location.href="board.html"
+    }, 2500)
   } else {
     showRequired();
   }
 }
+
+
+function showSuccessAnimation() {
+  let animationContainer= document.createElement('div');
+  animationContainer.classList.add('alert');
+  animationContainer.innerHTML= /*html*/ `
+    Task added to board
+    <img src="assets/img/icon_board.png">
+  `
+  document.body.append(animationContainer);
+}
+
 
 function checkInputs() {
   let allCorrect = true;

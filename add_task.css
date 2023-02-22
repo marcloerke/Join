@@ -335,6 +335,39 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   z-index: 100;
 }
 
+.alert {
+  display: flex;
+  background: var(--c-darkblue);
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  position: absolute;
+  left: 50%; 
+  transform: translateX(-50%);
+  bottom: 0;
+  font-size: 1.2rem;
+  animation: transition 1s forwards;
+}
+
+@keyframes transition {
+  0% {
+    bottom: 0px;
+    opacity: 0;
+}
+
+100% {
+    bottom: 50px;
+    opacity: 1;
+}
+}
+
+
+.alert img {
+  margin-left: 1rem;
+}
+
+
+
 #subtaskOninput img:last-of-type,
 #categoryOninput img:last-of-type {
   width: 20px;
