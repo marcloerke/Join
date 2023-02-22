@@ -276,7 +276,7 @@ function signUpCardTemplate() {
           <h1>Sign Up</h1>
           <img src="assets/img/icon_line.png" class="line">
           <div class='user-input'>
-            <input id='signup-name' type='text' placeholder='Name' required oninvalid="event.preventDefault(); generateTooltip(event)"/>
+            <input id='signup-name' type='text' placeholder='Name' pattern="^[0-9]*[a-zA-Z]{2,}.*$" required oninvalid="event.preventDefault(); generateTooltip(event)"/>
             <img src='assets/img/icon_name.png' />
           </div>
           <div class='user-input'>
