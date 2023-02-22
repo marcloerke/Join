@@ -124,6 +124,16 @@
         align-items: center;
         font-size: 35px;
     }
+
+    .exit {
+        top: 10px;
+        right: 40px;
+    }
+
+    .ok-button {
+        bottom: 65px;
+        right: 60px;
+    }
 }
 
 @media (max-width: 620px) {
@@ -150,7 +160,7 @@
         margin-top: 30px;
         background-color: white;
         border-radius: 18px;
-        padding: 13px;
+        padding: 10px;
         font-size: 14px;
         cursor: pointer;
         box-sizing: border-box;
@@ -168,6 +178,4 @@
         width: 100%;
        
     }
-
-
 }
