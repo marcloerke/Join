@@ -114,9 +114,6 @@ ul {
   cursor: pointer;
 }
 
-.contact-task:hover {
-  transform: scale(1.1);
-}
 
 .contact-task h2 {
   font-size: 1rem;
