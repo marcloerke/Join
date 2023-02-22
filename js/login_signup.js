@@ -2,7 +2,7 @@
 
 let cardContainer = document.getElementById("card-container");
 let header = document.getElementsByTagName("header")[0];
-let signupSuccess= false;
+let signupSuccess = false;
 setURL("https://gruppe-428.developerakademie.net/smallest_backend_ever");
 
 /**
@@ -30,19 +30,19 @@ function renderLogin() {
   if (localStorage.length > 0) {
     let password = document.getElementById("login-password");
     let email = document.getElementById("login-mail");
-    password.value= localStorage.getItem('password');
-    email.value= localStorage.getItem('email');
+    password.value = localStorage.getItem("password");
+    email.value = localStorage.getItem("email");
   }
   addLoginEventListeners();
   if (signupSuccess) {
-    let success= document.getElementById("success");
-    success.innerText= "Signup successful!";
+    let success = document.getElementById("success");
+    success.innerText = "Signup successful!";
   }
   renderSignUpWrapper();
 }
 
 function renderSignUp() {
-  signupSuccess= false;
+  signupSuccess = false;
   let signUpWrapper = document.getElementsByClassName("signup-wrapper")[0];
   signUpWrapper.remove();
   cardContainer.innerHTML = signUpCardTemplate();
@@ -54,21 +54,20 @@ function renderLoginDeny() {
 }
 
 function renderNoUser() {
-  document.getElementById('noUser').innerText="E-Mail does not exist in database.";
+  document.getElementById("noUser").innerText =
+    "E-Mail does not exist in database.";
 }
 
 function generateTooltip(e) {
-  let message= "This field is required!";
-  let inputField= e.target;
-  if(inputField.type === 'email' && inputField.value.length > 0) {
-    message= "Please enter a valid email adress!"
+  let message = "This field is required!";
+  let inputField = e.target;
+  let pattern = /^[0-9]*[a-zA-Z]{2,}.*$/;
+  if (inputField.type === "email" && inputField.value.length > 0) {
+    message = "Please enter a valid email adress!";
   }
 
-  if(inputField.type === 'text' && inputField.value.length > 0) {
-    let pattern = /^\d+$/;
-    if (!pattern.test(inputField.value)) {
-      message= "Username must contain at least 2 letters!"
-    }
+  if (inputField.type === "text" && inputField.value.length > 0 && !pattern.test(inputField.value)) {
+    message = "Username must contain at least 2 letters!";
   }
 
   let tooltip = document.createElement("div");
@@ -81,7 +80,7 @@ function generateTooltip(e) {
 }
 
 function renderForgotPassword() {
-  cardContainer.innerHTML= forgotPasswordTemplate();
+  cardContainer.innerHTML = forgotPasswordTemplate();
   let signUpWrapper = document.getElementsByClassName("signup-wrapper")[0];
   signUpWrapper.remove();
   addForgotPasswordEventListener();
@@ -97,11 +96,11 @@ function addLoginEventListeners() {
     event.preventDefault();
     login();
   });
-  let guestLoginButton= document.querySelector('#guestLogin');
-  guestLoginButton.addEventListener('click',function(event){
+  let guestLoginButton = document.querySelector("#guestLogin");
+  guestLoginButton.addEventListener("click", function (event) {
     event.preventDefault();
     guestLogin();
-  })
+  });
 }
 
 function addSignupEventListeners() {
@@ -113,13 +112,12 @@ function addSignupEventListeners() {
 }
 
 function addForgotPasswordEventListener() {
-  let forgotPasswordForm= document.getElementById('forgot-password-form');
+  let forgotPasswordForm = document.getElementById("forgot-password-form");
   forgotPasswordForm.addEventListener("submit", function (event) {
     event.preventDefault();
     sendPasswordReset();
   });
 }
-
 
 window.addEventListener("click", function () {
   removeLoginDeny();
@@ -127,7 +125,6 @@ window.addEventListener("click", function () {
   removeValidationTooltip();
   removeNoUser();
 });
-
 
 /**
  * sign up/ log in/ password reset
@@ -146,7 +143,7 @@ async function signUp() {
   };
   users.push(newUser);
   await backend.setItem("users", JSON.stringify(users));
-  signupSuccess= true;
+  signupSuccess = true;
   renderLogin();
 }
 
@@ -159,10 +156,10 @@ async function login() {
     return u.password == password.value && u.email == email.value;
   });
   if (user) {
-    let checkbox= document.getElementById('checkbox');
-    if(checkbox.checked) {
-      localStorage.setItem('password', password.value);
-      localStorage.setItem('email', email.value);
+    let checkbox = document.getElementById("checkbox");
+    if (checkbox.checked) {
+      localStorage.setItem("password", password.value);
+      localStorage.setItem("email", email.value);
     }
     window.location.href = "summary.html";
   } else {
@@ -170,34 +167,30 @@ async function login() {
   }
 }
 
-
 function guestLogin() {
   let password = document.getElementById("login-password");
   let email = document.getElementById("login-mail");
-  password.value= 'guest';
-  email.value= 'guest@mail.de';
+  password.value = "guest";
+  email.value = "guest@mail.de";
   setTimeout(function () {
     window.location.href = "summary.html";
-  }, 250)
+  }, 250);
 }
 
-
 async function sendPasswordReset() {
-  let passwordResetMail= document.querySelector('#password-reset-mail');
+  let passwordResetMail = document.querySelector("#password-reset-mail");
   await downloadFromServer();
   users = JSON.parse(backend.getItem("users")) || [];
   let user = users.find((u) => {
     return u.email == passwordResetMail.value;
   });
-  if(user) {
-    alert('Password reset E-Mail sent!');
+  if (user) {
+    alert("Password reset E-Mail sent!");
     renderLogin();
-  }
-  else {
+  } else {
     renderNoUser();
   }
 }
-
 
 /**
  * removing temporary elements from document
@@ -209,7 +202,6 @@ function removeNoUser() {
     noUser.innerText = "";
   }
 }
-
 
 function removeLoginDeny() {
   let errorMessage = document.getElementById("invalid");
@@ -226,9 +218,11 @@ function removeSignUpSuccess() {
 }
 
 function removeValidationTooltip() {
-  let tooltips= document.getElementsByClassName('validation-tooltip');
-  if(tooltips) {
-    [...tooltips].forEach(element => {element.remove()})
+  let tooltips = document.getElementsByClassName("validation-tooltip");
+  if (tooltips) {
+    [...tooltips].forEach((element) => {
+      element.remove();
+    });
   }
 }
 
@@ -313,8 +307,5 @@ function forgotPasswordTemplate() {
           </div>
           <button class='sign-up'>Send Email</button>
       </form>
-  `
+  `;
 }
-
-
-
