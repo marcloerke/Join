@@ -443,6 +443,14 @@ form input:focus {
   outline: none;
 }
 
+form input {
+  position: relative;
+}
+
+/* input:invalid {
+  border-color: red;
+} */
+
 form input::placeholder {
   color: var(--dimmed);
   font-size: 1.2rem;
