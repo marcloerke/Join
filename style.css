@@ -53,6 +53,11 @@ body {
   position: relative;
 }
 
+.header-logo {
+  height: 40px;
+  width: 40px;
+}
+
 .header .logout-tooltip {
   background-color: var(--c-darkblue);
   color: white;
@@ -171,6 +176,10 @@ body {
 
   .header {
     grid-column: span 10 !important;
+  }
+
+  .header-headline-container {
+    display: none;
   }
 }
 /* ##### Summary ##### */
