@@ -58,6 +58,7 @@ function renderTasks(taskArea, filterdArray) {
         renderSelectContact(id, names);
         renderPriorityContainer(id, priorityBg, priorityTaskPopup, prioIconPopupSrc);
         renderPrioButtons(id);
+        fillSelectPanel(id);
     }
 }
 
@@ -74,6 +75,17 @@ function renderLayoverTaskPopup(id) {
 </svg>
 
     </div>`;
+}
+
+
+function fillSelectPanel(id) {
+    for (let index = 0; index < contacts.length; index++) {
+        const element = contacts[index];
+        let name = element.userName;
+        console.log('userName', name);
+         document.getElementById('listOfPersons'+id).innerHTML += `<div  onclick="check(${id,index})" class="listOfName">${name}<input id="checkBoxId${index}" type="checkbox"></div>`;
+    }
+    
 }
 
 
@@ -169,7 +181,7 @@ function renderInput(id) {
 
 function renderSelectPanel(id) {
     document.getElementById('selectContainer' + id).innerHTML = /*html*/`
-    <div class="option optionPlus">
+    <div id="option${id}" class="option optionPlus">
         <div class="selectContact contactName">Select contacts to assign</div>
         <button id="button${id}" onclick="dropDown(${id})" class="button">
         <img id="img${id}" class="img" src="assets/img/arrow-down-black.png" alt="">
