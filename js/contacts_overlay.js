@@ -1,9 +1,10 @@
 //assign contact to new task
+let overlayRendered = 0;
 
-function addTaskTemplate() {
-    return /*html*/ `
+function addTaskTemplate(initials) {
+  return /*html*/ `
   
-  <div id="layover" onclick="closeAddTask()" class="layover ">
+  <div id="layover" class="layover ">
       <div class="popup-container">
   
         <div id="taskCard" class="task-card">
@@ -48,6 +49,7 @@ function addTaskTemplate() {
                 <img src="assets/img/icon_triangle.png" id="addContactIcon">
               </div>
               <div id="contactsDropdownContainer"></div>
+              <div style="background: ${storedContactsArray[selectedUser].color}"class="chosenContact">${initials}</div>
             </div>
             <div class="column-right">
               <label for="date">Due Date</label>
@@ -94,12 +96,25 @@ function addTaskTemplate() {
     </div>
   
     `;
-  }
-  
-  function renderTaskOverlay() {
-    let overlay= document.createElement('div');
-    overlay.setAttribute('id', 'annoying')
-    overlay.innerHTML= addTaskTemplate();
-    document.body.append(overlay);
-  }
+}
 
+let selectedUser;
+
+function renderTaskOverlay(id) {
+  selectedUser= id;
+  let initials= document.getElementsByClassName('initials-big')[0].innerText;  
+  if (overlayRendered === 0) {
+    let overlay = document.createElement("div");
+    overlay.setAttribute("id", "annoying");
+    overlay.innerHTML = addTaskTemplate(initials);
+    document.body.append(overlay);
+    let script = document.createElement("script");
+    script.src = "js/assign_task_to_contact.js";
+    script.setAttribute("id", "dynamicScript");
+    document.body.append(script);
+    overlayRendered++;
+  }
+  else {
+    document.getElementById('annoying').style.display='block';
+  }
+}

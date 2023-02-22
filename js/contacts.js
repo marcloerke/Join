@@ -1,10 +1,12 @@
 let contactList = [];
 let storedContactsArray = [];
+let tasks= [];
 
 let dataFromServer = async () => {
   setURL("https://gruppe-428.developerakademie.net/smallest_backend_ever");
   await downloadFromServer();
   storedContactsArray = JSON.parse(backend.getItem("contacts")) || [];
+  tasks = JSON.parse(backend.getItem("keyTasks")) || [];
   renderContacts();
 };
 
@@ -324,7 +326,7 @@ const showContactData = (contact) => {
             <div class="initials-big" style="background: ${contact.color}">${initials}</div>
             <div class="add-task-container-small">
               <h1>${contact["userName"]}</h1>
-              <div class="contact-task" id="contact-task" onclick="renderTaskOverlay()">
+              <div class="contact-task" id="contact-task" onclick="renderTaskOverlay(${contact.id})">
                   <img src="assets/img/icon_add_task_plus.png" alt="#">
                   <h2>Add Task</h2>
               </div>
