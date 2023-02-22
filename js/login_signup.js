@@ -64,6 +64,13 @@ function generateTooltip(e) {
     message= "Please enter a valid email adress!"
   }
 
+  if(inputField.type === 'text' && inputField.value.length > 0) {
+    let pattern = /^\d+$/;
+    if (!pattern.test(inputField.value)) {
+      message= "Username must contain at least 2 letters!"
+    }
+  }
+
   let tooltip = document.createElement("div");
   tooltip.classList.add("validation-tooltip");
   tooltip.innerHTML = /*html*/ `
