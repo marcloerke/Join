@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    /* display: flex; */
     font-family: 'Open Sans', sans-serif;
     box-sizing: border-box;
     overflow: hidden !important;
@@ -9,10 +8,6 @@ body {
 
 .main-container {
     background-color: #f6f7f8;
-    /* width: 85vw;
-    height: 105vh;  */
-    /* margin-left: 272px !important;
-    margin-top: 90px; */
     z-index: 2;
     grid-row: 2/11;
     grid-column: 3/11; 
@@ -146,27 +141,21 @@ form {
     padding-bottom: 200px;
 }
 
-.add-btn-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.plusButton {
     cursor: pointer;
-}
-
-
-svg {
     transition: 175ms ease-in-out;
 }
 
 
-svg:hover rect {
+.plusButton:hover rect {
             
     stroke: #29aae1;
     transition: 175ms ease-in-out;
     
 }
 
-svg:hover path {
+.plusButton:hover path {
     stroke: #29aae1;
     transition: 175ms ease-in-out;
 }
