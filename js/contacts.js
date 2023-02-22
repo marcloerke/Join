@@ -48,13 +48,18 @@ function newColor() {
 const renderContacts = () => {
   let addContactToList = document.querySelector("#contactInList");
   addContactToList.innerHTML = "";
-  let sortedContacts= storedContactsArray.sort((a, b) => a.userName.localeCompare(b.userName))
+  let sortedContacts = storedContactsArray.sort((a, b) =>
+    a.userName.localeCompare(b.userName)
+  );
   // console.log(sortedContacts);
 
   for (let i = 0; i < sortedContacts.length; i++) {
     const contact = sortedContacts[i];
-    const previousContact = sortedContacts[i-1];
-    if (previousContact != undefined && contact.userName[0] != previousContact.userName[0]) {
+    const previousContact = sortedContacts[i - 1];
+    if (
+      previousContact != undefined &&
+      contact.userName[0] != previousContact.userName[0]
+    ) {
       let initials = createInitials(contact);
       addContactToList.innerHTML += /*html*/ `
         <li>
@@ -68,8 +73,7 @@ const renderContacts = () => {
           </div>
         </li>
       `;
-    }
-    else if (i === 0) {
+    } else if (i === 0) {
       let initials = createInitials(contact);
       addContactToList.innerHTML += /*html*/ `
         <li>
@@ -83,10 +87,9 @@ const renderContacts = () => {
           </div>
         </li>
       `;
-    }
-    else {
+    } else {
       let initials = createInitials(contact);
-    addContactToList.innerHTML += /*html*/ `
+      addContactToList.innerHTML += /*html*/ `
       <li>
         <div class="contact-box" onclick="toggleBetweenContacts(${contact.id})">
           <a href="#"><div id="initialsContainer" style="background: ${contact.color}">${initials}</div></a> 
@@ -97,9 +100,7 @@ const renderContacts = () => {
         </div>
       </li>
     `;
-    }  
-
-
+    }
   }
 };
 
@@ -155,7 +156,7 @@ function addContactTemplate() {
         </form>
         <div class="button-container">
           <button class="button-style-cancel" onclick="cancelContactData()">Cancel <img src="assets/img/icon_close.png"></button>
-          <button class="button-style-submit" onclick="function () {if(formValidation()){createContactData()}}" id="requireFill">Create contact <img src="assets/img/icon_create.png"></button>                       
+          <button class="button-style-submit" onclick="if(formValidation()){createContactData()}" id="requireFill">Create contact <img src="assets/img/icon_create.png"></button>                       
         </div>
       </div>
     </div>
@@ -166,46 +167,47 @@ function addContactTemplate() {
 }
 
 function formValidation() {
-  let inputs= document.getElementsByTagName('input');
+  let inputs = document.getElementsByTagName("input");
   let userPattern = /^[0-9]*[a-zA-Z]{2,}.*$/;
-  let mailPattern= /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-  let phonePattern= /^\+49 \d{4} \d{5}$/;
-  let allcorrect= true;
+  let mailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  let phonePattern = /^\+[0-9]{7,}$/;
+  let allCorrect = true;
 
   for (let i = 0; i < inputs.length; i++) {
     const input = inputs[i];
 
     if (input.value.length == 0) {
-      
+      let message = "This field is required";
+      allCorrect = false;
+      generateTooltip(input, message);
     }
-    //   if (input.value.length == 0) {
-    //     let message= "This field is required";
-    //     allcorrect= false;
-    //     generateTooltip(input, message)
-    //   }
 
-    //   if (!mailPattern.test(inputField.value)) {
-    //     let message= "Please enter a valid email adress";
-    //     allcorrect= false;
-    //     generateTooltip(input, message);
-    //   }
-    // }
+    if (input.type === "email" && !mailPattern.test(input.value) && input.value.length > 0) {
+      let message = "Please enter a valid email adress!";
+      allCorrect = false;
+      generateTooltip(input, message);
+    }
 
-    // if (input.type === "email") {
-      
-    // }
+    if (input.type === "tel" && !phonePattern.test(input.value) && input.value.length > 0) {
+      let message = "Please enter a valid phone number!";
+      allCorrect = false;
+      generateTooltip(input, message);
+    }
 
-    // if (input.type === "tel") {
-      
-    // }
+    if (input.type === "text" && !userPattern.test(input.value) && input.value.length > 0) {
+      let message = "Please enter a valid name!";
+      allCorrect = false;
+      generateTooltip(input, message);
+    }
+
     
   }
-
-  return allcorrect
+  // console.log(allCorrect);
+  return allCorrect
 }
 
 function generateTooltip(input, message) {
-
+  
   let tooltip = document.createElement("div");
   tooltip.classList.add("validation-tooltip");
   tooltip.innerHTML = /*html*/ `
@@ -214,11 +216,6 @@ function generateTooltip(input, message) {
         `;
   input.parentNode.append(tooltip);
 }
-
-
-
-
-
 
 function editContactTemplate(userId) {
   let editOverlay = document.createElement("div");
@@ -387,20 +384,20 @@ const defaultOnload = () => {
   document.getElementById("editContactOverlay").innerHTML = ``;
 };
 
-const filterInputs = () => {
-  var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById("searchContacts");
-  filter = input.value.toLowerCase();
-  ul = document.getElementById("contactInList");
-  li = ul.getElementsByTagName("li");
+// const filterInputs = () => {
+//   var input, filter, ul, li, a, i, txtValue;
+//   input = document.getElementById("searchContacts");
+//   filter = input.value.toLowerCase();
+//   ul = document.getElementById("contactInList");
+//   li = ul.getElementsByTagName("li");
 
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toLowerCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
-  }
-};
+//   for (i = 0; i < li.length; i++) {
+//     a = li[i].getElementsByTagName("a")[0];
+//     txtValue = a.textContent || a.innerText;
+//     if (txtValue.toLowerCase().indexOf(filter) > -1) {
+//       li[i].style.display = "";
+//     } else {
+//       li[i].style.display = "none";
+//     }
+//   }
+// };
