@@ -153,7 +153,20 @@ form {
     cursor: pointer;
 }
 
-.plus {
-    width: 25px;
-    height: 25px;
+
+svg {
+    transition: 175ms ease-in-out;
+}
+
+
+svg:hover rect {
+            
+    stroke: #29aae1;
+    transition: 175ms ease-in-out;
+    
+}
+
+svg:hover path {
+    stroke: #29aae1;
+    transition: 175ms ease-in-out;
 }

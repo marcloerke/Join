@@ -170,7 +170,8 @@ function formValidation() {
   let inputs = document.getElementsByTagName("input");
   let userPattern = /^[0-9]*[a-zA-Z]{2,}.*$/;
   let mailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-  let phonePattern = /^\+\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}$/;
+  let phonePattern =
+    /^\+\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}$/;
   let allCorrect = true;
 
   for (let i = 0; i < inputs.length; i++) {
@@ -182,32 +183,41 @@ function formValidation() {
       generateTooltip(input, message);
     }
 
-    if (input.type === "email" && !mailPattern.test(input.value) && input.value.length > 0) {
+    if (
+      input.type === "email" &&
+      !mailPattern.test(input.value) &&
+      input.value.length > 0
+    ) {
       let message = "Please enter a valid email adress!";
       allCorrect = false;
       generateTooltip(input, message);
     }
 
-    if (input.type === "tel" && !phonePattern.test(input.value) && input.value.length > 0) {
+    if (
+      input.type === "tel" &&
+      !phonePattern.test(input.value) &&
+      input.value.length > 0
+    ) {
       let message = "Please enter a valid phone number!";
       allCorrect = false;
       generateTooltip(input, message);
     }
 
-    if (input.type === "text" && !userPattern.test(input.value) && input.value.length > 0) {
+    if (
+      input.type === "text" &&
+      !userPattern.test(input.value) &&
+      input.value.length > 0
+    ) {
       let message = "Please enter a valid name!";
       allCorrect = false;
       generateTooltip(input, message);
     }
-
-    
   }
   // console.log(allCorrect);
-  return allCorrect
+  return allCorrect;
 }
 
 function generateTooltip(input, message) {
-  
   let tooltip = document.createElement("div");
   tooltip.classList.add("validation-tooltip");
   tooltip.innerHTML = /*html*/ `
@@ -314,7 +324,7 @@ const showContactData = (contact) => {
             <div class="initials-big" style="background: ${contact.color}">${initials}</div>
             <div class="add-task-container-small">
               <h1>${contact["userName"]}</h1>
-              <div class="contact-task">
+              <div class="contact-task" id="contact-task" onclick="renderTaskOverlay()">
                   <img src="assets/img/icon_add_task_plus.png" alt="#">
                   <h2>Add Task</h2>
               </div>
@@ -411,10 +421,10 @@ function removeValidationTooltip() {
   }
 }
 
-window.addEventListener('click', function(event){
-  let button= this.document.getElementById('requireFill');
+window.addEventListener("click", function (event) {
+  let button = this.document.getElementById("requireFill");
   if (event.target != button) {
     removeValidationTooltip();
   }
+});
 
-})

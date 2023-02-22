@@ -1,15 +1,4 @@
 
-function changeColorBlue(id) {
-    document.getElementById('plusBlack' + id).classList.add('d-none');
-    document.getElementById('plusBlue' + id).classList.remove('d-none');
-}
-
-
-function changeColorBlack(id) {
-    document.getElementById('plusBlack' + id).classList.remove('d-none');
-    document.getElementById('plusBlue' + id).classList.add('d-none');
-}
-
 
 function addTask(column) {
     columnName = column;
