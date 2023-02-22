@@ -89,11 +89,10 @@ body {
 }
 
 
+#problemChild {
+  padding-right: 26px !important;
+}
 
-/* 
-.nav-container:last-of-type:hover {
-  cursor: help;
-} */
 
 .nav-container img {
   width: 20px;
