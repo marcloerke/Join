@@ -168,7 +168,7 @@ body {
     flex-direction: row !important;
     width: 100%;
     justify-content: space-evenly;
-    padding: 15px 0 15px 0;
+    padding: 15px 5px 15px 0;
   }
 
   .nav-container div {
@@ -194,6 +194,26 @@ body {
 
   .header-logo-container {
     display: flex;
+  }
+}
+
+@media screen and (max-width: 420px) {
+
+  .nav-container {
+    display: flex;
+    column-gap: 5px !important;
+    justify-content: space-evenly;
+    padding: 15px 0;
+  }
+
+  .nav-container div {
+    width: 80px;
+    font-size: 12px;
+    padding: 0;
+  }
+
+  #problemChild {
+    padding-right: 0 !important;
   }
 }
 /* ##### Summary ##### */
