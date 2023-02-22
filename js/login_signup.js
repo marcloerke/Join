@@ -61,7 +61,7 @@ function generateTooltip(e) {
   let message= "This field is required!";
   let inputField= e.target;
   if(inputField.type === 'email' && inputField.value.length > 0) {
-    message= "This field must contain an @- Symbol"
+    message= "Please enter a valid email adress!"
   }
 
   let tooltip = document.createElement("div");
