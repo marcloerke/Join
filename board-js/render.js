@@ -58,7 +58,7 @@ function renderTasks(taskArea, filterdArray) {
         renderSelectContact(id, names);
         renderPriorityContainer(id, priorityBg, priorityTaskPopup, prioIconPopupSrc);
         renderPrioButtons(id);
-        fillSelectPanel(id);
+        //fillSelectPanel(id);
     }
 }
 
@@ -78,15 +78,15 @@ function renderLayoverTaskPopup(id) {
 }
 
 
-function fillSelectPanel(id) {
-    for (let index = 0; index < contacts.length; index++) {
-        const element = contacts[index];
-        let name = element.userName;
-        console.log('userName', name);
-         document.getElementById('listOfPersons'+id).innerHTML += `<div  onclick="check(${id,index})" class="listOfName">${name}<input id="checkBoxId${index}" type="checkbox"></div>`;
-    }
+// function fillSelectPanel(id) {
+//     for (let index = 0; index < contacts.length; index++) {
+//         const element = contacts[index];
+//         let name = element.userName;
+//         console.log('userName', name);
+//          document.getElementById('listOfPersons'+id).innerHTML += `<div  onclick="check(${id,index})" class="listOfName">${name}<input id="checkBoxId${index}" type="checkbox"></div>`;
+//     }
     
-}
+// }
 
 
 function renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, date, taskDescription) {
