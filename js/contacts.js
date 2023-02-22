@@ -258,7 +258,7 @@ function editContactTemplate(userId) {
               </form>
             <div class="button-container">
               <button class="button-style-cancel" onclick="closeEditOverlay()">Cancel <img src="assets/img/icon_close.png"></button>
-              <button class="button-style-submit" id="requireFill" onclick="saveContactData(${userId})" disabled>Edit contact <img src="assets/img/icon_create.png"></button>                       
+              <button class="button-style-submit" id="requireFill" onclick="if(formValidation()){saveContactData(${userId})}">Edit contact <img src="assets/img/icon_create.png"></button>                       
             </div> 
           </div>
         </div>
