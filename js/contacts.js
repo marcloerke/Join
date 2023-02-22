@@ -177,7 +177,7 @@ function formValidation() {
     const input = inputs[i];
 
     if (input.value.length == 0) {
-      let message = "This field is required";
+      let message = "This field is required!";
       allCorrect = false;
       generateTooltip(input, message);
     }
@@ -401,3 +401,20 @@ const defaultOnload = () => {
 //     }
 //   }
 // };
+
+function removeValidationTooltip() {
+  let tooltips = document.getElementsByClassName("validation-tooltip");
+  if (tooltips) {
+    [...tooltips].forEach((element) => {
+      element.remove();
+    });
+  }
+}
+
+window.addEventListener('click', function(event){
+  let button= this.document.getElementById('requireFill');
+  if (event.target != button) {
+    removeValidationTooltip();
+  }
+
+})
