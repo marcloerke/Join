@@ -124,19 +124,19 @@
     margin-top: 25px;
 }
 
-.edit-button-dark {
+.edit-button {
     position: absolute;
     bottom: 30px;
     right: 30px;
     cursor: pointer;
+    transition: 175ms ease-in-out;
 }
 
-.edit-button-blue {
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-    cursor: pointer;
+.edit-button:hover rect {
+    fill: #29aae1;
+    transition: 175ms ease-in-out;
 }
+
 
 .exit {
     position: absolute;
@@ -439,6 +439,12 @@
     right: 30px;
     cursor: pointer;
     width: 70px;
+    transition: 175ms ease-in-out;
+}
+
+.ok-button:hover rect {
+    fill: #29aae1;
+    transition: 175ms ease-in-out;
 }
 
 .category-trash {

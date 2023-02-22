@@ -100,5 +100,3 @@ function moveTo(column, ev, columnID) {
 async function addServer() {
     await backend.setItem('keyTasks', JSON.stringify(tasks));
 }
-
-

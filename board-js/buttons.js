@@ -1,16 +1,4 @@
 
-function changeColorBlue(id) {
-    document.getElementById('plusBlack' + id).classList.add('d-none');
-    document.getElementById('plusBlue' + id).classList.remove('d-none');
-}
-
-
-function changeColorBlack(id) {
-    document.getElementById('plusBlack' + id).classList.remove('d-none');
-    document.getElementById('plusBlue' + id).classList.add('d-none');
-}
-
-
 function addTask(column) {
     columnName = column;
     document.getElementById('layover').classList.add('layover-plus');
@@ -77,17 +65,6 @@ function closeTaskPopup(id) {
     }
 
 }
-
-
-function editButtonBlue(id) {
-    document.getElementById('editButtonBlue' + id).classList.remove('d-none');
-}
-
-
-function editButtonDark(id) {
-    document.getElementById('editButtonBlue' + id).classList.add('d-none');
-}
-
 
 function stopPropagation(event) {
     event.stopPropagation();
@@ -259,22 +236,6 @@ function buttonShadowGreen(id) {
 }
 
 
-function okButtonToBlue(id) {
-    document.getElementById('okButtonBlue' + id).classList.remove('d-none');
-
-}
-
-
-function okButtonToBlack(id) {
-    document.getElementById('okButtonBlue' + id).classList.add('d-none');
-}
-
-
-// function onInput() {
-//     setTimeout(searchTask,1000);
-// }
-
-
 function searchTask() {
 
     document.getElementById('searchMenu').style = "border: 1px solid lightgray";
@@ -287,10 +248,7 @@ function searchTask() {
         let taskTitle = task['taskTitle'];
         document.getElementById('searchTask').placeholder = "Find task";
         document.getElementById('searchTask').classList.remove('placehoder-color-red');
-        // document.getElementById('searchTask').value = '';
         document.getElementById('task' + task['id']).classList.add('d-none');
-        // if (inputOfSearch == "") {
-        //     inputRequired(task);
         if (taskTitle.toLowerCase().includes(inputOfSearch)) {
             inputIsIncludes(task);
         } else if (notExist) {
@@ -313,7 +271,6 @@ function inputIsIncludes(task) {
     document.getElementById('task' + task['id']).classList.remove('d-none');
     document.getElementById('searchMenu').style = "border: 1px solid lightgray";
     document.getElementById('searchTask').classList.remove('placehoder-color-red');
-    // document.getElementById('searchMenuBackButton').classList.remove('d-none');
     notExist = false;
 }
 
@@ -323,8 +280,6 @@ function inputIsNotExist(task) {
     document.getElementById('searchTask').placeholder = "Task does not exist!";
     document.getElementById('searchTask').classList.add('placehoder-color-red');
     document.getElementById('task' + task['id']).classList.add('d-none');
-    //document.getElementById('searchTask').value = '';
-    //document.getElementById('searchMenuBackButton').classList.remove('d-none');
 }
 
 

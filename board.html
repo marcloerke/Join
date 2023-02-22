@@ -14,120 +14,118 @@
   <link rel="stylesheet" href="./board-css/tasks.css">
   <link rel="stylesheet" href="./board-css/add-task-popup.css">
   <link rel="stylesheet" href="./board-css/task-popup.css">
- <link rel="stylesheet" href="./board-css/responsive.css">
+  <link rel="stylesheet" href="./board-css/responsive.css">
   <link rel="stylesheet" href="desktop_templates.css">
 
 </head>
 
 <body>
 
-  <div class="sidebar"  w3-include-html="assets/templates/sidebar.html"></div>
+  <div class="sidebar" w3-include-html="assets/templates/sidebar.html"></div>
   <div class="header" w3-include-html="assets/templates/header.html"></div>
 
-  
-    <div class="main-container">
 
-      <div class="headline" >
-        <div class="title-of-board">Board</div>
+  <div class="main-container">
 
-         <!-- <div id="searchMenuMobile" class="search-menu-mobile">
-          <input placeholder="Find task" required id="searchTaskMobile" class="search-task" type="text">
+    <div class="headline">
+      <div class="title-of-board">Board</div>
+
+      <div class="headline-right-side">
+        <div id="searchMenuBackButton" onclick="backButton()" class="search-menu-back-button   d-none">Go Back</div>
+
+        <div id="searchMenu" class="search-menu">
+          <input placeholder="Find task" required id="searchTask" oninput="searchTask()" class="search-task"
+            type="text">
 
           <div class="search-icon-container">
-            <button class="search-button" onclick="searchTask()"><img class="search-icon"
-                src="assets/img/search.png"></button>
+            <button disabled class="search-button"><img class="search-icon" src="assets/img/search.png"></button>
           </div>
-        </div>  -->
-
-        <div class="headline-right-side">
-          <div id="searchMenuBackButton" onclick="backButton()"
-            class="search-menu-back-button   d-none">Go Back</div>
-
-          <div id="searchMenu" class="search-menu"> 
-            <input placeholder="Find task" required id="searchTask" oninput="searchTask()" class="search-task" type="text">
-
-            <div class="search-icon-container">
-              <button disabled class="search-button"><img class="search-icon"
-                  src="assets/img/search.png"></button>
-            </div>
-          </div>
-          <div onclick="addTask('toDo')" class="add-task-btn-board">Add task <img src="assets/img/plus-icon-white.svg">
-          </div>
-
         </div>
+        <div onclick="addTask('toDo')" class="add-task-btn-board">Add task <img src="assets/img/plus-icon-white.svg">
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tasks-board">
+
+
+      <div id="dropArea-1" class="drag-drop-area-1 ">
+        <div class="title-1 title">
+          <div>To do</div>
+          <div onclick="addTask('toDo')">
+            <svg class="plusButton" width="30" height="30" viewBox="0 0 30 30" fill="none
+                " xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+              <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+              <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2" />
+            </svg>
+          </div>
+        </div>
+        <div id="taskArea-1" class="tasks-area-1 task-area" ondragleave="ondragLeave('taskArea-1')"
+          ondragenter="ondragEnter('taskArea-1')" ondragend="finishedDragging()"
+          ondrop="moveTo('toDo',event,'taskArea-1')" ondragover="allowDrop(event)"></div>
       </div>
 
-      <div class="tasks-board">
 
-
-        <div id="dropArea-1" class="drag-drop-area-1 ">
-          <div class="title-1 title">
-            <div>To do</div>
-            <div onclick="addTask('toDo')" class="add-btn-icon ">
-              <img onmouseover="changeColorBlue(1)" id="plusBlack1" class="plus"
-                src="assets/img/plus-button-black.svg">
-              <img onmouseleave="changeColorBlack(1)" id="plusBlue1" class="plus d-none"
-                src="assets/img/plus-button-blue.svg">
-            </div>
+      <div id="dropArea-2" class="drag-drop-area-2 ">
+        <div class="title-2 title">
+          <div class="title-task-area">In progress</div>
+          <div onclick="addTask('inProgress')">
+            <svg class="plusButton" width="30" height="30" viewBox="0 0 30 30" fill="none
+                " xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+              <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+              <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2" />
+            </svg>
           </div>
-          <div id="taskArea-1" class="tasks-area-1 task-area" ondragleave="ondragLeave('taskArea-1')"
-            ondragenter="ondragEnter('taskArea-1')" ondragend="finishedDragging()"
-            ondrop="moveTo('toDo',event,'taskArea-1')" ondragover="allowDrop(event)"></div>
         </div>
+        <div id="taskArea-2" class="tasks-area-2 task-area" ondragleave="ondragLeave('taskArea-2')"
+          ondragenter="ondragEnter('taskArea-2')" ondragend="finishedDragging()"
+          ondrop="moveTo('inProgress',event,'taskArea-2')" ondragover="allowDrop(event)"></div>
+      </div>
 
 
-        <div id="dropArea-2" class="drag-drop-area-2 ">
-          <div class="title-2 title">
-            <div class="title-task-area">In progress</div>
-            <div onclick="addTask('inProgress')" class="add-btn-icon">
-              <img onmouseenter="changeColorBlue(2)" id="plusBlack2" class="plus"
-                src="assets/img/plus-button-black.svg">
-              <img onmouseleave="changeColorBlack(2)" id="plusBlue2" class="plus d-none"
-                src="assets/img/plus-button-blue.svg">
-            </div>
+      <div id="dropArea-3" class="drag-drop-area-3 ">
+        <div class="title-3 title">
+          <div>Awaiting Feedback</div>
+          <div onclick="addTask('awaitingFeedback')">
+            <svg class="plusButton" width="30" height="30" viewBox="0 0 30 30" fill="none
+                " xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+              <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+              <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2" />
+            </svg>
           </div>
-          <div id="taskArea-2" class="tasks-area-2 task-area" ondragleave="ondragLeave('taskArea-2')"
-            ondragenter="ondragEnter('taskArea-2')" ondragend="finishedDragging()"
-            ondrop="moveTo('inProgress',event,'taskArea-2')" ondragover="allowDrop(event)"></div>
         </div>
+        <div id="taskArea-3" class="tasks-area-3 task-area" ondragleave="ondragLeave('taskArea-3')"
+          ondragenter="ondragEnter('taskArea-3')" ondragend="finishedDragging()"
+          ondrop="moveTo('awaitingFeedback',event,'taskArea-3')" ondragover="allowDrop(event)"></div>
+      </div>
 
-
-        <div id="dropArea-3" class="drag-drop-area-3 ">
-          <div class="title-3 title">
-            <div>Awaiting Feedback</div>
-            <div onclick="addTask('awaitingFeedback')" class="add-btn-icon">
-              <img onmouseenter="changeColorBlue(3)" id="plusBlack3" class="plus"
-                src="assets/img/plus-button-black.svg" alt="">
-              <img onmouseleave="changeColorBlack(3)" id="plusBlue3" class="plus d-none"
-                src="assets/img/plus-button-blue.svg">
-            </div>
+      <div id="dropArea-4" class="drag-drop-area-4 ">
+        <div class="title-4 title">
+          <div>Done</div>
+          <div onclick="addTask('done')">
+            <svg class="plusButton" width="30" height="30" viewBox="0 0 30 30" fill="none
+                " xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+              <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+              <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2" />
+            </svg>
           </div>
-          <div id="taskArea-3" class="tasks-area-3 task-area" ondragleave="ondragLeave('taskArea-3')"
-            ondragenter="ondragEnter('taskArea-3')" ondragend="finishedDragging()"
-            ondrop="moveTo('awaitingFeedback',event,'taskArea-3')" ondragover="allowDrop(event)"></div>
         </div>
-
-        <div id="dropArea-4" class="drag-drop-area-4 ">
-          <div class="title-4 title">
-            <div>Done</div>
-            <div onclick="addTask('done')" class="add-btn-icon">
-              <img onmouseenter="changeColorBlue(4)" id="plusBlack4" class="plus"
-                src="assets/img/plus-button-black.svg">
-              <img onmouseleave="changeColorBlack(4)" id="plusBlue4" class="plus d-none"
-                src="assets/img/plus-button-blue.svg">
-            </div>
-          </div>
-          <div id="taskArea-4" class="tasks-area-4 task-area" ondragleave="ondragLeave('taskArea-4')"
-            ondragenter="ondragEnter('taskArea-4')" ondragend="finishedDragging()"
-            ondrop="moveTo('done',event,'taskArea-4')" ondragover="allowDrop(event)"></div>
-        </div>
-
+        <div id="taskArea-4" class="tasks-area-4 task-area" ondragleave="ondragLeave('taskArea-4')"
+          ondragenter="ondragEnter('taskArea-4')" ondragend="finishedDragging()"
+          ondrop="moveTo('done',event,'taskArea-4')" ondragover="allowDrop(event)"></div>
       </div>
 
     </div>
 
+  </div>
 
-  
+
+
 
 
   <div id="layover" onclick="closeAddTask()" class="layover ">

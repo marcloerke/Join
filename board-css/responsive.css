@@ -19,9 +19,7 @@
     display: none;
 }
 
-
-
-.add-btn-icon {
+.plusButton {
     display: none;
 }
 
@@ -61,10 +59,6 @@
     .title-of-board {
         padding-top: 25px;
     }
-
-    /* .search-menu {
-        display: none;
-    } */
 
     .search-menu-mobile {
         display: flex;
