@@ -54,6 +54,7 @@ function openTaskPopup(id) {
 
 
 function closeTaskPopup(id) {
+    dropDown(id);
     document.getElementById('layoverTaskPopup' + id).classList.add('d-none');
     document.getElementById('contentTaskPopup' + id).classList.add('d-none');
     document.body.style = "overflow: visible";
@@ -65,6 +66,13 @@ function closeTaskPopup(id) {
     }
 
 }
+
+
+// function check(id) {
+//     return document.getElementById('checkBoxId'+id).checked = true;
+    
+      
+// }
 
 function stopPropagation(event) {
     event.stopPropagation();
