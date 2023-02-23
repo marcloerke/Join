@@ -333,8 +333,6 @@ async function createTask() {
     }
   }
 
-    
-  
   if(prio.innerText == 'Urgent'){
         priorityBg= '#ff3d00';
         prioIconSrcTask= 'arrow-up-red.png';
