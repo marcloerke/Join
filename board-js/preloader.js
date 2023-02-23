@@ -23,7 +23,7 @@ function navbarToggler() {
     const menuLinks= document.querySelectorAll('.nav-item');
     [...menuLinks].forEach(item => {
         if (currentPageClean.includes(item.innerText.toLowerCase())) {
-            item.classList.add('active');
+            item.classList.add('active-nav');
         }
     })
 }

@@ -117,7 +117,7 @@ body {
 
 
 
-.active {
+.active-nav {
   background: rgb(25, 32, 42);
   color: white !important;
   filter: invert(0) sepia(94%) saturate(18%) hue-rotate(287deg) brightness(105%) contrast(100%);
