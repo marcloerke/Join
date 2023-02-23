@@ -49,7 +49,7 @@ function addTaskTemplate(initials) {
                 <img src="assets/img/icon_triangle.png" id="addContactIcon">
               </div>
               <div id="contactsDropdownContainer"></div>
-              <div style="background: ${storedContactsArray[selectedUser].color}"class="chosenContact">${initials}</div>
+              <div style="background: ${storedContactsArray[selectedUserIndex].color}"class="chosenContact">${initials}</div>
             </div>
             <div class="column-right">
               <label for="date">Due Date</label>
@@ -98,11 +98,11 @@ function addTaskTemplate(initials) {
     `;
 }
 
-let selectedUser;
+let selectedUserIndex;
 
 function renderTaskOverlay(id) {
-  selectedUser= id;
-  let initials= document.getElementsByClassName('initials-big')[0].innerText;  
+  selectedUserIndex= storedContactsArray.findIndex(user => user.id === id);
+  let initials= document.getElementsByClassName('initials-big')[0].innerText;
   if (overlayRendered === 0) {
     let overlay = document.createElement("div");
     overlay.setAttribute("id", "annoying");
@@ -114,7 +114,10 @@ function renderTaskOverlay(id) {
     document.body.append(script);
     overlayRendered++;
   }
+
   else {
     document.getElementById('annoying').style.display='block';
+    document.getElementsByClassName('chosenContact')[0].innerText= initials;
+    document.getElementsByClassName('chosenContact')[0].style.background= `${storedContactsArray[selectedUserIndex].color}`
   }
 }

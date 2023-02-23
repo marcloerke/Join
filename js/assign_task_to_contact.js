@@ -186,8 +186,11 @@ assignedToInput.addEventListener("click", function () {
     assignedToInput.style.borderRadius = "7px 7px 0 0";
     contactsDropdown.style.display = "block";
     contactsDropdown.innerHTML = "";
-    for (let i = 0; i < contacts.length; i++) {
-      const contact = contacts[i];
+    for (let i = 0; i < storedContactsArray.length; i++) {
+      if (i === selectedUserIndex) {
+        continue;
+      }
+      const contact = storedContactsArray[i];
       contactsDropdown.innerHTML += /*html*/ `<div class="contact"><div><img src="assets/img/icon_name.png"> ${contact.userName}</div> <input type="checkbox" class="checkbox-primary"></div>`;
     }
     contactsDropdown.innerHTML += /*html*/ `<div class="contact"><div><img src="assets/img/icon_mail.png"> Invite new contact</div></div>`;
@@ -275,7 +278,7 @@ function removeParent(e) {
 //add listener to create task button
 create.addEventListener("click", function () {
   // event.preventDefault();
-  formValidation();
+  formValidation2();
 });
 
 clear.addEventListener("click", function () {
@@ -316,15 +319,17 @@ async function createTask() {
   let prioLow;
   let bgTaskCategory= `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;  
 
-  let selectedContacts= [];
-  let avatarColors= [];
+  let selectedContacts= [storedContactsArray[selectedUserIndex].userName];
+  let avatarColors= [storedContactsArray[selectedUserIndex].color];
+
+  storedContactsArray.splice(selectedUserIndex, 1);
 
   let checkboxes = document.querySelectorAll('.checkbox-primary');
   for (let i = 0; i < checkboxes.length; i++) {
     const checkbox = checkboxes[i];
     if (checkbox.checked) {
-      selectedContacts.push(contacts[i].userName);
-      avatarColors.push(contacts[i].color);
+      selectedContacts.push(storedContactsArray[i].userName);
+      avatarColors.push(storedContactsArray[i].color);
     }
   }
 
@@ -376,18 +381,20 @@ async function createTask() {
   };
   
   tasks.push(newTask);
-  backend.setItem('keyTasks', JSON.stringify(tasks));
+  await backend.setItem('keyTasks', JSON.stringify(tasks));
 //   closeAddTask();
-  updateHTML();
+
   columnName= "toDo";
-//   console.log('tasks nach der Erstellung: ',tasks);
+  alert('success');
+
+
 }
 
 
-function formValidation() {
+function formValidation2() {
     if(checkInputs()) {
         createTask();
-        
+
     }
     else {
         showRequired();
@@ -422,6 +429,7 @@ function showRequired() {
     let data= [
         title, description, categoryInput, date
     ]
+    
     for (let i = 0; i < data.length; i++) {
         const input = data[i];
         if(!input.value || input.value == 'Select task category' || input.value== "") {
@@ -429,18 +437,18 @@ function showRequired() {
            
         }
     }
-    if(prio == undefined) {
+    if(prio == undefined || prio.classList.contains('nav-item')) {
         required[required.length-1].innerText= "Priority Selection is mandatory";
         
     }
 }
 
-window.addEventListener('click', function() {
-    if(requiredShown) {
-        let required= this.document.querySelectorAll(".required");
-        [...required].forEach(e => {
-            e.innerText= "";
-        })
-        requiredShown= false;
-    }
-})
+// document.getElementById('layover').addEventListener('click', function() {
+//     if(requiredShown) {
+//         let required= document.querySelectorAll(".required");
+//         [...required].forEach(e => {
+//             e.innerText= "";
+//         })
+//         requiredShown= false;
+//     }
+// })

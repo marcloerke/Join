@@ -425,7 +425,7 @@ function removeValidationTooltip() {
 
 window.addEventListener("click", function (event) {
   let button = this.document.getElementById("requireFill");
-  if (event.target != button) {
+  if (button && event.target != button) {
     removeValidationTooltip();
   }
 });
