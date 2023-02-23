@@ -282,7 +282,7 @@ create.addEventListener("click", function () {
 });
 
 clear.addEventListener("click", function () {
-  document.getElementById('annoying').style.display='none';
+  window.location.reload();
 });
 
 // modify calendar so you can only select current date or date in the future
@@ -383,9 +383,7 @@ async function createTask() {
 //   closeAddTask();
 
   columnName= "toDo";
-  alert('success');
-
-
+  window.location.href="board.html"
 }
 
 

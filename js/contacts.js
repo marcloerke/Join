@@ -318,6 +318,7 @@ const cancelContactData = () => {
 const showContactData = (contact) => {
   let updateContactForm = document.querySelector("#updatedContacts");
   updateContactForm.innerHTML = ``;
+  const index = storedContactsArray.findIndex(user => user.id === contact.id)
   let initials = createInitials(contact);
   if (contact != null) {
     updateContactForm.innerHTML += /*html*/ `
@@ -335,7 +336,7 @@ const showContactData = (contact) => {
         
         <div class="contact-edit" >
             <div><h2>Contact Information</h2></div>
-            <div onclick="editContact(${contact.id})"><img src="assets/img/icon_edit_dark.png" alt=""> Edit</div>
+            <div onclick="editContact(${index})"><img src="assets/img/icon_edit_dark.png" alt=""> Edit</div>
             
         </div>
         <div class="contact-mail">
