@@ -78,17 +78,6 @@ function renderLayoverTaskPopup(id) {
 }
 
 
-// function fillSelectPanel(id) {
-//     for (let index = 0; index < contacts.length; index++) {
-//         const element = contacts[index];
-//         let name = element.userName;
-//         console.log('userName', name);
-//          document.getElementById('listOfPersons'+id).innerHTML += `<div  onclick="check(${id,index})" class="listOfName">${name}<input id="checkBoxId${index}" type="checkbox"></div>`;
-//     }
-    
-// }
-
-
 function renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, date, taskDescription) {
     document.getElementById('contentTaskPopup' + id).innerHTML = /*html*/ `
     <div class="category-trash">
@@ -229,6 +218,8 @@ function renderProgressBar(id, names) {
     else if (names.length >= 3) {
         progressBarContainer.innerHTML = progressOf100(id, names);
 
+    }else {
+        progressBarContainer.innerHTML = progressOf100(id, names);
     }
 }
 

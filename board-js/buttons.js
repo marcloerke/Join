@@ -26,12 +26,13 @@ function closeAddTask() {
 }
 
 
-function editFinish(id) {
-    chooseContact(id);
-    dropDown(id);
+ function editFinish(id) {
+  
+    document.getElementById('selectContainer' + id).classList.remove('selectContainerPlus');
     let titleInput = document.getElementById('titleInput' + id).value;
     let descriptionInput = document.getElementById('textAreaDescription' + id).value;
     let dateInput = document.getElementById('dateInput' + id).value;
+   
     if (titleInput == "" || descriptionInput == "" || dateInput == "") {
         document.getElementById('titleInput' + id).placeholder = "This field is required";
         document.getElementById('titleInput' + id).classList.add('placehoder-color-red');
@@ -40,11 +41,18 @@ function editFinish(id) {
         document.getElementById('dateInput' + id).style = "color:red";
 
     } else {
-        updateForTasks(id);
+       
+         updateForTasks(id);
+      
+          addServer();
+         updateHTML();
+        
         document.getElementById('editContainerWrapper' + id).classList.add('d-none');
         document.getElementById('layoverTaskPopup' + id).classList.remove('d-none');
         document.getElementById('contentTaskPopup' + id).classList.remove('d-none');
+       
     }
+   
 }
 
 
@@ -59,7 +67,7 @@ function openTaskPopup(id) {
 
 
 function closeTaskPopup(id) {
-    dropDown(id);
+    document.getElementById('selectContainer' + id).classList.remove('selectContainerPlus');
     document.getElementById('layoverTaskPopup' + id).classList.add('d-none');
     document.getElementById('contentTaskPopup' + id).classList.add('d-none');
     document.body.style = "overflow: visible";
@@ -323,7 +331,7 @@ function loadContacts(id) {
 }
 
 
-function chooseContact(id) {
+ function chooseContact(id) {
     tasks[id]['names'] = [];
     tasks[id]['bGcolorsOfAvatar'] = [];
     chooesedContacts = [];

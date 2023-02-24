@@ -37,7 +37,7 @@
 }
 
 .set-description {
-    color: black;
+    color: black !important;
     color: rgb(179, 179, 179);
     margin-bottom: 20px;
 }
@@ -60,6 +60,12 @@
 .set-fonts {
     font-weight: bolder;
     margin-bottom: 25px;
+}
+
+.assigned-to {
+    height: 300px;
+    overflow: scroll;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .due-date {
@@ -122,6 +128,8 @@
     align-items: center;
     gap: 20px;
     margin-top: 25px;
+    padding-left: 20px;
+    padding-right: 50px;
 }
 
 .edit-button {

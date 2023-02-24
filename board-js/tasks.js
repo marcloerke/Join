@@ -24,6 +24,7 @@ function addServerPrioLow(id) {
 
 
 function updateForTasks(id) {
+    
     if (tasks[id]['prioUrgent']) {
         addServerPrioUrgent(id);
     }
@@ -35,15 +36,18 @@ function updateForTasks(id) {
     if (tasks[id]['prioLow']) {
         addServerPrioLow(id);
     }
+  
     dateSpecification(id);
     titleSpecification(id);
     descriptionSpecification(id);
+    chooseContact(id);
     addServer();
     updateHTML();
 }
 
 
 function dateSpecification(id) {
+
     let dateInput = document.getElementById('dateInput' + id).value;
     tasks[id]['date'] = dateInput;
 }
