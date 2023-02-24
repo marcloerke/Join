@@ -255,7 +255,7 @@ function searchTask() {
     document.getElementById('searchMenu').style = "border: 1px solid lightgray";
     let inputOfSearch = document.getElementById('searchTask').value;
     inputOfSearch = inputOfSearch.toLowerCase();
-    document.getElementById('searchMenuBackButton').classList.add('d-none');
+    //document.getElementById('searchMenuBackButton').classList.add('d-none');
     notExist = true;
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i];
