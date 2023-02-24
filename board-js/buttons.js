@@ -26,13 +26,13 @@ function closeAddTask() {
 }
 
 
- function editFinish(id) {
-  
+function editFinish(id) {
+
     document.getElementById('selectContainer' + id).classList.remove('selectContainerPlus');
     let titleInput = document.getElementById('titleInput' + id).value;
     let descriptionInput = document.getElementById('textAreaDescription' + id).value;
     let dateInput = document.getElementById('dateInput' + id).value;
-   
+
     if (titleInput == "" || descriptionInput == "" || dateInput == "") {
         document.getElementById('titleInput' + id).placeholder = "This field is required";
         document.getElementById('titleInput' + id).classList.add('placehoder-color-red');
@@ -41,18 +41,18 @@ function closeAddTask() {
         document.getElementById('dateInput' + id).style = "color:red";
 
     } else {
-       
-         updateForTasks(id);
-      
-          addServer();
-         updateHTML();
-        
+
+        updateForTasks(id);
+
+        addServer();
+        updateHTML();
+
         document.getElementById('editContainerWrapper' + id).classList.add('d-none');
         document.getElementById('layoverTaskPopup' + id).classList.remove('d-none');
         document.getElementById('contentTaskPopup' + id).classList.remove('d-none');
-       
+
     }
-   
+
 }
 
 
@@ -252,7 +252,6 @@ function buttonShadowGreen(id) {
 
 
 function searchTask() {
-
     document.getElementById('searchMenu').style = "border: 1px solid lightgray";
     let inputOfSearch = document.getElementById('searchTask').value;
     inputOfSearch = inputOfSearch.toLowerCase();
@@ -298,19 +297,6 @@ function inputIsNotExist(task) {
 }
 
 
-function backButton() {
-    document.getElementById('searchTask').value = '';
-    for (let i = 0; i < tasks.length; i++) {
-        const task = tasks[i];
-        document.getElementById('task' + task['id']).classList.remove('d-none');
-
-    }
-    document.getElementById('searchMenu').style = "border: 1px solid lightgray";
-    document.getElementById('searchTask').placeholder = "Find task";
-    document.getElementById('searchTask').classList.remove('placehoder-color-red');
-    document.getElementById('searchMenuBackButton').classList.add('d-none');
-}
-
 async function deleteTask(id) {
     tasks.splice(id, 1);
     await addServer();
@@ -318,10 +304,11 @@ async function deleteTask(id) {
     document.getElementById('task' + id).classList.add('d-none');
 }
 
+
 function loadContacts(id) {
     document.getElementById('listOfPersons' + id).innerHTML = '';
     contacts.forEach(c => {
-        document.getElementById('listOfPersons' + id).innerHTML += `
+        document.getElementById('listOfPersons' + id).innerHTML += /*html*/`
      <div class="nameOfEditContainer">
      <div class="user-name-edit-container" id="userNameEditContainer${id}">${c.userName}</div> 
      <input class="checkbox-edit-container" type="checkbox" id="checkboxEditContainer${id}">
@@ -331,7 +318,7 @@ function loadContacts(id) {
 }
 
 
- function chooseContact(id) {
+function chooseContact(id) {
     tasks[id]['names'] = [];
     tasks[id]['bGcolorsOfAvatar'] = [];
     chooesedContacts = [];
@@ -357,5 +344,4 @@ function loadContacts(id) {
     }
     addServer();
     updateHTML();
-
 }

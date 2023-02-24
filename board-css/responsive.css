@@ -118,13 +118,7 @@
         align-items: center;
         font-size: 35px;
     }
-
-    .edit-container-wrapper {
-       
-      min-width: 500px;
-        
-    }
-
+  
     
 }
 
@@ -172,9 +166,20 @@
     }
  
 .prio-container {
-    width: 90%;
+    width: 100% !important;
+}
+.edit-container-wrapper {
+    min-width: 100%;
+}
+.edit-container {
+    min-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
+/* .prio-buttons {
+    scale: 0.8;
+} */
 
 }
 

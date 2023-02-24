@@ -16,13 +16,13 @@ header img {
 }
 
 @keyframes movelogo {
-   
 
-    100% { 
+
+    100% {
         top: 3rem;
         left: 3rem;
     }
-  }
+}
 
 
 .signup-wrapper {
@@ -103,7 +103,7 @@ header img {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    
+
 }
 
 
@@ -116,7 +116,7 @@ header img {
     position: absolute;
     right: 10px;
     width: 4%;
-    top:50%;
+    top: 50%;
     transform: translateY(-50%);
 }
 
@@ -125,12 +125,13 @@ header img {
     width: 80%;
     justify-content: center;
 }
- 
+
 .column1 {
     margin-right: 1.8rem;
 }
 
-.column1 button, .column2 button {
+.column1 button,
+.column2 button {
     width: 100%;
     padding: 8px 0 8px 0;
     font-weight: 600;
@@ -177,7 +178,8 @@ header img {
     margin-right: .5rem;
 }
 
-.column1 div p, .column2 p {
+.column1 div p,
+.column2 p {
     font-weight: 200;
     font-size: .7rem;
 }
@@ -220,24 +222,27 @@ header img {
     cursor: pointer;
 }
 
-#invalid, #noUser {
+#invalid,
+#noUser {
     margin: 0;
     position: absolute;
     bottom: -22px;
     font-size: .8rem;
     color: red;
- }
+}
 
- #success {
+#success {
     margin: 0;
     position: absolute;
     bottom: -22px;
     font-size: .8rem;
     font-weight: 600;
     color: green;
- }
+}
 
-#invalid:empty, #success:empty, #noUser:empty {
+#invalid:empty,
+#success:empty,
+#noUser:empty {
     display: none;
 }
 
@@ -255,14 +260,14 @@ header img {
 }
 
 .validation-tooltip::after {
-    content:'';
-    display:block;
-    width:0;
-    height:0;
-    position:absolute;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
     border-left: 8px solid transparent;
     border-bottom: 8px solid black;
-    border-right:8px solid transparent;
+    border-right: 8px solid transparent;
     top: -8px;
     left: 50%;
     transform: translateX(-50%);
@@ -273,7 +278,7 @@ header img {
 }
 
 .validation-tooltip p:first-of-type {
-    padding: 7px 12px 7px 12px ;
+    padding: 7px 12px 7px 12px;
     background: var(--c-lightblue);
     color: white;
     margin-right: .85rem;
@@ -281,7 +286,7 @@ header img {
 
 
 @media screen and (max-width: 750px) {
-    #card-container{
+    #card-container {
         width: 100%;
     }
 
@@ -307,16 +312,27 @@ header img {
         /* flex-direction: column; */
     }
 
-    .column1 div p, .column2 p {
+    .column1 div p,
+    .column2 p {
         font-weight: 200;
         font-size: 1rem;
+    }
+/* Barni */
+    .login-options-container {
+        display: flex;
+        max-width: 80%;
+        flex-direction: inherit;
+        align-items: center;
 
+    }
+
+
+    .column2 {
+        margin-right: 30px;
+    }
+
+    .column2 p {
+        margin-top: 25px;
+        font-size: 13px !important;
+    }
 }
-}
-
-
-
-
-
-
-

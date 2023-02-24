@@ -88,11 +88,9 @@ form {
 }
 
 .search-icon {
-    /* width: 15px !important; */
     height: 16px;
     margin-top: 5px;
     margin-left: 10px;
-    /* cursor: pointer; */
 }
 
 .search-icon-container {

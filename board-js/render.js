@@ -107,11 +107,11 @@ function renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, d
 function renderEditContainer(id) {
     document.getElementById('editContainer' + id).innerHTML = /*html*/ `
     <img class="exit" onclick="closeTaskPopup(${id}) ; closeEditContainer(${id})" src="assets/img/exit.png">
-    <div>Title</div>
+    <div class="mbt-2">Title</div>
     <form id="formContainer${id}" style="display: flex; flex-direction: column;" onsubmit="editFinish(${id}) ; return false;" ></form>
-    <div>Prio</div>
+    <div class="mbt-2">Prio</div>
     <div id="prioContainer${id}" class="prio-container"></div>
-    <div>Assigned to</div>
+    <div class="mbt-2">Assigned to</div>
     <div id="selectContainer${id}" class="selectContainer"></div>`;
 }
 
@@ -159,11 +159,11 @@ function renderPrioButtons(id) {
 
 function renderInput(id) {
     document.getElementById('formContainer' + id).innerHTML = /*html*/ `
-    <input required id="titleInput${id}" class="title-input" type="text">
-    <div>Description</div>
+    <input required id="titleInput${id}" class="title-input " type="text">
+    <div class="mbt-2">Description</div>
     <textarea required 
           id="textAreaDescription${id}" class="text-area-description" name="" cols="40" rows="5"></textarea>
-    <div>Due date</div>
+    <div class="mbt-2">Due date</div>
     <input required id="dateInput${id}" placeholder="05/08/2022" class="date-input" value="2018-07-22" type="date">`;
 }
 
