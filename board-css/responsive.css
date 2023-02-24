@@ -119,15 +119,13 @@
         font-size: 35px;
     }
 
-    .exit {
-        top: 10px;
-        right: 40px;
+    .edit-container-wrapper {
+       
+      min-width: 500px;
+        
     }
 
-    .ok-button {
-        bottom: 65px;
-        right: 60px;
-    }
+    
 }
 
 @media (max-width: 620px) {
@@ -172,4 +170,11 @@
         width: 100%;
        
     }
+ 
+.prio-container {
+    width: 90%;
 }
+
+
+}
+

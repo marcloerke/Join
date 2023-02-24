@@ -1,3 +1,5 @@
+let chooesedContacts = [];
+
 
 function addTask(column) {
     columnName = column;
@@ -25,6 +27,7 @@ function closeAddTask() {
 
 
 function editFinish(id) {
+    chooseContact(id);
     dropDown(id);
     let titleInput = document.getElementById('titleInput' + id).value;
     let descriptionInput = document.getElementById('textAreaDescription' + id).value;
@@ -49,7 +52,7 @@ function openTaskPopup(id) {
     document.getElementById('layoverTaskPopup' + id).classList.remove('d-none');
     document.getElementById('contentTaskPopup' + id).classList.remove('d-none');
     document.body.style = "overflow: hidden";
-    document.getElementsByClassName('header')[0].style.zIndex= "0";
+    document.getElementsByClassName('header')[0].style.zIndex = "0";
     document.getElementById('titleInput' + id).value = `${tasks[id]['taskTitle']}`;
     document.getElementById('textAreaDescription' + id).innerHTML = `${tasks[id]['taskDescription']} `;
 }
@@ -60,7 +63,7 @@ function closeTaskPopup(id) {
     document.getElementById('layoverTaskPopup' + id).classList.add('d-none');
     document.getElementById('contentTaskPopup' + id).classList.add('d-none');
     document.body.style = "overflow: visible";
-    document.getElementsByClassName('header')[0].style.zIndex= "10";
+    document.getElementsByClassName('header')[0].style.zIndex = "10";
     if (tasks[id]) {
         document.getElementById('titleInput' + id).classList.remove('placehoder-color-red');
         document.getElementById('textAreaDescription' + id).classList.remove('placehoder-color-red');
@@ -307,18 +310,44 @@ async function deleteTask(id) {
     document.getElementById('task' + id).classList.add('d-none');
 }
 
-
 function loadContacts(id) {
     document.getElementById('listOfPersons' + id).innerHTML = '';
     contacts.forEach(c => {
         document.getElementById('listOfPersons' + id).innerHTML += `
      <div class="nameOfEditContainer">
-     <div>${c.userName}</div> 
-     <input class="checkbox" type="checkbox" id="checkbox${id}">
+     <div class="user-name-edit-container" id="userNameEditContainer${id}">${c.userName}</div> 
+     <input class="checkbox-edit-container" type="checkbox" id="checkboxEditContainer${id}">
      </div>
     `;
-    }); }
+    });
+}
 
 
+function chooseContact(id) {
+    tasks[id]['names'] = [];
+    tasks[id]['bGcolorsOfAvatar'] = [];
+    chooesedContacts = [];
+    let allCheckbox = document.querySelectorAll('#checkboxEditContainer' + id);
+    let allUserName = document.querySelectorAll('#userNameEditContainer' + id);
+    for (let i = 0; i < allCheckbox.length; i++) {
+        const checkbox = allCheckbox[i];
+        checkbox['id'] = i;
+        if (checkbox.checked) {
+            for (let j = 0; j < allUserName.length; j++) {
+                const userName = allUserName[j];
+                userName['id'] = j;
+                if (checkbox.id == userName.id) {
+                    chooesedContacts.push(userName.outerText);
+                }
+            }
+        }
+    }
+    for (let index = 0; index < chooesedContacts.length; index++) {
+        const contact = chooesedContacts[index];
+        tasks[id]['names'].push(contact);
+        tasks[id]['bGcolorsOfAvatar'].push(newColor());
+    }
+    addServer();
+    updateHTML();
 
-
+}

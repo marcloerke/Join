@@ -465,14 +465,6 @@
     transition: all 125ms ease-in-out;
 }
 
-/* .listOfName {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 15px;
-    padding-right: 9px;
-} */
-
 
 .nameOfEditContainer {
     display: flex;
