@@ -48,6 +48,7 @@ function openTaskPopup(id) {
     document.getElementById('layoverTaskPopup' + id).classList.remove('d-none');
     document.getElementById('contentTaskPopup' + id).classList.remove('d-none');
     document.body.style = "overflow: hidden";
+    document.getElementsByClassName('header')[0].style.zIndex= "0";
     document.getElementById('titleInput' + id).value = `${tasks[id]['taskTitle']}`;
     document.getElementById('textAreaDescription' + id).innerHTML = `${tasks[id]['taskDescription']} `;
 }
@@ -58,6 +59,7 @@ function closeTaskPopup(id) {
     document.getElementById('layoverTaskPopup' + id).classList.add('d-none');
     document.getElementById('contentTaskPopup' + id).classList.add('d-none');
     document.body.style = "overflow: visible";
+    document.getElementsByClassName('header')[0].style.zIndex= "10";
     if (tasks[id]) {
         document.getElementById('titleInput' + id).classList.remove('placehoder-color-red');
         document.getElementById('textAreaDescription' + id).classList.remove('placehoder-color-red');
