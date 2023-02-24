@@ -72,7 +72,7 @@ function finishedDragging() {
 
 
 function ondragEnter(columnID) {
-    document.getElementById(columnID).style = "opacity: 1; box-shadow: unset; border: 1px dashed lightgreen; border-radius: 15px";
+    document.getElementById(columnID).style = "opacity: 1; box-shadow: unset; border: 1px dashed transparent; border-radius: 15px";
 }
 
 
