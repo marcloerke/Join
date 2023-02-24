@@ -511,194 +511,6 @@ form input::placeholder {
   margin-right: 3rem;
 }
 
-@media screen and (max-width: 1250px) {
-  .add-contact-overlay {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .add-contact-overlay {
-    flex-direction: column;
-  }
-
-
-  .left-overlay {
-    width: 100%;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  .add-contact-inputs {
-    width: 100%;
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
-  }
-
-  section:first-of-type {
-    width: 100%;
-    /* height: 100%; */
-    margin-top: 6rem;
-  }
-
-  section:last-of-type {
-    display: none !important;
-  }
-
-  .button-position {
-    bottom: 100px;
-    right: 2rem;
-  }
-
-  .contact-info-chart {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 750px) {
-
-  .main {
-    display: flex;
-    flex-direction: column;
-    grid-column: 1/11;
-  }
-
-  section {
-    display: flex;
-    flex-direction: column;
-  }
-
-  section:first-of-type {
-    width: 100%;
-    margin-top: 2.5rem;
-  }
-
-  section:last-of-type {
-    width: 100%;
-    display: block !important;
-  }
-
-  #overlay-blur-container,
-  #editContactOverlay {
-    align-items: flex-start;
-  }
-
-  .left-overlay {
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
-  }
-
-  .add-contact-overlay {
-    border: none;
-  }
-
-  .profile {
-    display: none;
-  }
-
-  .button-container {
-    margin-top: 1rem;
-  }
-
-  .contact-scroll-container {
-    height: auto;
-    padding-bottom: 60px !important;
-  }
-
-  .button-position {
-    bottom: 125px;
-  }
-
-  .contact-box {
-    margin: 5px 0 auto;
-  }
-}
-
-@media screen and (max-width: 420px) {
-
-  .main {
-    display: flex;
-    flex-direction: column;
-    grid-column: 1/11;
-  }
-
-  section {
-    display: flex;
-    flex-direction: column;
-  }
-
-  section:first-of-type {
-    height: 120px;
-    width: 100%;
-    margin-top: 1rem;
-  }
-
-  section:last-of-type {
-    width: 100%;
-    display: block !important;
-  }
-
-  .contact-great {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-    padding: 15px 25px;
-  }
-
-  .header-main > h1 {
-    font-size: 1.8rem;
-  }
-
-  .contact-info {
-    padding: 15px 25px;
-  }
-
-  .button-position {
-    bottom: 89px;
-    right: 0.99rem;
-  }
-
-  .contact-header {
-    display: flex;
-    justify-content: space-evenly;
-  }
-
-  .contact-header .initials-big {
-    margin-right: 0;
-    width: 60px;
-    height: 60px;
-  }
-
-  .contact-header .add-task-container-small {
-    margin-left: 0;
-  }
-
-  .add-task-container-small h1 {
-    font-size: 1.2em;
-  }
-
-  .left-overlay div>h1 {
-    font-size: 3rem;
-  }
-
-  .contact-edit {
-    margin-top: 0.5rem;
-  }
-
-  .button-style {
-    width: 124px;
-    height: 42px;
-    font-size: 14px;
-  }
-
-  .button-style img {
-    width: 25px;
-  }
-}
-
-
-
 /* add task layover !!Achtung viel! */
 
 
@@ -1245,4 +1057,196 @@ input[type="checkbox"]:checked::before {
   justify-content: center;
   align-items: center;
 }
+
+
+
+
+/*responsive */
+
+@media screen and (max-width: 1250px) {
+  .add-contact-overlay {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .add-contact-overlay {
+    flex-direction: column;
+  }
+
+
+  .left-overlay {
+    width: 100%;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .add-contact-inputs {
+    width: 100%;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  section:first-of-type {
+    width: 100%;
+    /* height: 100%; */
+    margin-top: 6rem;
+  }
+
+  section:last-of-type {
+    display: none !important;
+  }
+
+  .button-position {
+    top: 100px;
+    right: 2rem;
+  }
+
+  .contact-info-chart {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1/11;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  section:first-of-type {
+    width: 100%;
+    height: 100%;
+    margin-top: 6.5rem;
+  }
+
+  #overlay-blur-container,
+  #editContactOverlay {
+    align-items: flex-start;
+  }
+
+  .left-overlay {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  .add-contact-overlay {
+    border: none;
+    border-radius: 0;
+    height: 100%;
+  }
+
+  .add-contact-inputs {
+    border-radius: 0;
+  }
+
+  .profile {
+    display: none;
+  }
+
+  .button-container {
+    margin-top: 1rem;
+  }
+
+  .contact-scroll-container {
+    height: 100%;
+    /* padding-bottom: 60px !important; */
+  } 
+
+  .button-position {
+    bottom: 125px;
+  }
+
+  .contact-box {
+    margin: 5px 0 auto;
+  }
+}
+
+/* @media screen and (max-width: 420px) {
+
+  /* .main {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1/11;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  section:first-of-type {
+    height: 120px;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  section:last-of-type {
+    width: 100%;
+    display: block !important;
+  } */
+
+  /* .contact-great {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 25px;
+  }
+
+  .header-main > h1 {
+    font-size: 1.8rem;
+  }
+
+  .contact-info {
+    padding: 15px 25px;
+  } */
+
+  /* .button-position {
+    bottom: 89px;
+    right: 0.99rem;
+  } */
+/* 
+  .contact-header {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .contact-header .initials-big {
+    margin-right: 0;
+    width: 60px;
+    height: 60px;
+  }
+
+  .contact-header .add-task-container-small {
+    margin-left: 0;
+  }
+
+  .add-task-container-small h1 {
+    font-size: 1.2em;
+  } */
+
+  /* .left-overlay div>h1 {
+    font-size: 3rem;
+  }
+
+  .contact-edit {
+    margin-top: 0.5rem;
+  }
+
+  .button-style {
+    width: 124px;
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .button-style img {
+    width: 25px;
+  } */
 
