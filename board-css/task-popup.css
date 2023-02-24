@@ -199,7 +199,7 @@
     border: 1px solid lightgray;
     box-sizing: border-box;
     outline: none;
-    margin-bottom: 20px;
+    margin-bottom: 10px !important;
 }
 
 .text-area-description {
@@ -465,7 +465,16 @@
     transition: all 125ms ease-in-out;
 }
 
-.listOfName {
+/* .listOfName {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 9px;
+} */
+
+
+.nameOfEditContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -59,6 +59,7 @@ function renderTasks(taskArea, filterdArray) {
         renderPriorityContainer(id, priorityBg, priorityTaskPopup, prioIconPopupSrc);
         renderPrioButtons(id);
         //fillSelectPanel(id);
+        loadContacts(id);
     }
 }
 

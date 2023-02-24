@@ -25,6 +25,7 @@ function closeAddTask() {
 
 
 function editFinish(id) {
+    dropDown(id);
     let titleInput = document.getElementById('titleInput' + id).value;
     let descriptionInput = document.getElementById('textAreaDescription' + id).value;
     let dateInput = document.getElementById('dateInput' + id).value;
@@ -68,13 +69,6 @@ function closeTaskPopup(id) {
     }
 
 }
-
-
-// function check(id) {
-//     return document.getElementById('checkBoxId'+id).checked = true;
-    
-      
-// }
 
 function stopPropagation(event) {
     event.stopPropagation();
@@ -312,6 +306,18 @@ async function deleteTask(id) {
     closeTaskPopup(id);
     document.getElementById('task' + id).classList.add('d-none');
 }
+
+
+function loadContacts(id) {
+    document.getElementById('listOfPersons' + id).innerHTML = '';
+    contacts.forEach(c => {
+        document.getElementById('listOfPersons' + id).innerHTML += `
+     <div class="nameOfEditContainer">
+     <div>${c.userName}</div> 
+     <input class="checkbox" type="checkbox" id="checkbox${id}">
+     </div>
+    `;
+    }); }
 
 
 
