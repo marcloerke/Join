@@ -311,4 +311,26 @@ async function deleteTask(id) {
     document.getElementById('task' + id).classList.add('d-none');
 }
 
+function inviteNewContact(id) {
+
+  for (let index = 0; index < contacts.length; index++) {
+    const contact = contacts[index];
+    let name = contact['userName'];
+    // let selectedContacts = document.querySelectorAll('.option');
+    // console.log('selectedContacts ',selectedContacts );
+    // for (let i = 0; i < selectedContacts.length; i++) {
+    //     const element = selectedContacts[i];
+    //     console.log('selectedContacts ',element );
+    //     //console.log(' element', element);
+    //      if(element){
+    document.getElementById('listOfPersons'+id).innerHTML += `
+    <div>${name}</div>
+    `;
+    }
+    // }
+   
+//   }
+
+}
+
 

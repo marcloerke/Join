@@ -190,7 +190,7 @@ function renderSelectPanel(id) {
     <div id="listOfPersons${id}" class="list-of-persons"></div>
     <div id="inviteNewContact${id}" class="option border-radius">
         <div class="contactName">Invite new contact</div>
-        <img id="noName${id}" class="noname" src="assets/img/new-contact.png">
+        <img id="noName${id}" onclick="inviteNewContact(${id})" class="noname" src="assets/img/new-contact.png">
     </div>`;
 }
 
