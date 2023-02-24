@@ -37,6 +37,7 @@
   max-width: 900px;
   margin-left: 80px;
   margin-right: 1rem;
+  overflow-y: auto;
 }
 
 .task-card h1 {
@@ -127,6 +128,7 @@ textarea:focus {
   max-height: 100px;
   overflow-y: auto;
   display: none;
+  margin-bottom: 1rem;
 }
 
 #colorContainer {
@@ -482,7 +484,7 @@ input[type="checkbox"]:checked::before {
   background: var(--c-darkblue);
   color: white;
 }
-
+ 
 .option-img {
   position: absolute;
   right: 0.5rem;
