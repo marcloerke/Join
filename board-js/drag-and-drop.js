@@ -10,9 +10,7 @@ function updateHTML() {
     filterForColumnOne();
     filterForColumnTwo();
     filterForColumnThree();
-    filterForColumnFour();
-    document.getElementById('searchMenuBackButton').classList.add('d-none');
-   
+    filterForColumnFour();   
 }
 
 
