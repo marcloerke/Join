@@ -30,9 +30,39 @@ function renderTasks(taskArea, filterdArray) {
         const date = task['date'];
         const id = task['id'];
         document.getElementById(taskArea).innerHTML +=  /*html*/ `
-                <div id="task${id}" draggable="true" ondrag="dragging(${id})"  ondragstart="startDragging(${id},event)"  onclick="openTaskPopup(${id})" class="task">  
-                    <div id="categoryContainer${id}" class="categoryTask-container">
-                          <div class="categoryTask" style="background-color:${backgroundColorCategory}">${taskCategory}</div>
+            <div id="task${id}" draggable="true" ondrag="dragging(${id})"  ondragstart="startDragging(${id},event)"  onclick="openTaskPopup(${id})" class="task"></div>
+                <div id="layoverTaskPopup${id}" onclick="stopPropagation(event)"   class="layover-task-popup d-none"></div>
+            </div> `;
+        renderHTML(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc, names,
+             backgroundColor, date, priorityBg, priorityTaskPopup, prioIconPopupSrc);
+    }
+}
+
+
+function renderHTML(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc, names,
+     backgroundColor, date, priorityBg, priorityTaskPopup, prioIconPopupSrc) {
+    renderTasksArea(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc);
+    renderAvatars(names, id, backgroundColor);
+    renderLayoverTaskPopup(id);
+    renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, date, taskDescription);
+    renderAvatarsTaskPopup(id, names, backgroundColor);
+    renderProgressBar(id, names);
+    renderEditContainer(id);
+    renderInput(id);
+    renderSelectPanel(id);
+    renderSelectContact(id, names);
+    renderPriorityContainer(id, priorityBg, priorityTaskPopup, prioIconPopupSrc);
+    renderPrioButtons(id);
+    loadContacts(id);
+}
+
+
+function renderTasksArea(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc) {
+    document.getElementById('task' + id).innerHTML = /*html*/ `
+      <div id="categoryContainer${id}" class="categoryTask-container">
+                    <div style="max-width: 50%">
+                        <div class="categoryTask" style="background-color:${backgroundColorCategory}">${taskCategory}</div>
+                    </div>
                     </div>
                     <div id="taskTitle${id}" class="task-title">${taskTitle}</div>
                     <div id="descriptionTask${id}" class="description">${taskDescription}</div>
@@ -43,23 +73,7 @@ function renderTasks(taskArea, filterdArray) {
                               <div id="avatar${id}" class="avatar"></div>
                               <div id="avatarPlus${id}"></div>
                           </div>
-                          <img id="prioIconOnTask${id}" src="assets/img/${prioIconTaskSrc}">
-                    </div>
-                    <div id="layoverTaskPopup${id}" onclick="stopPropagation(event)"   class="layover-task-popup d-none"></div>
-                </div> `;
-        renderAvatars(names, id, backgroundColor);
-        renderLayoverTaskPopup(id);
-        renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, date, taskDescription);
-        renderAvatarsTaskPopup(id, names, backgroundColor);
-        renderProgressBar(id, names);
-        renderEditContainer(id);
-        renderInput(id);
-        renderSelectPanel(id);
-        renderSelectContact(id, names);
-        renderPriorityContainer(id, priorityBg, priorityTaskPopup, prioIconPopupSrc);
-        renderPrioButtons(id);
-        loadContacts(id);
-    }
+                          <img id="prioIconOnTask${id}" src="assets/img/${prioIconTaskSrc}">`;
 }
 
 
@@ -84,9 +98,7 @@ function renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, d
          <div class="categoryTask set-category" style="background-color:${backgroundColorCategory}" >${taskCategory}</div>
     <div onclick="deleteTask(${id})" class="trash"><img src="assets/img/trash.png" alt=""></div>
     </div>
-   
     <img class="exit" onclick="closeTaskPopup(${id})" src="assets/img/exit.png">
-    
     <div id="taskTitlePopupContainer${id}" class="task-title set-title"  >${taskTitle}</div>
     <div id="descriptionPopup${id}" class="description set-description">${taskDescription}</div>
     <div class="dateContainer">
@@ -218,7 +230,7 @@ function renderProgressBar(id, names) {
     else if (names.length >= 3) {
         progressBarContainer.innerHTML = progressOf100(id, names);
 
-    }else {
+    } else {
         progressBarContainer.innerHTML = progressOf100(id, names);
     }
 }
