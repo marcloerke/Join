@@ -41,7 +41,7 @@ function renderTasks(taskArea, filterdArray) {
 
 function renderHTML(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc, names,
      backgroundColor, date, priorityBg, priorityTaskPopup, prioIconPopupSrc) {
-    renderTasksArea(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc);
+    renderTasksForArea(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc);
     renderAvatars(names, id, backgroundColor);
     renderLayoverTaskPopup(id);
     renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, date, taskDescription);
@@ -57,7 +57,7 @@ function renderHTML(id, backgroundColorCategory, taskCategory, taskTitle, taskDe
 }
 
 
-function renderTasksArea(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc) {
+function renderTasksForArea(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc) {
     document.getElementById('task' + id).innerHTML = /*html*/ `
       <div id="categoryContainer${id}" class="categoryTask-container">
                     <div style="max-width: 50%">
@@ -94,9 +94,15 @@ function renderLayoverTaskPopup(id) {
 
 function renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, date, taskDescription) {
     document.getElementById('contentTaskPopup' + id).innerHTML = /*html*/ `
+    <div class="trash-popup d-none" style="border: 5px solid ${backgroundColorCategory}" onclick="stopPropagation(event)" id="trashPopup${id}"> Are you sure to delete this Task?
+       <div class="deleteNoYes">
+           <button class="delete-button-container" style="background-color:lightgreen" id="no${id}" onclick="noDelete(${id})">No</button>
+           <button class="delete-button-container"  style="background-color:red" id="yes${id}" onclick="yesDelete(${id})">Yes</button>
+        </div>
+    </div>
     <div class="category-trash">
          <div class="categoryTask set-category" style="background-color:${backgroundColorCategory}" >${taskCategory}</div>
-    <div onclick="deleteTask(${id})" class="trash"><img src="assets/img/trash.png" alt=""></div>
+    <div onclick="trashPopup(${id})" class="trash"><img src="assets/img/trash.png" alt=""></div>
     </div>
     <img class="exit" onclick="closeTaskPopup(${id})" src="assets/img/exit.png">
     <div id="taskTitlePopupContainer${id}" class="task-title set-title"  >${taskTitle}</div>
@@ -107,7 +113,7 @@ function renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, d
     </div>
     <div id="priorityContainer${id}" class="priority-container set-fonts"></div>
     <div id="assignedTo${id}" class="assigned-to set-fonts">Assigned To:</div>
-    <svg class="edit-button" onclick="editTask(${id})" width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg id="editTask${id}" class="edit-button" onclick="editTask(${id})" width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect class="edit-button" width="57" height="57" rx="10" fill="#2A3647"/>
 <path d="M20.9449 35.5155L25.7643 38.4404L38.4074 17.6083C38.694 17.1362 38.5435 16.5211 38.0714 16.2346L34.9618 14.3474C34.4897 14.0608 33.8746 14.2113 33.5881 14.6834L20.9449 35.5155Z" fill="white"/>
 <path d="M20.3599 36.4792L25.1792 39.4041L20.4506 41.6889L20.3599 36.4792Z" fill="white"/>

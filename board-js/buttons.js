@@ -67,6 +67,7 @@ function openTaskPopup(id) {
 
 
 function closeTaskPopup(id) {
+
     document.getElementById('selectContainer' + id).classList.remove('selectContainerPlus');
     document.getElementById('layoverTaskPopup' + id).classList.add('d-none');
     document.getElementById('contentTaskPopup' + id).classList.add('d-none');
@@ -296,11 +297,32 @@ function inputIsNotExist(task) {
 }
 
 
+function trashPopup(id) {
+    document.getElementById('trashPopup' + id).classList.remove('d-none');
+    document.getElementById('trashPopup' + id).classList.add('trash-popup');
+}
+
+
 async function deleteTask(id) {
-    tasks.splice(id, 1);
-    await addServer();
-    closeTaskPopup(id);
     document.getElementById('task' + id).classList.add('d-none');
+    closeTaskPopup(id)
+    tasks.splice(id, 1);
+    tasks.forEach((task, index) => {
+        task['id'] = index;
+    });
+    await addServer();
+    updateHTML();
+}
+
+
+function noDelete(id) {
+    document.getElementById('trashPopup' + id).classList.add('d-none');
+}
+
+
+function yesDelete(id) {
+    document.getElementById('trashPopup' + id).classList.add('d-none');
+    deleteTask(id);
 }
 
 
