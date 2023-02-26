@@ -136,39 +136,6 @@ function renderPriorityContainer(id, priorityBg, priorityTaskPopup, prioIconPopu
 }
 
 
-function renderPrioButtons(id) {
-    document.getElementById('prioContainer' + id).innerHTML += /*html*/ `
-    <div onclick="prioButtonUrgentRed(${id})"
-    onmouseenter="noButtonShadowOrange(${id}); noButtonShadowGreen(${id}) "
-    onmouseleave="buttonShadowOrange(${id}) ; buttonShadowGreen(${id})" id="urgent${id}"
-    class="urgent prio-buttons ">Urgent
-    <img id="prioArrowRed${id}" class="prio-arrow-red" src="assets/img/arrow-up-red.png">
-    <img id="prioArrowWhite${id}" class="prio-arrow-white d-none"
-        src="assets/img/arrow-up-white.png">
-    </div>
-       
-    <div onclick="prioButtonMediumOrange(${id})"
-    onmouseenter="noButtonShadowRed(${id}) ; noButtonShadowGreen(${id})"
-    onmouseleave="buttonShadowRed(${id}); buttonShadowGreen(${id})" id="medium${id}"
-    class="medium prio-buttons">Medium
-    <img id="prioEqualSignOrange${id}" class="prio-equal-sign-orange"
-        src="assets/img/equal-sign-orange.png">
-    <img id="prioEqualSignWhite${id}" class="prio-equal-sign-white d-none"
-        src="assets/img/equal-sign-white.svg">
-    </div>
-
-    <div onclick="prioButtonLowGreen(${id})"
-    onmouseenter="noButtonShadowOrange(${id}); noButtonShadowRed(${id})"
-    onmouseleave="buttonShadowOrange(${id}); buttonShadowRed(${id})" id="low${id}"
-    class="low prio-buttons">Low
-    <img id="prioArrowGreen${id}" class="prio-arrow-green"
-        src="assets/img/arrow-down-green.png">
-    <img id="prioArrowWhiteDown${id}" class="prio-arrow-white-down d-none"
-        src="assets/img/arrow-up-white.png">
-    </div>`;
-}
-
-
 function renderInput(id) {
     document.getElementById('formContainer' + id).innerHTML = /*html*/ `
     <input required id="titleInput${id}" class="title-input " type="text">
@@ -301,6 +268,39 @@ function renderAvatarsTaskPopup(id, names, backgroundColor) {
                 <div>${name}</div>
           </div> `;
     }
+}
+
+
+function renderPrioButtons(id) {
+    document.getElementById('prioContainer' + id).innerHTML += /*html*/ `
+    <div onclick="prioButtonUrgentRed(${id})"
+    onmouseenter="noButtonShadowOrange(${id}); noButtonShadowGreen(${id}) "
+    onmouseleave="buttonShadowOrange(${id}) ; buttonShadowGreen(${id})" id="urgent${id}"
+    class="urgent prio-buttons ">Urgent
+    <img id="prioArrowRed${id}" class="prio-arrow-red" src="assets/img/arrow-up-red.png">
+    <img id="prioArrowWhite${id}" class="prio-arrow-white d-none"
+        src="assets/img/arrow-up-white.png">
+    </div>
+       
+    <div onclick="prioButtonMediumOrange(${id})"
+    onmouseenter="noButtonShadowRed(${id}) ; noButtonShadowGreen(${id})"
+    onmouseleave="buttonShadowRed(${id}); buttonShadowGreen(${id})" id="medium${id}"
+    class="medium prio-buttons">Medium
+    <img id="prioEqualSignOrange${id}" class="prio-equal-sign-orange"
+        src="assets/img/equal-sign-orange.png">
+    <img id="prioEqualSignWhite${id}" class="prio-equal-sign-white d-none"
+        src="assets/img/equal-sign-white.svg">
+    </div>
+
+    <div onclick="prioButtonLowGreen(${id})"
+    onmouseenter="noButtonShadowOrange(${id}); noButtonShadowRed(${id})"
+    onmouseleave="buttonShadowOrange(${id}); buttonShadowRed(${id})" id="low${id}"
+    class="low prio-buttons">Low
+    <img id="prioArrowGreen${id}" class="prio-arrow-green"
+        src="assets/img/arrow-down-green.png">
+    <img id="prioArrowWhiteDown${id}" class="prio-arrow-white-down d-none"
+        src="assets/img/arrow-up-white.png">
+    </div>`;
 }
 
 
