@@ -94,10 +94,10 @@ function renderLayoverTaskPopup(id) {
 
 function renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, date, taskDescription) {
     document.getElementById('contentTaskPopup' + id).innerHTML = /*html*/ `
-    <div class="trash-popup d-none" style="border: 5px solid ${backgroundColorCategory}" onclick="stopPropagation(event)" id="trashPopup${id}"> Are you sure to delete this Task?
+    <div class="trash-popup d-none" onclick="stopPropagation(event)" id="trashPopup${id}"> Are you sure to delete this Task?
        <div class="deleteNoYes">
-           <button class="delete-button-container" style="background-color:lightgreen" id="no${id}" onclick="noDelete(${id})">No</button>
-           <button class="delete-button-container"  style="background-color:red" id="yes${id}" onclick="yesDelete(${id})">Yes</button>
+           <button class="delete-button-container" style="border: 2px solid green" id="no${id}" onclick="noDelete(${id})">No</button>
+           <button class="delete-button-container"  style="border: 2px solid red" id="yes${id}" onclick="yesDelete(${id})">Yes</button>
         </div>
     </div>
     <div class="category-trash">
