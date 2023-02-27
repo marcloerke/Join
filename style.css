@@ -166,6 +166,10 @@ body {
     display: none !important;
   }
 
+  #problemChild {
+    padding-right: 0 !important;
+  }
+
   .nav-container {
     display: flex;
     flex-direction: row !important;
@@ -214,9 +218,9 @@ body {
     font-size: 12px;
   }
 
-  #problemChild {
+  /* #problemChild {
     padding-right: 0 !important;
-  }
+  } */
 }
 /* ##### Summary ##### */
 

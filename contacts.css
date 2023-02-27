@@ -190,6 +190,7 @@ ul {
 
 .name-mail-container div:first-of-type {
   font-size: 1.1rem;
+  padding-bottom: 5px;
 }
 
 .name-mail-container div:last-of-type {
@@ -267,6 +268,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 10px;
 }
 
 .button-style:hover {
@@ -1096,6 +1098,7 @@ input[type="checkbox"]:checked::before {
   .button-position {
     top: 120px;
     right: 2rem;
+    bottom: 0;
   }
 
   .contact-info-chart {
