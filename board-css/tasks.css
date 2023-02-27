@@ -10,18 +10,21 @@
 }
 
 .categoryTask-container {
-    height: 30px;
     display: flex;
 }
 
 .categoryTask {
     display: flex;
     justify-content: center;
+    max-width: 150px;
+    /* word-wrap: break-word; */
+    overflow-wrap: break-word;
     padding: 5px 15px;
     color: #ffffff;
     border-radius: 8px;
     font-size: 13px;
     box-sizing: border-box;
+
 }
 
 .task-title {
@@ -83,12 +86,12 @@
     margin-right: 5px;
 }
 
-.prio-icon-medium  {
+.prio-icon-medium {
     width: 17px !important;
     height: 6px !important
 }
 
-.prio-icon-low  {
+.prio-icon-low {
     transform: rotate(-2deg);
 }
 
@@ -108,5 +111,4 @@
 .progress-container-empty {
     height: 25px;
     width: 100%;
-    background-colo: blueviolet;
 }

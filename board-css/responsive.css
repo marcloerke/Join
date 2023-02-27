@@ -135,16 +135,19 @@
     .task {
         width: 100%;
     }
+
     .drag-drop-containers {
         width: 90%;
     }
-   
+
     .content-task-popup {
         height: 75%;
     }
 
-    .content-task-popup::-webkit-scrollbar {
-        display: none;
+
+    /* Mindenhonnan eltüntek a scrollbar-ok */
+    ::-webkit-scrollbar {
+        width: 0;
     }
 
     .layover-task-popup {
@@ -155,38 +158,72 @@
         right: 60px;
     }
 
-    .exit {
+    .exit-edit-container {
         top: 5px;
-        right: 60px;
+        right: 55px;
+    }
+
+    .exit-task-popup {
+        top: 5px;
+        right: 28px;
     }
 
     .trash-popup {
         box-shadow: unset;
     }
 
-
+    .categoryTask {
+        display: flex;
+        justify-content: center;
+        max-width: 150px;
+        /* word-wrap: break-word; */
+        overflow-wrap: break-word;
+        padding: 5px 15px;
+        color: #ffffff;
+        border-radius: 8px;
+        font-size: 13px;
+        box-sizing: border-box;
+    }
 }
 
 
 @media (max-width: 400px) {
-   .edit-container-wrapper {
-    padding-left: 20px;
-    padding-right: 20px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-   }
+    .edit-container-wrapper {
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+    }
 
-   .edit-container {
-    padding-left: 20px;
-    padding-right: 20px;
-    box-sizing: border-box;
-    width: 85%;
-   }
+    .edit-container {
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+        width: 85%;
+    }
 
-   .prio-container {
-    scale: 0.7;
-    margin-left: -50px !important;
-   }
+    .prio-container {
+        scale: 0.75;
+        margin-left: -42px !important;
+    }
+
+    .exit-edit-container {
+        top: 5px;
+        right: 19px;
+    }
+
+    .exit-task-popup {
+        top: 5px;
+        right: 35px;
+    }
+
+    .ok-button {
+        right: 65px;
+    }
+
+    .edit-button {
+        right: 35px;
+    }
 
 }

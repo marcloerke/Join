@@ -149,9 +149,18 @@
 }
 
 
-.exit {
+.exit-task-popup {
     position: absolute;
     top: 30px;
+    right: 30px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+
+.exit-edit-container {
+    position: absolute;
+    top: 25px;
     right: 30px;
     cursor: pointer;
     width: 30px;
