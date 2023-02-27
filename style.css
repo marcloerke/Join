@@ -21,6 +21,8 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+
+
 .sidebar {
   grid-column: span 2;
   grid-row: span 10;
