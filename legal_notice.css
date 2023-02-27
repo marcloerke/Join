@@ -5,4 +5,15 @@
     margin-top: 2rem;
     margin-left: 80px;
     padding-bottom: 20px;
+    text-align: justify;
+    margin-right: 15px;
+}
+
+@media screen and (max-width: 750px) {
+    .content {
+        grid-column: 1/ 11;
+        margin-left: 15px;
+        margin-right: 15px;
+        text-align: justify
+    }
 }
