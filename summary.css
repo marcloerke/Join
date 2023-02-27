@@ -9,7 +9,7 @@ body {
 .content {
     grid-column: 3/ 11;
     grid-row: 2/11;
-    /* overflow-y: scroll; #Marc*/
+    overflow-y: auto;
     margin-top: 2rem;
     margin-left: 80px;
 }
