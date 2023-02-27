@@ -142,6 +142,7 @@
 
     .content-task-popup {
         height: 75%;
+        scrollbar-width: none;
     }
 
 

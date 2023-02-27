@@ -32,7 +32,8 @@
 }
 
 .set-category {
-    width: 100px;
+    max-width: 250px;
+    overflow-wrap: break-word;
     font-size: 20px;
 }
 

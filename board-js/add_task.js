@@ -1,6 +1,8 @@
 /* script variables */
 // setURL("https://gruppe-428.developerakademie.net/smallest_backend_ever");
 
+let subtaskTotal;
+
 let form = document.getElementsByClassName("form")[0];
 let title = document.getElementById("title");
 let description = document.getElementById("description");
@@ -277,24 +279,22 @@ create.addEventListener("click", function () {
   // event.preventDefault();
   subtaskCounterChecker();
   formValidation();
-  setTimeout(barni,1000);
+  setTimeout(addSubtaskCounter,2000);
 });
 
-let subtaskSumme;
 
-function barni() {
-  tasks[tasks.length-1]['subtaskCounter'] = subtaskSumme;
+function addSubtaskCounter() {
+  tasks[tasks.length-1]['subtaskCounter'] = subtaskTotal;
   addServer();
   updateHTML();
 }
 
+
 function subtaskCounterChecker() {
   let subtasks = document.querySelectorAll('.subtask-counter');
-  for (let index = 0; index < subtasks.length; index++) {
-    const element = subtasks[index];
-   }
-  subtaskSumme = subtasks.length;
+  subtaskTotal = subtasks.length;
 }
+
 
 clear.addEventListener("click", function () {
   closeAddTask();
