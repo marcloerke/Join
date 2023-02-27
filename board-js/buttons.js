@@ -68,7 +68,7 @@ function openTaskPopup(id) {
 
 function closeTaskPopup(id) {
 
-    document.getElementById('selectContainer' + id).classList.remove('selectContainerPlus');
+    document.getElementById('selectContainer' + id).classList.remove('selectContainerPlus'); // select Panel wird zugemacht
     document.getElementById('layoverTaskPopup' + id).classList.add('d-none');
     document.getElementById('contentTaskPopup' + id).classList.add('d-none');
     document.body.style = "overflow: visible";

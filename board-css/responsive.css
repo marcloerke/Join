@@ -134,14 +134,32 @@
 @media (max-width: 550px) {
 
     .tasks-board {
-        min-width: 90%;
+    
     }
 
 }
 
 @media (max-width: 500px) {
 
-    .task {
+
+    .content-task-popup {
+
+        height: 70%;
+       
+    }
+
+    .content-task-popup::-webkit-scrollbar {
+
+    display: none;
+       
+    }
+
+    .layover-task-popup {
+
+        background-color: white;
+    }
+
+    /* .task {
         width: 290px;
         margin-top: 30px;
         background-color: white;
@@ -175,7 +193,7 @@
     min-width: 100%;
     padding-left: 15px;
     padding-right: 15px;
-}
+} */
 
 /* .prio-buttons {
     scale: 0.8;

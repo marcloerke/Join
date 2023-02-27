@@ -181,8 +181,7 @@ function renderSelectContact(id, names) {
     }
 }
 
-
-function renderProgressBar(id, names) {
+ function renderProgressBar(id, names) {
     let progressBarContainer = document.getElementById('myProgressBar' + id);
     if (names.length == 0) {
         progressBarContainer.innerHTML =/*html*/`
