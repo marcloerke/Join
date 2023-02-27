@@ -1099,6 +1099,7 @@ input[type="checkbox"]:checked::before {
     top: 120px;
     right: 2rem;
     bottom: 0;
+    height: fit-content;
   }
 
   .contact-info-chart {
@@ -1158,10 +1159,10 @@ input[type="checkbox"]:checked::before {
     /* padding-bottom: 60px !important; */
   }
 
-  .button-position {
+  /* .button-position {
     position: absolute;
     bottom: 125px;
-  }
+  } */
 
   .contact-box {
     margin: 5px 0 auto;
