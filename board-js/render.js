@@ -183,16 +183,10 @@ function renderSelectContact(id, names) {
 }
 
  function renderProgressBar(id, subtaskCounter) {
-    if(subtaskCounter > 0) {
     let progressBarContainer = document.getElementById('myProgressBar' + id);
     if (subtaskCounter == 0) {
         progressBarContainer.innerHTML =/*html*/`
-        <div class="progress-container">
-             <div class="progress-blue"></div>
-        </div>
-        <div id="progressBarDone${id}" class="progress-bar-done">
-             <div>${subtaskCounter}/3 Done</div>
-        </div>`;
+        <div class="progress-container-empty"></div>`;
     }
     else if (subtaskCounter == 1) {
         progressBarContainer.innerHTML = progressOf33(id, subtaskCounter);
@@ -210,9 +204,11 @@ function renderSelectContact(id, names) {
         progressBarContainer.innerHTML = progressOf100(id, subtaskCounter);
 
     } else {
+        
         progressBarContainer.innerHTML = progressOf100(id, subtaskCounter);
     }
-}
+   
+   
 }
 
 
