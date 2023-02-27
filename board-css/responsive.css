@@ -1,4 +1,4 @@
-@media ( max-width: 1250px) {
+@media (max-width: 1250px) {
     .tasks-board {
         flex-wrap: wrap;
         padding-left: 80px;
@@ -13,23 +13,23 @@
 
 }
 
- @media ( max-width: 1100px) {
-   
-.add-task-btn-board {
-    display: none;
+@media (max-width: 1100px) {
+
+    .add-task-btn-board {
+        display: none;
+    }
+
+    .plusButton {
+        display: none;
+    }
+
+    .title {
+        justify-content: center;
+    }
+
 }
 
-.plusButton {
-    display: none;
-}
-
-.title {
-    justify-content: center;
-}
-
-} 
-
-@media ( max-width: 1100px) {
+@media (max-width: 1100px) {
     .tasks-board {
         flex-wrap: wrap;
         padding-left: 20px;
@@ -68,7 +68,7 @@
         display: none;
     }
 
-    
+
 
     .tasks-board {
         padding-left: 80px;
@@ -77,12 +77,12 @@
 
     .headline-right-side {
 
-     margin-top: 25px;
-     align-items: center;
+        margin-top: 25px;
+        align-items: center;
     }
 
     .tasks-board {
-       padding-top: 25px;
+        padding-top: 25px;
     }
 }
 
@@ -118,8 +118,6 @@
         align-items: center;
         font-size: 35px;
     }
-  
-    
 }
 
 @media (max-width: 620px) {
@@ -131,73 +129,38 @@
     }
 }
 
-@media (max-width: 550px) {
-
-    .tasks-board {
-    
-    }
-
-}
 
 @media (max-width: 500px) {
 
+    .task {
+        width: 100%;
+    }
 
+   
     .content-task-popup {
-
         height: 70%;
-       
     }
 
     .content-task-popup::-webkit-scrollbar {
-
-    display: none;
-       
+        display: none;
     }
 
     .layover-task-popup {
-
         background-color: white;
     }
 
-    /* .task {
-        width: 290px;
-        margin-top: 30px;
-        background-color: white;
-        border-radius: 18px;
-        padding: 10px;
-        font-size: 14px;
-        cursor: pointer;
-        box-sizing: border-box;
+    .ok-button {
+        right: 60px;
     }
 
-    .title {
-        width: 250px;
+    .exit {
+        top: 5px;
+        right: 60px;
     }
 
-    .search-task {
-        width: 200px;
+    .trash-popup {
+        box-shadow: unset;
     }
 
-    .content-task-popup {
-        width: 100%;
-       
-    }
- 
-.prio-container {
-    width: 100% !important;
-}
-.edit-container-wrapper {
-    min-width: 100%;
-}
-.edit-container {
-    min-width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
-} */
-
-/* .prio-buttons {
-    scale: 0.8;
-} */
 
 }
-
