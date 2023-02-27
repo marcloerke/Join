@@ -140,6 +140,7 @@ async function signUp() {
     name: name.value,
     email: email.value,
     password: password.value,
+    loggedIn: false
   };
   users.push(newUser);
   await backend.setItem("users", JSON.stringify(users));
@@ -152,15 +153,17 @@ async function login() {
   users = JSON.parse(backend.getItem("users")) || [];
   let password = document.getElementById("login-password");
   let email = document.getElementById("login-mail");
-  let user = users.find((u) => {
+  let index = users.findIndex((u) => {
     return u.password == password.value && u.email == email.value;
   });
-  if (user) {
+  if (index !== -1) {
     let checkbox = document.getElementById("checkbox");
     if (checkbox.checked) {
       localStorage.setItem("password", password.value);
       localStorage.setItem("email", email.value);
     }
+    users[index].loggedIn= true;
+    await backend.setItem("users", JSON.stringify(users));
     window.location.href = "summary.html";
   } else {
     renderLoginDeny();
