@@ -1,10 +1,16 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 header {
     all: unset;
 }
 
 header img {
-    width: 8%;
-    max-width: 10%;
+    width: clamp(40px, 8%, 100px);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -304,8 +310,13 @@ header img {
         font-size: 1rem;
     }
 
-    header img {
-        width: 10%;
+    /* header img {
+        width: 8%;
+        max-width: 200px;
+    } */
+
+    .column1, .column2 {
+        margin-right: 0;
     }
 
     .login-options-container {
@@ -325,11 +336,6 @@ header img {
         flex-direction: inherit;
         align-items: center;
 
-    }
-
-
-    .column2 {
-        margin-right: 30px;
     }
 
     .column2 p {
