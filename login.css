@@ -287,7 +287,8 @@ header img {
 
 @media screen and (max-width: 750px) {
     #card-container {
-        width: 100%;
+        width: 90%;
+        margin-top: 3rem;
     }
 
     .signup-wrapper {
