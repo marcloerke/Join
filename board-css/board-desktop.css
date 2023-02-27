@@ -125,9 +125,7 @@ form {
     gap: 15px;
 }
 
-.drag-drop-containers {
-    width: 90%;
-}
+
 
 .title {
     display: flex;

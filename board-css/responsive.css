@@ -135,7 +135,9 @@
     .task {
         width: 100%;
     }
-
+    .drag-drop-containers {
+        width: 90%;
+    }
    
     .content-task-popup {
         height: 70%;
