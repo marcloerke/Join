@@ -9,7 +9,7 @@ body {
 .content {
     grid-column: 3/ 11;
     grid-row: 2/11;
-    overflow-y: scroll;
+    /* overflow-y: scroll; #Marc*/
     margin-top: 2rem;
     margin-left: 80px;
 }
@@ -46,7 +46,7 @@ body {
 }
 
 .summary-content-right h1 {
-   color: #29ABE2;
+    color: #29ABE2;
 }
 
 .row {
@@ -225,10 +225,14 @@ body {
 }
 
 @media screen and (max-width: 650px) {
+    .summary-headline-headline {
+        padding: 15px;
+    }
     .summary-content {
         transform: scale(0.9);
         margin-top: -1rem;
     }
+
     .summary-headline .f-27 {
         display: none;
     }
@@ -251,17 +255,24 @@ body {
         margin-top: -5rem;
     }
 
-    
+
 
 }
 
 @media screen and (max-width: 480px) {
+
+    .summary-headline-headline {
+        padding: 15px;
+    }
+
     .summary-content {
         transform: scale(0.65);
         margin-top: -7.5rem;
-    } 
+    }
 
-    .f-21, .f-16, #date {
+    .f-21,
+    .f-16,
+    #date {
         font-size: 1.3rem;
     }
 }
@@ -270,9 +281,11 @@ body {
     .summary-content {
         transform: scale(0.6);
         margin-top: -8.5rem;
-    } 
+    }
 
-    .f-21, .f-16, #date {
+    .f-21,
+    .f-16,
+    #date {
         font-size: 1.5rem;
     }
 }
