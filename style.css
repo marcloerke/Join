@@ -222,10 +222,9 @@ body {
     padding-right: 0 !important;
   } */
 }
-/* ##### Summary ##### */
 
-/* ##### Board ##### */
-
-/* ##### Add Task ##### */
-
-/* ##### Contacts ##### */
+@media screen and (min-width: 1750px) {
+  body {
+    grid-template-columns: minmax(0, 175px) minmax(0, 175px) repeat(8, 1fr);
+  }
+}
