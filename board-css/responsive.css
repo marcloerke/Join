@@ -166,3 +166,30 @@
 
 
 }
+
+
+@media (max-width: 400px) {
+   .edit-container-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+   }
+
+   .edit-container {
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    width: 85%;
+   }
+
+   .prio-container {
+    scale: 0.7;
+    margin-left: -50px !important;
+   }
+
+   .date-input {
+    
+   }
+}

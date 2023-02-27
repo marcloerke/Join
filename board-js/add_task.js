@@ -259,7 +259,7 @@ finishEditingSubtask.addEventListener("click", function () {
   if (subtaskInputField.value.length > 0) {
     subtaskContainer.innerHTML += /*html*/ `
              <div class="subtask">
-                <p>&#9675; ${subtaskInputField.value}</p>
+                <p class="subtask-counter"> &#9675; ${subtaskInputField.value}</p>
                  <img src="assets/img/icon_trash.png" class="subtask-image" onclick="removeParent(event)">
              </div>
      `;
@@ -275,8 +275,26 @@ function removeParent(e) {
 //add listener to create task button
 create.addEventListener("click", function () {
   // event.preventDefault();
+  subtaskCounterChecker();
   formValidation();
+  setTimeout(barni,1000);
 });
+
+let subtaskSumme;
+
+function barni() {
+  tasks[tasks.length-1]['subtaskCounter'] = subtaskSumme;
+  addServer();
+  updateHTML();
+}
+
+function subtaskCounterChecker() {
+  let subtasks = document.querySelectorAll('.subtask-counter');
+  for (let index = 0; index < subtasks.length; index++) {
+    const element = subtasks[index];
+   }
+  subtaskSumme = subtasks.length;
+}
 
 clear.addEventListener("click", function () {
   closeAddTask();

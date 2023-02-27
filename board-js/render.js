@@ -29,24 +29,25 @@ function renderTasks(taskArea, filterdArray) {
         const backgroundColorCategory = task['bgTaskCategory'];
         const date = task['date'];
         const id = task['id'];
+        const subtaskCounter = task['subtaskCounter'];
         document.getElementById(taskArea).innerHTML +=  /*html*/ `
             <div id="task${id}" draggable="true" ondrag="dragging(${id})"  ondragstart="startDragging(${id},event)"  onclick="openTaskPopup(${id})" class="task"></div>
                 <div id="layoverTaskPopup${id}" onclick="stopPropagation(event)"   class="layover-task-popup d-none"></div>
             </div> `;
         renderHTML(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc, names,
-             backgroundColor, date, priorityBg, priorityTaskPopup, prioIconPopupSrc);
+             backgroundColor, date, priorityBg, priorityTaskPopup, prioIconPopupSrc,subtaskCounter);
     }
 }
 
 
 function renderHTML(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc, names,
-     backgroundColor, date, priorityBg, priorityTaskPopup, prioIconPopupSrc) {
+     backgroundColor, date, priorityBg, priorityTaskPopup, prioIconPopupSrc,subtaskCounter) {
     renderTasksForArea(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc);
     renderAvatars(names, id, backgroundColor);
     renderLayoverTaskPopup(id);
     renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, date, taskDescription);
     renderAvatarsTaskPopup(id, names, backgroundColor);
-    renderProgressBar(id, names);
+    renderProgressBar(id, subtaskCounter);
     renderEditContainer(id);
     renderInput(id);
     renderSelectPanel(id);
@@ -181,62 +182,67 @@ function renderSelectContact(id, names) {
     }
 }
 
- function renderProgressBar(id, names) {
+ function renderProgressBar(id, subtaskCounter) {
     let progressBarContainer = document.getElementById('myProgressBar' + id);
-    if (names.length == 0) {
+    if (subtaskCounter == 0) {
         progressBarContainer.innerHTML =/*html*/`
         <div class="progress-container">
              <div class="progress-blue"></div>
         </div>
         <div id="progressBarDone${id}" class="progress-bar-done">
-             <div>${names.length}/3 Done</div>
+             <div>${subtaskCounter}/3 Done</div>
         </div>`;
     }
-    else if (names.length == 1) {
-        progressBarContainer.innerHTML = progressOf33(id, names);
+    else if (subtaskCounter == 1) {
+        progressBarContainer.innerHTML = progressOf33(id, subtaskCounter);
     }
-    else if (names.length == 2) {
-        progressBarContainer.innerHTML = progressOf66(id, names);
+    else if (subtaskCounter == 2) {
+        progressBarContainer.innerHTML = progressOf66(id, subtaskCounter);
     }
 
-    else if (names.length >= 3) {
-        progressBarContainer.innerHTML = progressOf100(id, names);
+    else if (subtaskCounter == 3) {
+        progressBarContainer.innerHTML = progressOf100(id, subtaskCounter);
+
+    }
+    else if (subtaskCounter > 3) {
+        subtaskCounter = 3;
+        progressBarContainer.innerHTML = progressOf100(id, subtaskCounter);
 
     } else {
-        progressBarContainer.innerHTML = progressOf100(id, names);
+        progressBarContainer.innerHTML = progressOf100(id, subtaskCounter);
     }
 }
 
 
-function progressOf33(id, names) {
+function progressOf33(id, subtaskCounter) {
     return /*html*/ `
     <div class="progress-container">
          <div class="progress-blue" style="width:33%"></div>
    </div>
    <div id="progressBarDone${id}" class="progress-bar-done">
-         <div>${names.length}/3 Done</div>
+         <div>${subtaskCounter}/3 Done</div>
     </div>` ;
 }
 
 
-function progressOf66(id, names) {
+function progressOf66(id, subtaskCounter) {
     return /*html*/`
     <div class="progress-container">
          <div class="progress-blue"  style="width:66%"></div>
     </div>
     <div id="progressBarDone${id}" class="progress-bar-done">
-         <div>${names.length}/3 Done</div>
+         <div>${subtaskCounter}/3 Done</div>
     </div>` ;
 }
 
 
-function progressOf100(id, names) {
+function progressOf100(id, subtaskCounter) {
     return  /*html*/`
     <div class="progress-container">
          <div class="progress-blue"  style="width:100%"></div>
     </div>
     <div id="progressBarDone${id}" class="progress-bar-done">
-         <div>${names.length}/3 Done</div>
+         <div>${subtaskCounter}/3 Done</div>
     </div>` ;
 }
 
