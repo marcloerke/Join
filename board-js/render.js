@@ -61,7 +61,7 @@ function renderHTML(id, backgroundColorCategory, taskCategory, taskTitle, taskDe
 function renderTasksForArea(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc) {
     document.getElementById('task' + id).innerHTML = /*html*/ `
       <div id="categoryContainer${id}" class="categoryTask-container">
-                    <div style="max-width: 50%">
+                    <div>
                         <div class="categoryTask" style="background-color:${backgroundColorCategory}">${taskCategory}</div>
                     </div>
                     </div>

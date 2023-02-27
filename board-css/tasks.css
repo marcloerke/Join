@@ -11,6 +11,7 @@
 
 .categoryTask-container {
     height: 30px;
+    display: flex;
 }
 
 .categoryTask {
@@ -20,6 +21,7 @@
     color: #ffffff;
     border-radius: 8px;
     font-size: 13px;
+    box-sizing: border-box;
 }
 
 .task-title {
