@@ -183,6 +183,7 @@ function renderSelectContact(id, names) {
 }
 
  function renderProgressBar(id, subtaskCounter) {
+    if(subtaskCounter > 0) {
     let progressBarContainer = document.getElementById('myProgressBar' + id);
     if (subtaskCounter == 0) {
         progressBarContainer.innerHTML =/*html*/`
@@ -211,6 +212,7 @@ function renderSelectContact(id, names) {
     } else {
         progressBarContainer.innerHTML = progressOf100(id, subtaskCounter);
     }
+}
 }
 
 
