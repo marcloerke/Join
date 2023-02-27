@@ -16,8 +16,7 @@
 .categoryTask {
     display: flex;
     justify-content: center;
-    width: 40px;
-    padding: 3px 15px;
+    padding: 5px 15px;
     color: #ffffff;
     border-radius: 8px;
     font-size: 13px;

@@ -126,7 +126,9 @@ body {
 }
 
 .icon-help:hover {
-  cursor: not-allowed;
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: 225ms all ease-in-out;
 }
 
 .icon-user {

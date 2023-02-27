@@ -30,9 +30,39 @@ function renderTasks(taskArea, filterdArray) {
         const date = task['date'];
         const id = task['id'];
         document.getElementById(taskArea).innerHTML +=  /*html*/ `
-                <div id="task${id}" draggable="true" ondrag="dragging(${id})"  ondragstart="startDragging(${id},event)"  onclick="openTaskPopup(${id})" class="task">  
-                    <div id="categoryContainer${id}" class="categoryTask-container">
-                          <div class="categoryTask" style="background-color:${backgroundColorCategory}">${taskCategory}</div>
+            <div id="task${id}" draggable="true" ondrag="dragging(${id})"  ondragstart="startDragging(${id},event)"  onclick="openTaskPopup(${id})" class="task"></div>
+                <div id="layoverTaskPopup${id}" onclick="stopPropagation(event)"   class="layover-task-popup d-none"></div>
+            </div> `;
+        renderHTML(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc, names,
+             backgroundColor, date, priorityBg, priorityTaskPopup, prioIconPopupSrc);
+    }
+}
+
+
+function renderHTML(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc, names,
+     backgroundColor, date, priorityBg, priorityTaskPopup, prioIconPopupSrc) {
+    renderTasksForArea(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc);
+    renderAvatars(names, id, backgroundColor);
+    renderLayoverTaskPopup(id);
+    renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, date, taskDescription);
+    renderAvatarsTaskPopup(id, names, backgroundColor);
+    renderProgressBar(id, names);
+    renderEditContainer(id);
+    renderInput(id);
+    renderSelectPanel(id);
+    renderSelectContact(id, names);
+    renderPriorityContainer(id, priorityBg, priorityTaskPopup, prioIconPopupSrc);
+    renderPrioButtons(id);
+    loadContacts(id);
+}
+
+
+function renderTasksForArea(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc) {
+    document.getElementById('task' + id).innerHTML = /*html*/ `
+      <div id="categoryContainer${id}" class="categoryTask-container">
+                    <div style="max-width: 50%">
+                        <div class="categoryTask" style="background-color:${backgroundColorCategory}">${taskCategory}</div>
+                    </div>
                     </div>
                     <div id="taskTitle${id}" class="task-title">${taskTitle}</div>
                     <div id="descriptionTask${id}" class="description">${taskDescription}</div>
@@ -43,23 +73,7 @@ function renderTasks(taskArea, filterdArray) {
                               <div id="avatar${id}" class="avatar"></div>
                               <div id="avatarPlus${id}"></div>
                           </div>
-                          <img id="prioIconOnTask${id}" src="assets/img/${prioIconTaskSrc}">
-                    </div>
-                    <div id="layoverTaskPopup${id}" onclick="stopPropagation(event)"   class="layover-task-popup d-none"></div>
-                </div> `;
-        renderAvatars(names, id, backgroundColor);
-        renderLayoverTaskPopup(id);
-        renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, date, taskDescription);
-        renderAvatarsTaskPopup(id, names, backgroundColor);
-        renderProgressBar(id, names);
-        renderEditContainer(id);
-        renderInput(id);
-        renderSelectPanel(id);
-        renderSelectContact(id, names);
-        renderPriorityContainer(id, priorityBg, priorityTaskPopup, prioIconPopupSrc);
-        renderPrioButtons(id);
-        loadContacts(id);
-    }
+                          <img id="prioIconOnTask${id}" src="assets/img/${prioIconTaskSrc}">`;
 }
 
 
@@ -80,13 +94,17 @@ function renderLayoverTaskPopup(id) {
 
 function renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, date, taskDescription) {
     document.getElementById('contentTaskPopup' + id).innerHTML = /*html*/ `
+    <div class="trash-popup d-none" onclick="stopPropagation(event)" id="trashPopup${id}"> Are you sure to delete this Task?
+       <div class="deleteNoYes">
+           <button class="delete-button-container" style="border: 2px solid green" id="no${id}" onclick="noDelete(${id})">No</button>
+           <button class="delete-button-container"  style="border: 2px solid red" id="yes${id}" onclick="yesDelete(${id})">Yes</button>
+        </div>
+    </div>
     <div class="category-trash">
          <div class="categoryTask set-category" style="background-color:${backgroundColorCategory}" >${taskCategory}</div>
-    <div onclick="deleteTask(${id})" class="trash"><img src="assets/img/trash.png" alt=""></div>
+    <div onclick="trashPopup(${id})" class="trash"><img src="assets/img/trash.png" alt=""></div>
     </div>
-   
     <img class="exit" onclick="closeTaskPopup(${id})" src="assets/img/exit.png">
-    
     <div id="taskTitlePopupContainer${id}" class="task-title set-title"  >${taskTitle}</div>
     <div id="descriptionPopup${id}" class="description set-description">${taskDescription}</div>
     <div class="dateContainer">
@@ -95,7 +113,7 @@ function renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, d
     </div>
     <div id="priorityContainer${id}" class="priority-container set-fonts"></div>
     <div id="assignedTo${id}" class="assigned-to set-fonts">Assigned To:</div>
-    <svg class="edit-button" onclick="editTask(${id})" width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg id="editTask${id}" class="edit-button" onclick="editTask(${id})" width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect class="edit-button" width="57" height="57" rx="10" fill="#2A3647"/>
 <path d="M20.9449 35.5155L25.7643 38.4404L38.4074 17.6083C38.694 17.1362 38.5435 16.5211 38.0714 16.2346L34.9618 14.3474C34.4897 14.0608 33.8746 14.2113 33.5881 14.6834L20.9449 35.5155Z" fill="white"/>
 <path d="M20.3599 36.4792L25.1792 39.4041L20.4506 41.6889L20.3599 36.4792Z" fill="white"/>
@@ -121,39 +139,6 @@ function renderPriorityContainer(id, priorityBg, priorityTaskPopup, prioIconPopu
     <div>Priority:</div>
     <div id="prioUrgentTaskPopup${id}" class="prio-urgent-task-popup prio-setup  " style="background-color:${priorityBg}">${priorityTaskPopup} <img
            src="assets/img/${prioIconPopupSrc}"></div>`;
-}
-
-
-function renderPrioButtons(id) {
-    document.getElementById('prioContainer' + id).innerHTML += /*html*/ `
-    <div onclick="prioButtonUrgentRed(${id})"
-    onmouseenter="noButtonShadowOrange(${id}); noButtonShadowGreen(${id}) "
-    onmouseleave="buttonShadowOrange(${id}) ; buttonShadowGreen(${id})" id="urgent${id}"
-    class="urgent prio-buttons ">Urgent
-    <img id="prioArrowRed${id}" class="prio-arrow-red" src="assets/img/arrow-up-red.png">
-    <img id="prioArrowWhite${id}" class="prio-arrow-white d-none"
-        src="assets/img/arrow-up-white.png">
-    </div>
-       
-    <div onclick="prioButtonMediumOrange(${id})"
-    onmouseenter="noButtonShadowRed(${id}) ; noButtonShadowGreen(${id})"
-    onmouseleave="buttonShadowRed(${id}); buttonShadowGreen(${id})" id="medium${id}"
-    class="medium prio-buttons">Medium
-    <img id="prioEqualSignOrange${id}" class="prio-equal-sign-orange"
-        src="assets/img/equal-sign-orange.png">
-    <img id="prioEqualSignWhite${id}" class="prio-equal-sign-white d-none"
-        src="assets/img/equal-sign-white.svg">
-    </div>
-
-    <div onclick="prioButtonLowGreen(${id})"
-    onmouseenter="noButtonShadowOrange(${id}); noButtonShadowRed(${id})"
-    onmouseleave="buttonShadowOrange(${id}); buttonShadowRed(${id})" id="low${id}"
-    class="low prio-buttons">Low
-    <img id="prioArrowGreen${id}" class="prio-arrow-green"
-        src="assets/img/arrow-down-green.png">
-    <img id="prioArrowWhiteDown${id}" class="prio-arrow-white-down d-none"
-        src="assets/img/arrow-up-white.png">
-    </div>`;
 }
 
 
@@ -196,8 +181,7 @@ function renderSelectContact(id, names) {
     }
 }
 
-
-function renderProgressBar(id, names) {
+ function renderProgressBar(id, names) {
     let progressBarContainer = document.getElementById('myProgressBar' + id);
     if (names.length == 0) {
         progressBarContainer.innerHTML =/*html*/`
@@ -218,7 +202,7 @@ function renderProgressBar(id, names) {
     else if (names.length >= 3) {
         progressBarContainer.innerHTML = progressOf100(id, names);
 
-    }else {
+    } else {
         progressBarContainer.innerHTML = progressOf100(id, names);
     }
 }
@@ -289,6 +273,39 @@ function renderAvatarsTaskPopup(id, names, backgroundColor) {
                 <div>${name}</div>
           </div> `;
     }
+}
+
+
+function renderPrioButtons(id) {
+    document.getElementById('prioContainer' + id).innerHTML += /*html*/ `
+    <div onclick="prioButtonUrgentRed(${id})"
+    onmouseenter="noButtonShadowOrange(${id}); noButtonShadowGreen(${id}) "
+    onmouseleave="buttonShadowOrange(${id}) ; buttonShadowGreen(${id})" id="urgent${id}"
+    class="urgent prio-buttons ">Urgent
+    <img id="prioArrowRed${id}" class="prio-arrow-red" src="assets/img/arrow-up-red.png">
+    <img id="prioArrowWhite${id}" class="prio-arrow-white d-none"
+        src="assets/img/arrow-up-white.png">
+    </div>
+       
+    <div onclick="prioButtonMediumOrange(${id})"
+    onmouseenter="noButtonShadowRed(${id}) ; noButtonShadowGreen(${id})"
+    onmouseleave="buttonShadowRed(${id}); buttonShadowGreen(${id})" id="medium${id}"
+    class="medium prio-buttons">Medium
+    <img id="prioEqualSignOrange${id}" class="prio-equal-sign-orange"
+        src="assets/img/equal-sign-orange.png">
+    <img id="prioEqualSignWhite${id}" class="prio-equal-sign-white d-none"
+        src="assets/img/equal-sign-white.svg">
+    </div>
+
+    <div onclick="prioButtonLowGreen(${id})"
+    onmouseenter="noButtonShadowOrange(${id}); noButtonShadowRed(${id})"
+    onmouseleave="buttonShadowOrange(${id}); buttonShadowRed(${id})" id="low${id}"
+    class="low prio-buttons">Low
+    <img id="prioArrowGreen${id}" class="prio-arrow-green"
+        src="assets/img/arrow-down-green.png">
+    <img id="prioArrowWhiteDown${id}" class="prio-arrow-white-down d-none"
+        src="assets/img/arrow-up-white.png">
+    </div>`;
 }
 
 

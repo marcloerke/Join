@@ -49,7 +49,7 @@
     <div class="tasks-board">
 
 
-      <div id="dropArea-1" class="drag-drop-area-1 ">
+      <div id="dropArea-1" class="drag-drop-area-1 drag-drop-containers">
         <div class="title-1 title">
           <div>To do</div>
           <div onclick="addTask('toDo')">
@@ -67,7 +67,7 @@
       </div>
 
 
-      <div id="dropArea-2" class="drag-drop-area-2 ">
+      <div id="dropArea-2" class="drag-drop-area-2 drag-drop-containers">
         <div class="title-2 title">
           <div class="title-task-area">In progress</div>
           <div onclick="addTask('inProgress')">
@@ -85,7 +85,7 @@
       </div>
 
 
-      <div id="dropArea-3" class="drag-drop-area-3 ">
+      <div id="dropArea-3" class="drag-drop-area-3 drag-drop-containers">
         <div class="title-3 title">
           <div>Awaiting Feedback</div>
           <div onclick="addTask('awaitingFeedback')">
@@ -102,7 +102,7 @@
           ondrop="moveTo('awaitingFeedback',event,'taskArea-3')" ondragover="allowDrop(event)"></div>
       </div>
 
-      <div id="dropArea-4" class="drag-drop-area-4 ">
+      <div id="dropArea-4" class="drag-drop-area-4 drag-drop-containers">
         <div class="title-4 title">
           <div>Done</div>
           <div onclick="addTask('done')">

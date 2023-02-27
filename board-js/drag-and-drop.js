@@ -10,9 +10,7 @@ function updateHTML() {
     filterForColumnOne();
     filterForColumnTwo();
     filterForColumnThree();
-    filterForColumnFour();
-    document.getElementById('searchMenuBackButton').classList.add('d-none');
-   
+    filterForColumnFour();   
 }
 
 
@@ -81,7 +79,7 @@ function ondragLeave(columnID) {
 }
 
 
-function moveTo(column, ev, columnID) {
+async function moveTo(column, ev, columnID) {
     document.getElementById(columnID).style = "opacity: 1; box-shadow: unset;border: unset";
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
@@ -93,7 +91,7 @@ function moveTo(column, ev, columnID) {
     tasks.forEach((task,index) => {
         task['id'] = index;
     });
-    addServer();
+   await addServer();
     updateHTML();
 }
 
