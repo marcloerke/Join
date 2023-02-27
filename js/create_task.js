@@ -136,13 +136,14 @@ function showRequired() {
   requiredShown = true;
   let prio = document.querySelector(".active");
   let required = document.getElementsByClassName("required");
-  let data = [title, description, categoryInput, date];
+  let data = [title, description, categoryInput, date, assignedToInput];
   for (let i = 0; i < data.length; i++) {
     const input = data[i];
     if (
       !input.value ||
       input.value == "Select task category" ||
-      input.value == ""
+      input.value == "" ||
+      input.value== "Select contacts to assign"
     ) {
       required[i].innerText = "This field is required";
     }
