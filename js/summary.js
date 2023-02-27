@@ -5,6 +5,7 @@ async function initSummary() {
     await init();
     await dataFromServer();
     getCurrentDate();
+    getUsername();
 }
  
 
@@ -12,6 +13,7 @@ async function dataFromServer() {
     setURL('https://gruppe-428.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem("keyTasks")) || [];
+    users = JSON.parse(backend.getItem("users")) || [];
     countStatus();
 }
 
@@ -54,6 +56,20 @@ function getFullDate(month, day, year) {
     return `${m} ${d}, ${y}`;
 }
 
+//get name of currently logged in user
+
+function getUsername() {
+    let name= document.getElementById('loggedInUser');
+    let index= users.findIndex(u=>{
+        return u.loggedIn == true;
+    })
+    if (index !== -1) {
+        name.innerText= users[index].name;
+    }
+    else {
+        name.innerText= "Guest";
+    }
+}
 
 // count alle task-categories
 

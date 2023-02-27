@@ -45,3 +45,20 @@ function openCloseLogout() {
         logoutOpen= true;   
     }
 }
+
+async function logout() {
+    setURL('https://gruppe-428.developerakademie.net/smallest_backend_ever');
+    await downloadFromServer();
+    users = JSON.parse(backend.getItem("users")) || [];
+    let index= users.findIndex(u => {
+        return u.loggedIn == true
+    })
+    if (index !== -1) {
+        users[index].loggedIn= false;
+        await backend.setItem("users", JSON.stringify(users));
+        window.location.href = "index.html";
+    }
+    else {
+        window.location.href = "index.html";
+    }
+}
