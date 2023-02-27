@@ -81,7 +81,7 @@ async function createTask() {
     bGcolorsOfAvatar: avatarColors,
     column: columnName,
     id: tasks.length,
-    'subtaskCounter':1
+    'subtaskCounter':0
   };
   
   tasks.push(newTask);
