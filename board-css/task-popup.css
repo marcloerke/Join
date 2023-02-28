@@ -13,6 +13,7 @@
 
 .content-task-popup {
     width: 450px;
+    height: 600px;
     background-color: white;
     border-radius: 15px;
     display: flex;
@@ -232,6 +233,10 @@
     box-sizing: border-box;
     outline: none;
     margin-bottom: 20px;
+}
+
+::-webkit-scrollbar {
+    width: 0;
 }
 
 .text-area-description {
