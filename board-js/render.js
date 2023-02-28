@@ -2,7 +2,7 @@ async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
         const element = includeElements[i];
-        file = element.getAttribute("w3-include-html"); 
+        file = element.getAttribute("w3-include-html");
         let resp = await fetch(file);
         if (resp.ok) {
             element.innerHTML = await resp.text();
@@ -184,23 +184,24 @@ function renderSelectContact(id, names) {
 
 function renderProgressBar(id, subtaskCounter) {
     let progressBarContainer = document.getElementById('myProgressBar' + id);
-    if (subtaskCounter == 0) {
+
+    if (subtaskCounter > 0) {
+        if (subtaskCounter == 1) {
+            progressBarContainer.innerHTML = progressOf33(id, subtaskCounter);
+        }
+        else if (subtaskCounter == 2) {
+            progressBarContainer.innerHTML = progressOf66(id, subtaskCounter);
+        }
+        else if (subtaskCounter == 3) {
+            progressBarContainer.innerHTML = progressOf100(id, subtaskCounter);
+        }
+        else if (subtaskCounter > 3) {
+            subtaskCounter = 3;
+            progressBarContainer.innerHTML = progressOf100(id, subtaskCounter);
+        }
+    }
+    else {
         progressBarContainer.innerHTML =/*html*/`<div class="progress-container-empty"></div>`;
-    }
-    else if (subtaskCounter == 1) {
-        progressBarContainer.innerHTML = progressOf33(id, subtaskCounter);
-    }
-    else if (subtaskCounter == 2) {
-        progressBarContainer.innerHTML = progressOf66(id, subtaskCounter);
-    }
-    else if (subtaskCounter == 3) {
-        progressBarContainer.innerHTML = progressOf100(id, subtaskCounter);
-    }
-    else if (subtaskCounter > 3) {
-        subtaskCounter = 3;
-        progressBarContainer.innerHTML = progressOf100(id, subtaskCounter);
-    } else {
-        progressBarContainer.innerHTML = progressOf100(id, subtaskCounter);
     }
 }
 

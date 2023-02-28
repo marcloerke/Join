@@ -152,7 +152,7 @@
     }
 
     .layover-task-popup {
-        background-color: white;
+        background-color: ;
     }
 
     .ok-button {
@@ -202,19 +202,24 @@
 
     .date-input {
         height: 25px;
-        margin-bottom: 10px;
+        margin-botto: 10px;
     }
 
     .title-input {
         height: 30px;
-        margin-bottom: 10px;
+        margin-botto: 10px;
     }
 
     .text-area-description {
-        margin-bottom: 10px;
+        margin-botto: 10px;
     }
+
     .ok-button {
-        bottom: 100px;
+        botto: 80px;
+    }
+
+    .edit-container {
+        margi-top: 30px;
     }
 
 }
