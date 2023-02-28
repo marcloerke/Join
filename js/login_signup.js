@@ -13,7 +13,7 @@ async function init() {
   users = JSON.parse(backend.getItem("users")) || [];
   users.forEach(u=>{
     if (u.loggedIn == true) {
-      u.loggedIn == false;
+      u.loggedIn = false;
     }
   })
   await backend.setItem("users", JSON.stringify(users));
