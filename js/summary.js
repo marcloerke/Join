@@ -71,7 +71,7 @@ function getUsername() {
     }
 }
 
-// count alle task-categories
+// count all task-categories
 
 function countStatus() {
     let statusProgress = 0;
@@ -85,7 +85,7 @@ function countStatus() {
         
         if ( task['column'] == "inProgress") statusProgress++;
         if ( task['column'] == "awaitingFeedback") statusFeedback++;
-        if ( task['column'] == "urgent") statusUrgent++;
+        if ( task.prioUrgent == true) statusUrgent++;
         if ( task['column'] == "toDo") statusToDo++;
         if ( task['column'] == "done") statusDone++;        
     }
