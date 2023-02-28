@@ -13,6 +13,7 @@
 
 .content-task-popup {
     width: 450px;
+    height: 600px;
     background-color: white;
     border-radius: 15px;
     display: flex;
@@ -39,9 +40,14 @@
 
 .set-description {
     color: black !important;
-    /* color: rgb(179, 179, 179); */
     margin-bottom: 20px;
+    overflow: auto;
+    height: 150px;
 }
+
+.set-description::-webkit-scrollbar {
+    display: none;
+} 
 
 .set-color {
     padding: 5px;
@@ -215,6 +221,7 @@
 
 .mbt-2 {
     margin-bottom: 2px;
+    font-weight: bold;
 }
 
 .title-input {
@@ -225,7 +232,11 @@
     border: 1px solid lightgray;
     box-sizing: border-box;
     outline: none;
-    margin-bottom: 20px !important;
+    margin-bottom: 20px;
+}
+
+::-webkit-scrollbar {
+    width: 0;
 }
 
 .text-area-description {

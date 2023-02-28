@@ -65,10 +65,6 @@ body {
      background-color: white;
 }
 
-form {
-    display: flex;
-}
-
 .search-task {
     outline: unset;
     border: unset;

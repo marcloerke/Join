@@ -185,6 +185,38 @@
         font-size: 13px;
         box-sizing: border-box;
     }
+
+    .set-title {
+        font-size: 20px;
+    }
+
+    .set-description {
+        height: 200px;
+        color: gray !important;
+    }
+
+    .assigned-to {
+        height: 200px;
+        overflow: auto;
+    }
+
+    .date-input {
+        height: 25px;
+        margin-bottom: 10px;
+    }
+
+    .title-input {
+        height: 30px;
+        margin-bottom: 10px;
+    }
+
+    .text-area-description {
+        margin-bottom: 10px;
+    }
+    .ok-button {
+        bottom: 100px;
+    }
+
 }
 
 
@@ -207,6 +239,7 @@
     .prio-container {
         scale: 0.75;
         margin-left: -42px !important;
+        margin-bottom: 10px;
     }
 
     .exit-edit-container {

@@ -126,7 +126,7 @@ function renderEditContainer(id) {
     document.getElementById('editContainer' + id).innerHTML = /*html*/ `
     <img class="exit-edit-container" onclick="closeTaskPopup(${id}) ; closeEditContainer(${id})" src="assets/img/exit.png">
     <div class="mbt-2">Title</div>
-    <form id="formContainer${id}" style="display: flex; flex-direction: column;" onsubmit="editFinish(${id}) ; return false;" ></form>
+    <form class="form-edit-container"id="formContainer${id}" style="display: flex; flex-direction: column;" onsubmit="editFinish(${id}) ; return false;" ></form>
     <div class="mbt-2">Prio</div>
     <div id="prioContainer${id}" class="prio-container"></div>
     <div class="mbt-2">Assigned to</div>
