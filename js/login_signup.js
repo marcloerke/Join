@@ -8,7 +8,15 @@ setURL("https://gruppe-428.developerakademie.net/smallest_backend_ever");
 /**
  * Main functions
  */
-function init() {
+async function init() {
+  await downloadFromServer();
+  users = JSON.parse(backend.getItem("users")) || [];
+  users.forEach(u=>{
+    if (u.loggedIn == true) {
+      u.loggedIn == false;
+    }
+  })
+  await backend.setItem("users", JSON.stringify(users));
   setTimeout(function () {
     renderLogin();
   }, 800);
