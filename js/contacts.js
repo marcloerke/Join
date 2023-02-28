@@ -350,7 +350,40 @@ const showContactData = (contact) => {
       </div>
     `;
   }
+  if (window.innerWidth < 1000) {
+    let sectionLeft= document.getElementsByTagName('section')[0];
+    let sectionRight= document.getElementsByTagName('section')[1];
+    sectionRight.style.display= "block";
+    sectionLeft.style.display= "none";
+    let button= document.getElementsByClassName('button-position')[0];
+    button.style.display= "none";
+  }
+  if (window.innerWidth >= 1000) {
+    let sectionRight= document.getElementsByTagName('section')[1];
+    sectionRight.style.display= "block";
+  }
 };
+
+
+function closeContactDataMobile(){
+  let sectionLeft= document.getElementsByTagName('section')[0];
+  let sectionRight= document.getElementsByTagName('section')[1];
+  let button= document.getElementsByClassName('button-position')[0];
+  button.style.display= "block";
+  if (window.innerWidth < 1000) {
+    sectionRight.style.display= "none";
+    sectionLeft.style.display= "block";
+  } 
+  if (window.innerWidth < 750) {
+    sectionRight.style.display= "none";
+    sectionLeft.style.display= "flex";
+  } 
+    
+}
+
+
+
+
 
 const editContact = (userId) => {
   document.body.append(editContactTemplate(userId));
@@ -367,62 +400,62 @@ const closeEditOverlay = () => {
 const toggleBetweenContacts = (userId) => {
   var currentUser = getUserById(userId);
   showContactData(currentUser);
-  loadMobileContactView(currentUser);
-  toggleMobileOverlay();
+  // loadMobileContactView(currentUser);
+  // toggleMobileOverlay();
   // onsubmitContact(currentUser);
 };
 
-const toggleMobileOverlay = () => {
-  console.log("mobile");
-  document.getElementById("mobileContactOverlay").classList.add("show-mobile-overlay");
-}
+// const toggleMobileOverlay = () => {
+//   console.log("mobile");
+//   document.getElementById("mobileContactOverlay").classList.add("show-mobile-overlay");
+// }
 
-const removeMobileOverlay = () => {
-  document.getElementById('mobileContactOverlay').classList.remove('show-mobile-overlay');
-}
+// const removeMobileOverlay = () => {
+//   document.getElementById('mobileContactOverlay').classList.remove('show-mobile-overlay');
+// }
 
-const loadMobileContactView = (currentUser) => {
-  let contactMobileOverlay = document.getElementById("mobileContactOverlay");
-  contactMobileOverlay.innerHTML = ``;
-  const index = storedContactsArray.findIndex(user => user.id === currentUser.id)
-  let initials = createInitials(currentUser); 
+// const loadMobileContactView = (currentUser) => {
+//   let contactMobileOverlay = document.getElementById("mobileContactOverlay");
+//   contactMobileOverlay.innerHTML = ``;
+//   const index = storedContactsArray.findIndex(user => user.id === currentUser.id)
+//   let initials = createInitials(currentUser); 
 
-  if(currentUser != null) {
-    contactMobileOverlay.innerHTML +=  /*html*/ `
-      <div class="overlay-mobile">
-        <div class="contact-header">
-            <div class="initials-big" style="background: ${currentUser.color}">${initials}</div>
-            <div class="add-task-container-small">
-              <h1>${currentUser["userName"]}</h1>
-              <div class="contact-task" id="contact-task" onclick="renderTaskOverlay(${currentUser.id})">
-                  <img src="assets/img/icon_add_task_plus.png" alt="#">
-                  <h2>Add Task</h2>
-              </div>
-            </div>
-        </div>
+//   if(currentUser != null) {
+//     contactMobileOverlay.innerHTML +=  /*html*/ `
+//       <div class="overlay-mobile">
+//         <div class="contact-header">
+//             <div class="initials-big" style="background: ${currentUser.color}">${initials}</div>
+//             <div class="add-task-container-small">
+//               <h1>${currentUser["userName"]}</h1>
+//               <div class="contact-task" id="contact-task" onclick="renderTaskOverlay(${currentUser.id})">
+//                   <img src="assets/img/icon_add_task_plus.png" alt="#">
+//                   <h2>Add Task</h2>
+//               </div>
+//             </div>
+//         </div>
         
-        <div class="contact-edit" >
-          <div><h2>Contact Information</h2></div>
-        <div onclick="editContact(${index})"><img src="assets/img/icon_edit_dark.png" alt=""> Edit</div>
+//         <div class="contact-edit" >
+//           <div><h2>Contact Information</h2></div>
+//         <div onclick="editContact(${index})"><img src="assets/img/icon_edit_dark.png" alt=""> Edit</div>
             
-        </div>
-        <div class="contact-mail">
-            <h3>Email</h3>
-            <a href="mailto:ania.schulze@hotmail.com">${currentUser["userMail"]}</a>
-        </div>
-        <div class="contact-call">
-            <h3>Phone</h3>
-            <a href="tel:+49 123-456-7890">${currentUser["userPhone"]}</a>
-        </div>
-      </div>
-      <div onclick="removeMobileOverlay()">
-        <div class="arrow-style">
-          <img src="assets/img/left-arrow.png" alt="#">
-        </div>
-      </div>
-    `;
-  }
-}
+//         </div>
+//         <div class="contact-mail">
+//             <h3>Email</h3>
+//             <a href="mailto:ania.schulze@hotmail.com">${currentUser["userMail"]}</a>
+//         </div>
+//         <div class="contact-call">
+//             <h3>Phone</h3>
+//             <a href="tel:+49 123-456-7890">${currentUser["userPhone"]}</a>
+//         </div>
+//       </div>
+//       <div onclick="removeMobileOverlay()">
+//         <div class="arrow-style">
+//           <img src="assets/img/left-arrow.png" alt="#">
+//         </div>
+//       </div>
+//     `;
+//   }
+// }
 
 const getUserById = (userId) => {
   var currentUser = storedContactsArray.filter(
