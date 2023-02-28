@@ -1,5 +1,5 @@
 .layover-task-popup {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
     position: fixed;
     top: 0;
     right: 0;
@@ -517,7 +517,7 @@
     align-items: center;
     border-radius: 15px;
     font-size: 18px;
-    box-shadow: inset 1px 1px 20px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
 }
 
 

@@ -32,7 +32,7 @@ function renderTasks(taskArea, filterdArray) {
         const subtaskCounter = task['subtaskCounter'];
         document.getElementById(taskArea).innerHTML +=  /*html*/ `
             <div id="task${id}" draggable="true" ondrag="dragging(${id})"  ondragstart="startDragging(${id},event)"  onclick="openTaskPopup(${id})" class="task"></div>
-                <div id="layoverTaskPopup${id}" onclick="stopPropagation(event)"   class="layover-task-popup d-none"></div>
+                <div id="layoverTaskPopup${id}" onclick="closeTaskPopup(${id})"   class="layover-task-popup d-none"></div>
             </div> `;
         renderHTML(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc, names,
             backgroundColor, date, priorityBg, priorityTaskPopup, prioIconPopupSrc, subtaskCounter);

@@ -9,8 +9,6 @@
         padding-left: 80px;
         padding-right: 80px;
     }
-
-
 }
 
 @media (max-width: 1100px) {
@@ -40,8 +38,6 @@
         padding-left: 20px;
         padding-right: 20px;
     }
-
-
 }
 
 @media (max-width: 950px) {
@@ -67,8 +63,6 @@
     .add-task-btn-board {
         display: none;
     }
-
-
 
     .tasks-board {
         padding-left: 80px;
@@ -138,11 +132,20 @@
 
     .drag-drop-containers {
         width: 90%;
+
+    }
+
+    .title {
+        width: 90%;
     }
 
     .content-task-popup {
-        height: 75%;
+        height: 100%;
+        width: 100%;
         scrollbar-width: none;
+        border-top: 0.5px solid lightgray;
+        border-radius: unset;
+        padding-top: 80px;
     }
 
 
@@ -152,7 +155,10 @@
     }
 
     .layover-task-popup {
-        background-color: white ;
+        background-color: transparent;
+        top: 75px;
+        bottom: 61px;
+
     }
 
     .ok-button {
@@ -160,12 +166,12 @@
     }
 
     .exit-edit-container {
-        top: 5px;
+        top: 25px;
         right: 55px;
     }
 
     .exit-task-popup {
-        top: 5px;
+        top: 35px;
         right: 28px;
     }
 
@@ -202,30 +208,54 @@
 
     .date-input {
         height: 25px;
-        margin-botto: 10px;
     }
 
     .title-input {
         height: 30px;
-        margin-botto: 10px;
-    }
-
-    .text-area-description {
-        margin-botto: 10px;
-    }
-
-    .ok-button {
-        botto: 80px;
     }
 
     .edit-container {
-        margi-top: 30px;
+        border-top: 0.5px solid lightgray;
+        padding-top: 70px;
+        border-radius: unset;
+        width: 100%;
+    }
+
+    .edit-container-wrapper {
+        height: 100%;
+        width: 100%;
+    }
+
+    .prio-container {
+        width: 100%;
     }
 
 }
 
+@media (max-width: 450px) {
+    .prio-container {
+        scale: 0.85;
+        width: 118%;
+        margin-left: -35px;
+    }
 
-@media (max-width: 400px) {
+    .edit-container {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .exit-edit-container {
+        top: 25px;
+        right: 38px;
+    }
+
+    .ok-button {
+        right: 38px;
+    }
+}
+
+
+@media (max-width: 350px) {
     .edit-container-wrapper {
         padding-left: 20px;
         padding-right: 20px;
@@ -235,30 +265,32 @@
     }
 
     .edit-container {
-        padding-left: 20px;
-        padding-right: 20px;
         box-sizing: border-box;
         width: 85%;
+        padding-left: 0px;
+        padding-right: 0px;
+        border: unset;
     }
 
     .prio-container {
         scale: 0.75;
-        margin-left: -42px !important;
+        margin-left: -42px;
         margin-bottom: 10px;
+        width: 133%;
     }
 
     .exit-edit-container {
-        top: 5px;
-        right: 19px;
+        top: 50px;
+        right: 0px;
     }
 
     .exit-task-popup {
-        top: 5px;
+        top: 25px;
         right: 35px;
     }
 
     .ok-button {
-        right: 65px;
+        right: 45px;
     }
 
     .edit-button {
