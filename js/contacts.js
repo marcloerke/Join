@@ -360,9 +360,10 @@ const showContactData = (contact) => {
   }
   if (window.innerWidth >= 1000) {
     let sectionRight= document.getElementsByTagName('section')[1];
-    sectionRight.style.display= "block";
+    sectionRight.style.display= "";
   }
 };
+
 
 
 function closeContactDataMobile(){
