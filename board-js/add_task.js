@@ -279,7 +279,7 @@ create.addEventListener("click", function () {
   // event.preventDefault();
   subtaskCounterChecker();
   formValidation();
-  setTimeout(addSubtaskCounter,2000);
+  setTimeout(addSubtaskCounter,1000);
 });
 
 

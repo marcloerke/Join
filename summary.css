@@ -249,6 +249,26 @@ body {
         padding: 15px;
     }
 
+    /* Barni 4x*/
+    .content {
+        align-items: unset;
+    }
+
+    .card-row-1:hover {
+        transform: scale(1);
+        transform-origin: unset;
+    }
+
+    .card-row-2:hover {
+        transform: scale(1);
+        transform-origin: unset;
+    }
+
+    .card-row-3:hover {
+        transform: scale(1);
+        transform-origin: unset;
+    }
+
     .summary-content {
         transform: scale(0.9);
         margin-top: -1rem;
@@ -296,11 +316,11 @@ body {
         font-size: 1.3rem;
     }
 }
-
+/* Barni -8.5rem */
 @media screen and (max-width: 425px) {
     .summary-content {
         transform: scale(0.6);
-        margin-top: -8.5rem;
+        margin-top: -4.5rem;
     }
 
     .f-21,

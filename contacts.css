@@ -1251,4 +1251,9 @@ input[type="checkbox"]:checked::before {
   right: 2rem;
   top: 2rem;
 }
+
+.initials-big {
+  padding: 0 !important;
+  margin-bottom: 25px;
+}
 }
