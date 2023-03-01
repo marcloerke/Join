@@ -204,6 +204,10 @@ body {
   .header-logo-container {
     display: flex;
   }
+
+  ::-webkit-scrollbar {
+    width: 0;
+  }
 }
 
 @media screen and (max-width: 420px) {
@@ -219,6 +223,8 @@ body {
     width: 80px;
     font-size: 12px;
   }
+
+ 
 
   /* #problemChild {
     padding-right: 0 !important;
