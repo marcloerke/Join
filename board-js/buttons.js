@@ -364,6 +364,6 @@ function chooseContact(id) {
         tasks[id]['names'].push(contact);
         tasks[id]['bGcolorsOfAvatar'].push(newColor());
     }
-    addServer();
-    updateHTML();
+    //addServer();
+    //updateHTML();
 }

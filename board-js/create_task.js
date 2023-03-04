@@ -12,7 +12,7 @@ let columnName = "toDo";
 //         }
 
 async function createTask() {
-    
+
     let rgb = window.getComputedStyle(categoryDot).getPropertyValue("background").match(/\d+/g).map(Number);
 
     //let rbgTaskCategory = bgTaskCategory.match(/\d+/g).map(Number);
@@ -90,6 +90,11 @@ async function createTask() {
     closeAddTask();
     updateHTML();
     columnName = "toDo";
+    deleteContentAddTask();
+}
+
+
+function deleteContentAddTask() {
     document.getElementById('title').value = '';
     document.getElementById('description').value = '';
     document.getElementById('selectCategory').value = '';
