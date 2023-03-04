@@ -413,7 +413,6 @@ input[type="checkbox"]:checked::before {
 .contact-input-container {
   position: relative;
   width: 100%;
-  overflow: scroll;
 }
 
 /* .contact-input-container::-webkit-scrollbar {

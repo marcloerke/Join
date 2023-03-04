@@ -3,6 +3,7 @@ let chooesedContacts = [];
 
 function addTask(column) {
     columnName = column;
+    document.getElementById('contactsDropdownContainer').classList.remove('d-none');
     document.getElementById('layover').classList.add('layover-plus');
     document.body.style = "overflow: hidden";
     let label = document.querySelectorAll("label");

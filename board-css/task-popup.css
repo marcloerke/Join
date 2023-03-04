@@ -416,7 +416,7 @@
 
 
 .list-of-persons {
-    height: 72px;
+    /* height: 72px; */
     overflow: scroll;
 }
 
