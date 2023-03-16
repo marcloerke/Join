@@ -505,6 +505,7 @@ input[type="checkbox"]:checked::before {
   color: red;
 }
 
+
 @media screen and (max-width: 1000px) {
   .column-container {
     flex-direction: column;

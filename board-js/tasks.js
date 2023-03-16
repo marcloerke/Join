@@ -65,30 +65,30 @@ function descriptionSpecification(id) {
 }
 
 
-function newColor() {
-    var randomColor = "#000000".replace(/0/g, function () {
-        return (~~(Math.random() * 16)).toString(16);
-    });
-    //filterColor(randomColor);
-    return randomColor;
-}
+ function newColor() {
+     var randomColor = "#000000".replace(/0/g, function () {
+         return (~~(Math.random() * 16)).toString(16);
+     });
+     //filterColor(randomColor);
+     return randomColor;
+ }
 
 
-function filterColor(randomColor) {
-    for (let i = 0; i < tasks.length; i++) {
-        const element = tasks[i];
-        let color = element['bGcolorsOfAvatar'];
-        if (color.includes(randomColor) || forbiddenColors()) {
-            return newColor();
-        } else {
-            return randomColor;
-        }
-    }
+// function filterColor(randomColor) {
+//     for (let i = 0; i < tasks.length; i++) {
+//         const element = tasks[i];
+//         let color = element['bGcolorsOfAvatar'];
+//         if (color.includes(randomColor) || forbiddenColors()) {
+//             return newColor();
+//         } else {
+//             return randomColor;
+//         }
+//     }
 
-}
+// }
 
 
-function forbiddenColors() {
-    return '#ffffff', '#000000';
-}
+// function forbiddenColors() {
+//     return '#ffffff', '#000000';
+// }
 

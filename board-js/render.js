@@ -29,25 +29,25 @@ function renderTasks(taskArea, filterdArray) {
         const backgroundColorCategory = task['bgTaskCategory'];
         const date = task['date'];
         const id = task['id'];
-        const subtaskCounter = task['subtaskCounter'];
+        const subtaskDone = task['subtasksCheckbox'];
         document.getElementById(taskArea).innerHTML +=  /*html*/ `
             <div id="task${id}" draggable="true" ondrag="dragging(${id})"  ondragstart="startDragging(${id},event)"  onclick="openTaskPopup(${id})" class="task"></div>
                 <div id="layoverTaskPopup${id}" onclick="closeTaskPopup(${id})"   class="layover-task-popup d-none"></div>
             </div> `;
         renderHTML(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc, names,
-            backgroundColor, date, priorityBg, priorityTaskPopup, prioIconPopupSrc, subtaskCounter);
+            backgroundColor, date, priorityBg, priorityTaskPopup, prioIconPopupSrc, subtaskDone);
     }
 }
 
 
 function renderHTML(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc, names,
-    backgroundColor, date, priorityBg, priorityTaskPopup, prioIconPopupSrc, subtaskCounter) {
+    backgroundColor, date, priorityBg, priorityTaskPopup, prioIconPopupSrc,subtaskDone) {
     renderTasksForArea(id, backgroundColorCategory, taskCategory, taskTitle, taskDescription, prioIconTaskSrc);
     renderAvatars(names, id, backgroundColor);
     renderLayoverTaskPopup(id);
     renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, date, taskDescription);
     renderAvatarsTaskPopup(id, names, backgroundColor);
-    renderProgressBar(id, subtaskCounter);
+    renderProgressBar(id);
     renderEditContainer(id);
     renderInput(id);
     renderSelectPanel(id);
@@ -55,6 +55,7 @@ function renderHTML(id, backgroundColorCategory, taskCategory, taskTitle, taskDe
     renderPriorityContainer(id, priorityBg, priorityTaskPopup, prioIconPopupSrc);
     renderPrioButtons(id);
     loadContacts(id);
+    renderSubtasks(id);
 }
 
 
@@ -112,6 +113,8 @@ function renderTaskPopup(id, backgroundColorCategory, taskCategory, taskTitle, d
         <div class="due-date-set" id="dueDateSet${id}">${date}</div>
     </div>
     <div id="priorityContainer${id}" class="priority-container set-fonts"></div>
+    <div id="subtasksContainer${id}" class="subtasks-container "></div>
+    <div id="subtaskEmpty${id}"></div>
     <div id="assignedTo${id}" class="assigned-to set-fonts">Assigned To:</div>
     <svg id="editTask${id}" class="edit-button" onclick="editTask(${id})" width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect class="edit-button" width="57" height="57" rx="10" fill="#2A3647"/>
@@ -182,61 +185,26 @@ function renderSelectContact(id, names) {
 }
 
 
-function renderProgressBar(id, subtaskCounter) {
+function renderProgressBar(id) {
     let progressBarContainer = document.getElementById('myProgressBar' + id);
-
-    if (subtaskCounter > 0) {
-        if (subtaskCounter == 1) {
-            progressBarContainer.innerHTML = progressOf33(id, subtaskCounter);
-        }
-        else if (subtaskCounter == 2) {
-            progressBarContainer.innerHTML = progressOf66(id, subtaskCounter);
-        }
-        else if (subtaskCounter == 3) {
-            progressBarContainer.innerHTML = progressOf100(id, subtaskCounter);
-        }
-        else if (subtaskCounter > 3) {
-            subtaskCounter = 3;
-            progressBarContainer.innerHTML = progressOf100(id, subtaskCounter);
-        }
-    }
-    else {
+    progressBarContainer.innerHTML = '';
+    let unit = 100 / tasks[id]['subtasks'].length;
+    let subtaskDone = tasks[id]['subtasksCheckbox'];
+    let percentage = unit * subtaskDone.length;
+    if (tasks[id]['subtasks'].length > 0) {
+        progressBarContainer.innerHTML += /*html*/ `
+        <div class="progress-container">
+         <div class="progress-blue" style="width:${percentage}%"></div>
+   </div>
+   <div id="progressBarDone${id}" class="progress-bar-done">
+         <div>${subtaskDone.length}/${tasks[id]['subtasks'].length} Done</div>
+    </div>
+        `;
+    } else {
         progressBarContainer.innerHTML =/*html*/`<div class="progress-container-empty"></div>`;
     }
 }
 
-
-function progressOf33(id, subtaskCounter) {
-    return /*html*/ `
-    <div class="progress-container">
-         <div class="progress-blue" style="width:33%"></div>
-   </div>
-   <div id="progressBarDone${id}" class="progress-bar-done">
-         <div>${subtaskCounter}/3 Done</div>
-    </div>` ;
-}
-
-
-function progressOf66(id, subtaskCounter) {
-    return /*html*/`
-    <div class="progress-container">
-         <div class="progress-blue"  style="width:66%"></div>
-    </div>
-    <div id="progressBarDone${id}" class="progress-bar-done">
-         <div>${subtaskCounter}/3 Done</div>
-    </div>` ;
-}
-
-
-function progressOf100(id, subtaskCounter) {
-    return  /*html*/`
-    <div class="progress-container">
-         <div class="progress-blue"  style="width:100%"></div>
-    </div>
-    <div id="progressBarDone${id}" class="progress-bar-done">
-         <div>${subtaskCounter}/3 Done</div>
-    </div>` ;
-}
 
 
 function renderAvatars(names, id, backgroundColor) {

@@ -82,7 +82,8 @@ async function createTask() {
         bGcolorsOfAvatar: avatarColors,
         column: columnName,
         id: tasks.length,
-        'subtaskCounter': 0
+        'subtasks': [],    // Barni
+        'subtasksCheckbox': []   // Barni
     };
 
     tasks.push(newTask);
@@ -90,16 +91,38 @@ async function createTask() {
     closeAddTask();
     updateHTML();
     columnName = "toDo";
-    deleteContentAddTask();
+   deleteContentAddTask();                                 // Barni
 }
 
 
-function deleteContentAddTask() {
+function deleteContentAddTask() {                               // Barni
     document.getElementById('title').value = '';
     document.getElementById('description').value = '';
     document.getElementById('selectCategory').value = '';
     document.getElementById('date').value = '';
     document.getElementById('categoryDot').classList.add('d-none');
+    //document.querySelector('.subtask').classList.add('d-none');
+    //document.getElementById('finishEditingSubtask').classList.add('d-none');
+
+    dropdownContainer.style.display = "none";
+    // categoryInput.value = "";
+    categoryInput.style.borderBottom = "1px solid rgb(204, 204, 204)";
+    categoryInput.style.borderRadius = "7px";
+
+    contactsDropdown.style.display = "none";
+    assignedToInput.style.borderBottom = "1px solid rgb(204, 204, 204)";
+    assignedToInput.style.borderRadius = "7px";
+
+    subtaskInputField.value = "";
+    subtaskOnInput.style.display = "none";
+    addSubtaskIcon.style.display = "inline";
+
+    document.getElementById('subtaskContainer').innerHTML = '';
+
+    document.querySelectorAll(".active").forEach(active => {
+        active.style = "background-color: white; color: black";
+    });
+
 }
 
 

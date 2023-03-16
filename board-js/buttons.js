@@ -1,4 +1,5 @@
 let chooesedContacts = [];
+let subtasksHelpArray = [];
 
 
 function addTask(column) {
@@ -11,11 +12,12 @@ function addTask(column) {
         label[index].classList.add('mt-15-plus');
     }
     document.getElementById('taskCard').classList.add('task-card-plus');
-
+    subtasksHelpArray = [];
 }
 
 
 function closeAddTask() {
+
     document.getElementById('layover').classList.remove('layover-plus');
     document.body.style = "overflow: visible";
     let label = document.querySelectorAll("label");
@@ -24,6 +26,9 @@ function closeAddTask() {
     }
     document.getElementById('taskCard').classList.remove('task-card-plus');
     contactsOpened = false;
+    saveSubtasks();
+    deleteContentAddTask();
+    updateHTML();
 }
 
 
@@ -42,28 +47,25 @@ function editFinish(id) {
         document.getElementById('dateInput' + id).style = "color:red";
 
     } else {
-
         updateForTasks(id);
-
         addServer();
         updateHTML();
-
         document.getElementById('editContainerWrapper' + id).classList.add('d-none');
         document.getElementById('layoverTaskPopup' + id).classList.remove('d-none');
         document.getElementById('contentTaskPopup' + id).classList.remove('d-none');
-
     }
-
 }
 
 
 function openTaskPopup(id) {
+
     document.getElementById('layoverTaskPopup' + id).classList.remove('d-none');
     document.getElementById('contentTaskPopup' + id).classList.remove('d-none');
     document.body.style = "overflow: hidden";
     document.getElementsByClassName('header')[0].style.zIndex = "0";
     document.getElementById('titleInput' + id).value = `${tasks[id]['taskTitle']}`;
-    document.getElementById('textAreaDescription' + id).innerHTML = `${tasks[id]['taskDescription']} `;
+    document.getElementById('textAreaDescription' + id).innerHTML = `${tasks[id]['taskDescription']} `
+
 }
 
 
@@ -80,8 +82,8 @@ function closeTaskPopup(id) {
         document.getElementById('dateInput' + id).value = tasks[id]['date'];
         document.getElementById('dateInput' + id).style = "color: lightgray";
     }
-
 }
+
 
 function stopPropagation(event) {
     event.stopPropagation();
@@ -220,17 +222,20 @@ function noButtonShadowRed(id) {
     }
 }
 
+
 function noButtonShadowOrange(id) {
     if (tasks[id]['prioMedium']) {
         document.getElementById('medium' + id).classList.remove('button-shadow');
     }
 }
 
+
 function noButtonShadowGreen(id) {
     if (tasks[id]['prioLow']) {
         document.getElementById('low' + id).classList.remove('button-shadow');
     }
 }
+
 
 function buttonShadowRed(id) {
     if (tasks[id]['prioUrgent']) {
@@ -270,15 +275,6 @@ function searchTask() {
             inputIsNotExist(task);
         }
     }
-}
-
-
-function inputRequired(task) {
-    document.getElementById('searchMenu').style = "border: 2px solid red";
-    document.getElementById('searchTask').placeholder = "This field is required";
-    document.getElementById('searchTask').classList.add('placehoder-color-red');
-    document.getElementById('task' + task['id']).classList.remove('d-none');
-    notExist = false;
 }
 
 
@@ -327,43 +323,130 @@ function yesDelete(id) {
 }
 
 
+
 function loadContacts(id) {
     document.getElementById('listOfPersons' + id).innerHTML = '';
-    contacts.forEach(c => {
-        document.getElementById('listOfPersons' + id).innerHTML += /*html*/`
+
+    for (let i = 0; i < contacts.length; i++) {
+        const contactUser = contacts[i];
+        const contactUserName = contactUser.userName;
+        if (tasks[id]['names'].includes(contactUserName)) {
+            renderActiveContacts(id, contactUserName, i);
+        } else {
+            renderNotActiveContacts(id, contactUserName, i);
+        }
+    }
+}
+
+
+function renderActiveContacts(id, contactUserName, i) {
+    return document.getElementById('listOfPersons' + id).innerHTML += /*html*/`
+   <div class="nameOfEditContainer">
+   <div class="user-name-edit-container" id="userNameEditContainer${i}">${contactUserName}</div> 
+   <input class="checkbox-edit-container" type="checkbox" id="checkboxEditContainer${i}"  value="${contactUserName}" checked>
+   </div>
+  `;
+}
+
+
+function renderNotActiveContacts(id, contactUserName, i) {
+    return document.getElementById('listOfPersons' + id).innerHTML += /*html*/`
      <div class="nameOfEditContainer">
-     <div class="user-name-edit-container" id="userNameEditContainer${id}">${c.userName}</div> 
-     <input class="checkbox-edit-container" type="checkbox" id="checkboxEditContainer${id}">
+     <div class="user-name-edit-container" id="userNameEditContainer${i}">${contactUserName}</div> 
+     <input class="checkbox-edit-container" type="checkbox" id="checkboxEditContainer${i}"   value="${contactUserName}">
      </div>
     `;
-    });
 }
+
 
 
 function chooseContact(id) {
     tasks[id]['names'] = [];
     tasks[id]['bGcolorsOfAvatar'] = [];
     chooesedContacts = [];
-    let allCheckbox = document.querySelectorAll('#checkboxEditContainer' + id);
-    let allUserName = document.querySelectorAll('#userNameEditContainer' + id);
+    let currentTask = document.getElementById('editContainer' + id);
+    let allCheckbox = currentTask.querySelectorAll('.checkbox-edit-container');
     for (let i = 0; i < allCheckbox.length; i++) {
         const checkbox = allCheckbox[i];
-        checkbox['id'] = i;
         if (checkbox.checked) {
-            for (let j = 0; j < allUserName.length; j++) {
-                const userName = allUserName[j];
-                userName['id'] = j;
-                if (checkbox.id == userName.id) {
-                    chooesedContacts.push(userName.outerText);
-                }
-            }
+            chooesedContacts.push(checkbox.value);
         }
     }
+    saveChoosedContacts(id);
+}
+
+
+function saveChoosedContacts(id) {
     for (let index = 0; index < chooesedContacts.length; index++) {
         const contact = chooesedContacts[index];
         tasks[id]['names'].push(contact);
         tasks[id]['bGcolorsOfAvatar'].push(newColor());
     }
-    //addServer();
-    //updateHTML();
 }
+
+
+function saveSubtasks() {
+    if (subtasksHelpArray != [])
+        for (let index = 0; index < subtasksHelpArray.length; index++) {
+            const subtask = subtasksHelpArray[index];
+            tasks[tasks.length - 1]['subtasks'].push(subtask)
+        }
+}
+
+
+function saveDoneSubtask(id) {
+    tasks[id]['subtasksCheckbox'] = [];
+    let task = document.getElementById('contentTaskPopup' + id);
+    let allCheckboxOfSubtasks = task.querySelectorAll('.checkbox-subtask');
+
+    for (let i = 0; i < allCheckboxOfSubtasks.length; i++) {
+        const checkboxOfSubtask = allCheckboxOfSubtasks[i];
+        if (checkboxOfSubtask.checked && !tasks[id]['subtasksCheckbox'].includes(checkboxOfSubtask.value)) {
+            tasks[id]['subtasksCheckbox'].push(checkboxOfSubtask.value);
+        }
+    }
+    addServer();
+    renderProgressBar(id, tasks[id]['subtasksCheckbox']);
+    renderSubtasks(id);
+}
+
+
+function renderSubtasks(id) {
+    // document.getElementById('subtasksContainer' + id).style = "display: block";
+    document.getElementById('subtasksContainer' + id).innerHTML = '';
+    document.getElementById('subtasksContainer' + id).innerHTML = '<b>Subtasks:</b>';
+    if (tasks[id]['subtasks'].length == 0) {
+        document.getElementById('subtasksContainer' + id).innerHTML = '';
+        // document.getElementById('subtasksContainer' + id).style = "display: none";
+    } else {
+
+        if (tasks[id]['subtasksCheckbox'].length == 0) {
+            for (let i = 0; i < tasks[id]['subtasks'].length; i++) {
+                const subtask = tasks[id]['subtasks'][i];
+                document.getElementById('subtasksContainer' + id).innerHTML += /*html*/` 
+                 <div class="checkbox-subtask-container ">
+                <input class="checkbox-subtask " onclick = saveDoneSubtask(${id}) type="checkbox" id="checkboxSubtask${i}"  value="${subtask}" > ${subtask} 
+                </div>`;
+            }
+
+        } else {
+
+            for (let index = 0; index < tasks[id]['subtasks'].length; index++) {
+                let subtask = tasks[id]['subtasks'][index];
+                if (tasks[id]['subtasksCheckbox'].includes(subtask)) {
+                    document.getElementById('subtasksContainer' + id).innerHTML += /*html*/` 
+                            <div class="checkbox-subtask-container color-black">
+                            <input class="checkbox-subtask" onclick = saveDoneSubtask(${id}) type="checkbox" id="checkboxSubtask${index}"  value="${subtask}" checked> ${subtask} </div>`;
+                } else {
+                    document.getElementById('subtasksContainer' + id).innerHTML += /*html*/` 
+                    <div class="checkbox-subtask-container">
+                    <input class="checkbox-subtask" onclick = saveDoneSubtask(${id}) type="checkbox" id="checkboxSubtask${index}"  value="${subtask}" > ${subtask} </div>`;
+                }
+            }
+        }
+    }
+    addServer();
+}
+
+
+

@@ -274,6 +274,8 @@ finishEditingSubtask.addEventListener("click", function () {
                  <img src="assets/img/icon_trash.png" class="subtask-image" onclick="removeParent(event)">
              </div>
      `;
+      subtasksHelpArray.push(subtaskInputField.value);
+      console.log('ja');
     subtaskInputField.value = "";
   }
 });

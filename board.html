@@ -40,8 +40,10 @@
             <button disabled class="search-button"><img class="search-icon" src="assets/img/search.png"></button>
           </div>
         </div>
-        <div onclick="addTask('toDo')" class="add-task-btn-board">Add task <img src="assets/img/plus-icon-white.svg">
+        <div   onclick="addTask('toDo')"  class="add-task-btn-board">Add task <img src="assets/img/plus-icon-white.svg">
         </div>
+
+        <!-- onclick="window.location.href='add_task.html'" -->
 
       </div>
     </div>
@@ -179,13 +181,13 @@
             <p class="required"></p>
             <label class="mt-15" for="prio">Prio</label>
             <div id="prio" class="prio">
-              <div class="prio-btn">Urgent
+              <div id="prioUrgent" class="prio-btn" >Urgent
                 <img src="assets/img/icon_up.png" alt="sda">
               </div>
-              <div class="prio-btn">Medium
+              <div id="prioMedium" class="prio-btn">Medium
                 <img src="assets/img/icon_medium.png" alt="sda">
               </div>
-              <div class="prio-btn">Low
+              <div id="prioLow" class="prio-btn">Low
                 <img src="assets/img/icon_down.png" alt="sda">
               </div>
             </div>

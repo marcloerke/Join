@@ -170,7 +170,8 @@ function addContactTemplate() {
 
 function formValidation() {
   let inputs = document.getElementsByTagName("input");
-  let userPattern = /^[0-9]*[a-zA-Z]{2,}.*$/;
+  //let userPattern = /^[0-9]*[a-zA-Z]{2,}.*$/;
+  let userPattern = /^[a-zA-ZäöüÄÖÜß]+ [a-zA-ZäöüÄÖÜß]+$/;
   let mailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
   let phonePattern =
     /^\+\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}$/;
@@ -210,7 +211,9 @@ function formValidation() {
       !userPattern.test(input.value) &&
       input.value.length > 0
     ) {
-      let message = "Please enter a valid name!";
+      let message =
+        "Please enter a valid name (Full name seperated by a space; No middle names)!";
+      //let message = "Please enter a valid name!";
       allCorrect = false;
       generateTooltip(input, message);
     }

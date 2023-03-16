@@ -208,7 +208,9 @@ assignedToInput.addEventListener("click", function () {
 let prioContainer = document.getElementById("prio");
 let prioBtns = document.getElementsByClassName("prio-btn");
 prioContainer.addEventListener("click", function (e) {
+
   if (e.target.classList.contains("prio-btn")) {
+    e.target.classList.remove("active");            // Barni
     if (!e.target.classList.contains("active")) {
       let active = document.querySelectorAll(".active");
       for (let i = 0; i < active.length; i++) {
@@ -265,6 +267,7 @@ finishEditingSubtask.addEventListener("click", function () {
                  <img src="assets/img/icon_trash.png" class="subtask-image" onclick="removeParent(event)">
              </div>
      `;
+    subtasksHelpArray.push(subtaskInputField.value);    // Barni
     subtaskInputField.value = "";
   }
 });
@@ -277,28 +280,15 @@ function removeParent(e) {
 //add listener to create task button
 create.addEventListener("click", function () {
   // event.preventDefault();
-  subtaskCounterChecker();
   formValidation();
-  setTimeout(addSubtaskCounter,1000);
 });
-
-
-function addSubtaskCounter() {
-  tasks[tasks.length-1]['subtaskCounter'] = subtaskTotal;
-  addServer();
-  updateHTML();
-}
-
-
-function subtaskCounterChecker() {
-  let subtasks = document.querySelectorAll('.subtask-counter');
-  subtaskTotal = subtasks.length;
-}
 
 
 clear.addEventListener("click", function () {
   closeAddTask();
+  deleteContentAddTask();
 });
+
 
 // modify calendar so you can only select current date or date in the future
 let today = new Date();
@@ -307,3 +297,6 @@ let mm = String(today.getMonth() + 1).padStart(2, "0");
 let yyyy = today.getFullYear();
 today = yyyy + "-" + mm + "-" + dd;
 document.getElementById("date").min = today;
+
+
+

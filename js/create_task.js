@@ -81,10 +81,12 @@ async function createTask() {
     bGcolorsOfAvatar: avatarColors,
     column: "toDo",
     id: tasks.length,
-    'subtaskCounter': 0
+    'subtasks': [],
+    'subtasksCheckbox': []
   };
 
   tasks.push(newTask);
+  saveSubtasks();
   await backend.setItem("keyTasks", JSON.stringify(tasks));
 }
 
