@@ -264,7 +264,7 @@ finishEditingSubtask.addEventListener("click", function () {
     subtaskContainer.innerHTML += /*html*/ `
              <div class="subtask">
                 <p class="subtask-counter"> &#9675; ${subtaskInputField.value}</p>
-                 <img src="assets/img/icon_trash.png" class="subtask-image" onclick="removeParent(event)">
+                <!-- <img src="assets/img/icon_trash.png" class="subtask-image" onclick="removeParent(event)"> -->
              </div>
      `;
     subtasksHelpArray.push(subtaskInputField.value);    // Barni
