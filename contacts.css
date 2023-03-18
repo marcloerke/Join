@@ -6,6 +6,7 @@ html {
   --c-lightblue: rgb(41, 171, 226);
   --bg-body: #f5f5f5;
   --dimmed: #d1d1d1;
+  overflow-x: hidden;
 }
 
 a {
@@ -151,7 +152,7 @@ ul {
 .contact-info-chart {
   display: flex;
   flex-direction: column;
-  width: 755px;
+  /* width: 755px; */
 }
 
 .contact-info {

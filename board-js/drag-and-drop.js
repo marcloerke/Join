@@ -49,7 +49,7 @@ function filterForColumnFour() {
 function startDragging(idOfTask, ev) {
     currentDraggedElement = idOfTask;
     ev.dataTransfer.setData("text", ev.target.id);
-    document.getElementById('task' + currentDraggedElement).style = "opacity: 0.2; box-shadow: inset 1px 1px 24px 10px rgba(0,0,0,0.3)";
+    document.getElementById('task' + currentDraggedElement).style = "opacity: 0.2";
 }
 
 

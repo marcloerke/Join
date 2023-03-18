@@ -1,4 +1,6 @@
-
+body {
+  overflow-x: hidden;
+}
 
 .mt-15 {
   margin-top: .8rem;
