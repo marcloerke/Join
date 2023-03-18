@@ -5,6 +5,7 @@
     border-radius: 18px;
     padding: 13px;
     font-size: .9rem;
+    border: 1px solid lightgray;
     cursor: pointer;
     box-sizing: border-box;
 }

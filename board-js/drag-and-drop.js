@@ -65,7 +65,7 @@ function dragging(idOfTask) {
 
 
 function finishedDragging() {
-    document.getElementById('task' + currentDraggedElement).style = "opacity: 1; box-shadow: unset;border: unset";
+    document.getElementById('task' + currentDraggedElement).style = "opacity: 1; box-shadow: unset;border: unset; border: 1px solid lightgray;";
 }
 
 
