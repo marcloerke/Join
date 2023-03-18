@@ -6,6 +6,7 @@ html {
   --c-lightblue: rgb(41, 171, 226);
   --bg-body: #f5f5f5;
   --dimmed: #d1d1d1;
+  overflow: hidden !important;
   overflow-x: hidden;
 }
 
