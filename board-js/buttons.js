@@ -412,12 +412,10 @@ function saveDoneSubtask(id) {
 
 
 function renderSubtasks(id) {
-    // document.getElementById('subtasksContainer' + id).style = "display: block";
     document.getElementById('subtasksContainer' + id).innerHTML = '';
     document.getElementById('subtasksContainer' + id).innerHTML = '<b>Subtasks:</b>';
     if (tasks[id]['subtasks'].length == 0) {
         document.getElementById('subtasksContainer' + id).innerHTML = '';
-        // document.getElementById('subtasksContainer' + id).style = "display: none";
     } else {
 
         if (tasks[id]['subtasksCheckbox'].length == 0) {

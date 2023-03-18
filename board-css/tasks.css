@@ -16,7 +16,7 @@
 .categoryTask {
     display: flex;
     justify-content: center;
-    max-width: 150px;
+    max-widtH: 200px;
     /* word-wrap: break-word; */
     overflow-wrap: break-word;
     padding: 5px 15px;
@@ -28,6 +28,8 @@
 }
 
 .task-title {
+    max-widtH: 200px;
+    overflow-wrap: break-word;
     font-weight: bold;
     padding: 10px 0;
     color: black !important;
@@ -35,6 +37,8 @@
 
 .description {
     color: rgb(171, 169, 169);
+    max-widtH: 200px;
+    overflow-wrap: break-word;
 }
 
 .progress {
