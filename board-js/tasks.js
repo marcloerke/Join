@@ -50,6 +50,7 @@ function dateSpecification(id) {
 
     let dateInput = document.getElementById('dateInput' + id).value;
     tasks[id]['date'] = dateInput;
+   
 }
 
 
@@ -72,6 +73,9 @@ function descriptionSpecification(id) {
      //filterColor(randomColor);
      return randomColor;
  }
+
+
+ 
 
 
 // function filterColor(randomColor) {

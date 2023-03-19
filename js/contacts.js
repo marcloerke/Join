@@ -151,9 +151,8 @@ function addContactTemplate() {
           <div class="fcf-form-group">
             <label for="Phone" class="fcf-label"></label>
             <div class="fcf-input-group">
-              <!-- <input type="tel" id="phone" name="Phone" pattern="^\+49 \d{4} \d{5}$" placeholder="+49 1234 56789" required> -->
-              <input type="tel" id="phone" name="Phone" pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/"  required>
-              <img src="assets/img/icon_phone.png">
+              <input type="tel" id="phone" name="Phone" pattern="/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/" placeholder="+49 1234 56789" required>
+            <img src="assets/img/icon_phone.png">
             </div>
           </div>
         </form>
@@ -171,15 +170,10 @@ function addContactTemplate() {
 
 function formValidation() {
   let inputs = document.getElementsByTagName("input");
-  //let userPattern = /^[0-9]*[a-zA-Z]{2,}.*$/;
-  let userPattern = /^[a-zA-ZäöüÄÖÜß]+ [a-zA-ZäöüÄÖÜß]+$/;
+  let userPattern = /^[0-9]*[a-zA-Z]{2,}.*$/;
   let mailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
   let phonePattern =
-   // /^\+\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}\s?\d{1,}$/;
-   ///^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/;
-   ///^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
-   ///^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
-   /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+  /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
   let allCorrect = true;
 
   for (let i = 0; i < inputs.length; i++) {

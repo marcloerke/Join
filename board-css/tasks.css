@@ -113,6 +113,11 @@
     color: #ffffff;
 }
 
+.color-plus {
+    width: 25px;
+    height: 25px; 
+}
+
 .progress-container-empty {
     height: 30px;
     width: 100%;

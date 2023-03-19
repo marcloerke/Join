@@ -2,6 +2,9 @@ let chooesedContacts = [];
 let subtasksHelpArray = [];
 
 
+
+ 
+
 function addTask(column) {
     columnName = column;
     document.getElementById('contactsDropdownContainer').classList.remove('d-none');
@@ -91,6 +94,8 @@ function stopPropagation(event) {
 
 
 function editTask(id) {
+
+ 
     document.getElementById('contentTaskPopup' + id).classList.add('d-none');
     document.getElementById('editContainerWrapper' + id).classList.remove('d-none');
     document.getElementById('editContainer' + id).classList.remove('d-none');
@@ -115,6 +120,7 @@ function closeEditContainer(id) {
 
 function dropDown(id) {
     document.getElementById('selectContainer' + id).classList.toggle('selectContainerPlus');
+    document.getElementById('editContainerAvatars'+id).classList.toggle('d-none');
 }
 
 
@@ -300,14 +306,14 @@ function trashPopup(id) {
 }
 
 
-async function deleteTask(id) {
+ function deleteTask(id) {
     document.getElementById('task' + id).classList.add('d-none');
     closeTaskPopup(id)
     tasks.splice(id, 1);
     tasks.forEach((task, index) => {
         task['id'] = index;
     });
-    await addServer();
+    addServer();
     updateHTML();
 }
 
@@ -410,41 +416,6 @@ function saveDoneSubtask(id) {
     renderSubtasks(id);
 }
 
-
-function renderSubtasks(id) {
-    document.getElementById('subtasksContainer' + id).innerHTML = '';
-    document.getElementById('subtasksContainer' + id).innerHTML = '<b>Subtasks:</b>';
-    if (tasks[id]['subtasks'].length == 0) {
-        document.getElementById('subtasksContainer' + id).innerHTML = '';
-    } else {
-
-        if (tasks[id]['subtasksCheckbox'].length == 0) {
-            for (let i = 0; i < tasks[id]['subtasks'].length; i++) {
-                const subtask = tasks[id]['subtasks'][i];
-                document.getElementById('subtasksContainer' + id).innerHTML += /*html*/` 
-                 <div class="checkbox-subtask-container ">
-                <input class="checkbox-subtask " onclick = saveDoneSubtask(${id}) type="checkbox" id="checkboxSubtask${i}"  value="${subtask}" > ${subtask} 
-                </div>`;
-            }
-
-        } else {
-
-            for (let index = 0; index < tasks[id]['subtasks'].length; index++) {
-                let subtask = tasks[id]['subtasks'][index];
-                if (tasks[id]['subtasksCheckbox'].includes(subtask)) {
-                    document.getElementById('subtasksContainer' + id).innerHTML += /*html*/` 
-                            <div class="checkbox-subtask-container color-black">
-                            <input class="checkbox-subtask" onclick = saveDoneSubtask(${id}) type="checkbox" id="checkboxSubtask${index}"  value="${subtask}" checked> ${subtask} </div>`;
-                } else {
-                    document.getElementById('subtasksContainer' + id).innerHTML += /*html*/` 
-                    <div class="checkbox-subtask-container">
-                    <input class="checkbox-subtask" onclick = saveDoneSubtask(${id}) type="checkbox" id="checkboxSubtask${index}"  value="${subtask}" > ${subtask} </div>`;
-                }
-            }
-        }
-    }
-    addServer();
-}
 
 
 

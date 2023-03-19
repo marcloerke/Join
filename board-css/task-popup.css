@@ -416,7 +416,7 @@
 
 
 .list-of-persons {
-    /* height: 72px; */
+    height: 50px; 
     overflow: scroll;
 }
 
@@ -568,7 +568,7 @@
 }
 
 .subtasks-container {
-
+    height: 200px; 
     margin-bottom: 15px;
     margin-top: 15px;
 }
