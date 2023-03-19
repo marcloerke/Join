@@ -7,8 +7,7 @@ body {
 }
 
 .main-container {
-    /* background-color: #f6f7f8; */
-    background-color: #eceef1;
+    background-color: #f6f7f8;
     z-index: 2;
     grid-row: 2/11;
     grid-column: 3/11; 

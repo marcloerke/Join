@@ -211,14 +211,13 @@ function formValidation() {
       !userPattern.test(input.value) &&
       input.value.length > 0
     ) {
-      let message =
-        "Please enter a valid name (Full name seperated by a space; No middle names)!";
-      //let message = "Please enter a valid name!";
+       
+      let message = "Please enter a valid name!";
       allCorrect = false;
       generateTooltip(input, message);
     }
   }
-  // console.log(allCorrect);
+  console.log(allCorrect);
   return allCorrect;
 }
 
